@@ -23,11 +23,11 @@
                       "Entity": "Targets"
                     }
                   },
-                  "Property": "Verwacht filtered"
+                  "Property": "Verwacht"
                 }
               },
-              "queryRef": "Targets.Verwacht filtered",
-              "nativeQueryRef": "Verwacht filtered"
+              "queryRef": "Targets.Verwacht",
+              "nativeQueryRef": "Verwacht"
             },
             {
               "field": {
@@ -85,7 +85,7 @@
                     "Entity": "Targets"
                   }
                 },
-                "Property": "Verwacht filtered"
+                "Property": "Verwacht"
               }
             },
             "direction": "Descending"
@@ -738,7 +738,7 @@
         "type": "Advanced"
       },
       {
-        "name": "e571f5e1ebc7f6c82bba",
+        "name": "d146b9666e564ce1e38d",
         "field": {
           "Measure": {
             "Expression": {
@@ -746,7 +746,7 @@
                 "Entity": "Targets"
               }
             },
-            "Property": "Verwacht filtered"
+            "Property": "Verwacht"
           }
         },
         "type": "Advanced"

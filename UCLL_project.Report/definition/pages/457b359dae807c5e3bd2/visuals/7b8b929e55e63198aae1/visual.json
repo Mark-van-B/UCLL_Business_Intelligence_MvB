@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "7b8b929e55e63198aae1",
   "position": {
-    "x": 8.2421396830720219,
-    "y": 221.16408149576591,
+    "x": 19.767497977317568,
+    "y": 218.605271749159,
     "z": 6000,
-    "height": 149.73220424247506,
-    "width": 712.94508258572989,
+    "height": 150.00042582788035,
+    "width": 712.79272118209815,
     "tabOrder": 6000
   },
   "visual": {
@@ -17,36 +17,22 @@
           "projections": [
             {
               "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Resultaten_Opleidingsonderdelen"
-                    }
-                  },
-                  "Property": "Studierendement FaseSemester"
-                }
-              },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Studierendement FaseSemester",
-              "nativeQueryRef": "Studierendement FaseSemester"
-            },
-            {
-              "field": {
                 "Aggregation": {
                   "Expression": {
                     "Column": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Resultaten_Opleidingsonderdelen"
+                          "Entity": "OPO_Opleidingen"
                         }
                       },
                       "Property": "ECTS"
                     }
                   },
-                  "Function": 1
+                  "Function": 0
                 }
               },
-              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.ECTS)",
-              "nativeQueryRef": "Average of ECTS"
+              "queryRef": "Sum(OPO_Opleidingen.ECTS)",
+              "nativeQueryRef": "Sum of ECTS"
             },
             {
               "field": {
@@ -58,14 +44,33 @@
                           "Entity": "Resultaten_Opleidingsonderdelen"
                         }
                       },
-                      "Property": "ECTS Opleiding"
+                      "Property": "InvestedECTS"
                     }
                   },
-                  "Function": 1
+                  "Function": 0
                 }
               },
-              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.ECTS Opleiding)",
-              "nativeQueryRef": "Average of ECTS Opleiding"
+              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.InvestedECTS)",
+              "nativeQueryRef": "Sum of InvestedECTS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "OPO_Opleidingen"
+                        }
+                      },
+                      "Property": "Opleiding_ECTS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(OPO_Opleidingen.Opleiding_ECTS)",
+              "nativeQueryRef": "Sum of Opleiding_ECTS"
             }
           ]
         }
@@ -74,13 +79,18 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "Resultaten_Opleidingsonderdelen"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "OPO_Opleidingen"
+                      }
+                    },
+                    "Property": "ECTS"
                   }
                 },
-                "Property": "Studierendement FaseSemester"
+                "Function": 0
               }
             },
             "direction": "Descending"
@@ -90,61 +100,5 @@
       }
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "dd1474541db18c9f5a51",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Resultaten_Opleidingsonderdelen"
-                  }
-                },
-                "Property": "ECTS"
-              }
-            },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "52afa538cd726523c6fc",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Resultaten_Opleidingsonderdelen"
-                  }
-                },
-                "Property": "ECTS Opleiding"
-              }
-            },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "557128bbbaa92b8b4ff4",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Resultaten_Opleidingsonderdelen"
-              }
-            },
-            "Property": "Studierendement FaseSemester"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

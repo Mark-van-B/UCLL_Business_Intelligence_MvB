@@ -1,15 +1,6 @@
 table OPO_Opleidingen
 	lineageTag: 1164d228-47f4-480f-91e2-07419013cc3a
 
-	measure Filter_Opleiding_ECTS =
-			
-			SUMX(
-			values(Resultaten_Opleidingsonderdelen[Student_ID]),
-			calculate(sum(Resultaten_Opleidingsonderdelen[ECTS]))
-			)
-		formatString: 0
-		lineageTag: 9d61228f-b1db-487b-829f-c549d0bf2451
-
 	column Opleiding_ID
 		dataType: string
 		lineageTag: e5857ab0-7d04-471f-896e-674fdcffda54
