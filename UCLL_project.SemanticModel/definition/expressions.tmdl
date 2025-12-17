@@ -1,0 +1,80 @@
+expression Vrijstellingen =
+		let
+		    Source = Excel.Workbook(File.Contents(FilePath), null, true),
+		    Vrijstellingen_Sheet = Source{[Item="Vrijstellingen",Kind="Sheet"]}[Data],
+		    #"Changed Type" = Table.TransformColumnTypes(Vrijstellingen_Sheet,{{"Column1", type text}, {"Column2", type text}}),
+		    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Inschrijving_ID", type text}, {"OPO_ID", type text}})
+		in
+		    #"Changed Type1"
+	lineageTag: 66b59fb0-7e91-4d4f-bfb3-d0cdbd387e4c
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression FilePath = "C:\Users\MARK0\Desktop\UCLL\BI & Visual Analytics\Opdracht UCLL_Case\UCLL_Data.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: be100913-49a4-4636-b3ab-628f4ef8892b
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression TargetsFolderPath = "C:\Users\MARK0\Desktop\UCLL\BI & Visual Analytics\Opdracht UCLL_Case\UCLL_Targets" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+	lineageTag: 9ceb122e-0e8d-4f8b-aac4-98cfc65cc47b
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+
+expression Parameter1 = #"Sample File" meta [IsParameterQuery=true, BinaryIdentifier=#"Sample File", Type="Binary", IsParameterQueryRequired=true]
+	lineageTag: 7672a7e5-8697-452c-ae24-00055021a181
+	queryGroup: 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform Sample File' =
+		let
+		    Source = Csv.Document(Parameter1,[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+	lineageTag: c02593ea-4dbe-4499-ad47-291e34796772
+	queryGroup: 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
+expression 'Sample File' =
+		let
+		    Source = Folder.Files(TargetsFolderPath),
+		    Navigation1 = Source{0}[Content]
+		in
+		    Navigation1
+	lineageTag: 68832c0f-573e-462c-8756-0041b510c72f
+	queryGroup: 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Binary
+
+expression 'Transform File' =
+		let
+		    Source = (Parameter1 as binary) => let
+		    Source = Csv.Document(Parameter1,[Delimiter=",", Columns=4, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+		    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true])
+		in
+		    #"Promoted Headers"
+		in
+		    Source
+	mAttributes: [ FunctionQueryBinding = "{""exemplarFormulaName"":""Transform Sample File""}" ]
+	lineageTag: 4a28d4b6-482a-4a7a-a8df-2ea5811a1cdd
+	queryGroup: 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Function
+

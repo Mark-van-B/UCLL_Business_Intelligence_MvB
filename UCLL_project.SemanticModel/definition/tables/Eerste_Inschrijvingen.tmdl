@@ -1,0 +1,174 @@
+table Eerste_Inschrijvingen
+	lineageTag: 643696e1-12fe-406a-97b7-69e2b4aa8ba6
+
+	measure Effectief = DISTINCTCOUNT(Eerste_Inschrijvingen[Inschrijving_ID])
+		formatString: 0
+		lineageTag: d4c6c2cb-c943-4a3e-89ab-d7aa96baa1f2
+
+	measure 'Effectief vorig jaar' =
+			
+			CALCULATE (
+			    [Effectief],
+			    FILTER (
+			        ALL ( Jaar_Dimensie ),
+			        Jaar_Dimensie[Jaar] = SELECTEDVALUE ( Jaar_Dimensie[Jaar] ) - 1
+			    )
+			)
+		formatString: 0
+		lineageTag: 8f8697a1-8359-4159-9aeb-4f1d59287bcb
+
+	measure 'Effectief Vorig jaar %' =
+			
+			IF (
+			    ISBLANK ( [Effectief vorig jaar] ),
+			    "",
+			    DIVIDE ( [Effectief] - [Effectief vorig jaar], [Effectief vorig jaar] )
+			)
+		lineageTag: c87b61c6-3010-4cd4-8420-964d428d6b31
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Verschil eff-verw' =
+			
+			CALCULATE([Effectief]-[Verwacht])
+		formatString: 0
+		lineageTag: 92cc4a4c-483d-4b05-b184-648a26aeaff7
+
+	measure 'verschil eff-jaar-1' =
+			
+			IF (
+			    ISBLANK ( [Effectief vorig jaar] ),
+			    BLANK (),
+			    [Effectief] - [Effectief vorig jaar]
+			)
+		formatString: 0
+		lineageTag: 6d6e2f08-1e49-4d8f-9f07-2575cd6e94b3
+
+	measure 'Jaar Text titel' = ```
+			
+			IF (ISBLANK(SELECTEDVALUE(Jaar_Dimensie[Jaar])), 
+			"Vergelijking jaar -1",
+			"Vergelijking " & SELECTEDVALUE(Jaar_Dimensie[Jaar]) -1)
+			
+			```
+		lineageTag: b0161619-a5bd-40eb-b0ad-d07aa66011b5
+
+	measure 'Aantal Inschrijvingen titel' = ```
+			
+			IF (ISBLANK(SELECTEDVALUE(Jaar_Dimensie[Jaar])), 
+			"Aantal inschrijvingen totaal",
+			"Aantal inschrijvingen " & SELECTEDVALUE(Jaar_Dimensie[Jaar]))
+			
+			```
+		lineageTag: 3c96d8ce-72a9-44c3-b1fb-0b6d46e7ecf8
+
+	column Student_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: fd2fc17d-5fab-4876-8182-5819f78bf10b
+		summarizeBy: count
+		sourceColumn: Student_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opleidingen.Departement_ID'
+		dataType: string
+		lineageTag: 04f78f0a-cf64-4bef-9aa9-6afb2fba8130
+		summarizeBy: none
+		sourceColumn: Opleidingen.Departement_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opleiding_ID
+		dataType: string
+		lineageTag: 9b603eb6-ae91-48e8-862e-2824a4e4b927
+		summarizeBy: none
+		sourceColumn: Opleiding_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Opleidingen.Naam'
+		dataType: string
+		lineageTag: ea295f4a-c5b2-45fd-97cb-1b0ba9aeabbc
+		summarizeBy: none
+		sourceColumn: Opleidingen.Naam
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enrolment_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: d5f4cb0a-d3d7-4b57-a385-28bb27b938ba
+		summarizeBy: none
+		sourceColumn: Enrolment_date
+
+		variation Variation
+			isDefault
+			relationship: cecfa03c-41f5-43d8-9a61-e5953b11251f
+			defaultHierarchy: LocalDateTable_0ac5b76a-5a02-4f55-bba9-272b6df70cfc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Inschrijving_Jaar
+		dataType: int64
+		formatString: 0
+		lineageTag: fd144f28-06ce-4df1-b582-1059927d6a86
+		summarizeBy: none
+		sourceColumn: Inschrijving_Jaar
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Departementen.Naam'
+		dataType: string
+		lineageTag: a6082080-a90a-4a07-b611-5bb119a0896d
+		summarizeBy: none
+		sourceColumn: Departementen.Naam
+
+		annotation SummarizationSetBy = Automatic
+
+	column Inschrijving_ID
+		dataType: string
+		lineageTag: 6a37c981-69aa-457f-9a63-3a93d83f8ed0
+		summarizeBy: none
+		sourceColumn: Inschrijving_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Departementen.Naam Hierarchy'
+		lineageTag: 1f7147f2-9257-4942-9c11-05977772315b
+
+		level 'Departementen.Naam'
+			lineageTag: f6b42a78-ed1c-4b05-8a25-59c17278ce40
+			column: 'Departementen.Naam'
+
+		level 'Opleidingen.Naam'
+			lineageTag: 047c0eaf-d660-4b91-b35a-82601083220f
+			column: 'Opleidingen.Naam'
+
+	partition Eerste_Inschrijvingen = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents(FilePath), null, true),
+				    Inschrijvingen_Sheet = Source{[Item="Inschrijvingen",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Inschrijvingen_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Inschrijving_ID", type text}, {"Student_ID", Int64.Type}, {"Opleiding_ID", type text}, {"Enrolment_date", type date}}),
+				    #"Inserted Year" = Table.AddColumn(#"Changed Type", "Inschrijving_Jaar", each Date.Year([Enrolment_date]), Int64.Type),
+				    #"Sorted Rows" = Table.Sort(#"Inserted Year",{{"Enrolment_date", Order.Ascending}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Sorted Rows", {"Student_ID", "Opleiding_ID"}),
+				    #"Sorted Rows1" = Table.Sort(#"Removed Duplicates",{{"Student_ID", Order.Ascending}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Sorted Rows1", {"Opleiding_ID"}, Opleidingen, {"Opleiding_ID"}, "Opleidingen", JoinKind.LeftOuter),
+				    #"Expanded Opleidingen" = Table.ExpandTableColumn(#"Merged Queries", "Opleidingen", {"Departement_ID", "Naam"}, {"Opleidingen.Departement_ID", "Opleidingen.Naam"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Opleidingen",{"Student_ID", "Opleidingen.Departement_ID", "Opleiding_ID", "Opleidingen.Naam", "Enrolment_date", "Inschrijving_Jaar"}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Reordered Columns", {"Opleidingen.Departement_ID"}, Departementen, {"Departement_ID"}, "Departementen", JoinKind.LeftOuter),
+				    #"Expanded Departementen" = Table.ExpandTableColumn(#"Merged Queries1", "Departementen", {"Naam"}, {"Departementen.Naam"}),
+				    #"Sorted Rows2" = Table.Sort(#"Expanded Departementen",{{"Student_ID", Order.Ascending}})
+				in
+				    #"Sorted Rows2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,41 @@
+model Model
+	culture: en-US
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-BE
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+queryGroup 'Transform File from Query1'
+
+	annotation PBI_QueryGroupOrder = 0
+
+queryGroup 'Transform File from Query1\Helper Queries'
+
+	annotation PBI_QueryGroupOrder = 0
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["Departementen","Inschrijvingen","Opgenomen_Opleidingsonderdelen","Opleidingen","Opleidingsonderdelen","OPO_Opleidingen","Resultaten_Opleidingsonderdelen","Studenten","Vrijstellingen","FilePath","TargetsFolderPath","Targets","Parameter1","Transform Sample File","Sample File","Transform File","Eerste_Inschrijvingen","ECTSPerOpleiding"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table Departementen
+ref table Inschrijvingen
+ref table DateTableTemplate_90a23537-2ecc-449a-bea1-8cd2a8fc9c00
+ref table LocalDateTable_04346c5c-d3e8-4a61-8556-58fb4a989c9a
+ref table Opgenomen_Opleidingsonderdelen
+ref table Opleidingen
+ref table OPO_Opleidingen
+ref table Resultaten_Opleidingsonderdelen
+ref table Studenten
+ref table LocalDateTable_1813365d-2065-414c-a89f-596ec59494fc
+ref table Targets
+ref table Eerste_Inschrijvingen
+ref table LocalDateTable_0ac5b76a-5a02-4f55-bba9-272b6df70cfc
+ref table Jaar_Dimensie
+ref table ECTSPerOpleiding
+ref table Opleidingsonderdelen
+
+ref cultureInfo en-US
+

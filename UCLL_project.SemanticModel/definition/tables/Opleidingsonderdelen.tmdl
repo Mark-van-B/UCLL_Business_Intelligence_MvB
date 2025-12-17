@@ -1,0 +1,84 @@
+table Opleidingsonderdelen
+	lineageTag: 1c4cb47e-3992-447e-9d63-bcbd6e0868f6
+
+	column OPO_ID
+		dataType: string
+		lineageTag: 87b4f4f9-2a41-4a37-8d92-8bbace8f385e
+		summarizeBy: none
+		sourceColumn: OPO_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Naam
+		dataType: string
+		lineageTag: fe0cd8eb-c338-449e-b355-ae94f7848d87
+		summarizeBy: none
+		sourceColumn: Naam
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fase
+		dataType: int64
+		formatString: 0
+		lineageTag: b8ff86e2-7cbd-45fe-a8a8-2fc68eae0795
+		summarizeBy: none
+		sourceColumn: Fase
+
+		annotation SummarizationSetBy = Automatic
+
+	column Semester
+		dataType: int64
+		formatString: 0
+		lineageTag: 5fe4d4da-9c4f-4271-b617-59530def3cfb
+		summarizeBy: none
+		sourceColumn: Semester
+
+		annotation SummarizationSetBy = Automatic
+
+	column ECTS
+		dataType: int64
+		formatString: 0
+		lineageTag: 0457311b-4e2e-41d4-92f1-b161341f5abe
+		summarizeBy: none
+		sourceColumn: ECTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fase_Semester
+		dataType: string
+		lineageTag: b8062a0f-6d56-4a21-968f-5bdab3a99025
+		summarizeBy: none
+		sourceColumn: Fase_Semester
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fase_Semester_Volgorde
+		dataType: string
+		lineageTag: c9b66964-042e-43dd-82f1-5304ba0f98de
+		summarizeBy: none
+		sourceColumn: Fase_Semester_Volgorde
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Opleidingsonderdelen = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents("C:\Users\MARK0\Desktop\UCLL\BI & Visual Analytics\Opdracht UCLL_Case\UCLL_Data.xlsx"), null, true),
+				    Opleidingsonderdelen_Sheet = Source{[Item="Opleidingsonderdelen",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Opleidingsonderdelen_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"OPO_ID", type text}, {"Naam", type text}, {"Fase", Int64.Type}, {"Semester", Int64.Type}, {"ECTS", Int64.Type}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Fase_Semester_Sortering", each ([Fase]) + (if [Semester] = 1 then 0 else 0.5)),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Added Custom",{{"Fase_Semester_Sortering", type number}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type1",{{"Fase_Semester_Sortering", "Fase_Semester_Code"}}),
+				    #"Added Custom1" = Table.AddColumn(#"Renamed Columns", "Fase_Semester_Label", each Text.From([Fase]) & "-" & Text.From([Semester])),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom1",{"Fase_Semester_Code"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Removed Columns",{{"Fase_Semester_Label", "Fase_Semester"}}),
+				    #"Added Custom2" = Table.AddColumn(#"Renamed Columns1", "Fase_Semester_Volgorde", each ([Fase] - 1) * 2 + (if [Semester] = 1 then 1 else 1.5))
+				in
+				    #"Added Custom2"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

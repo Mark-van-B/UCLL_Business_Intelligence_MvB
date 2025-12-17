@@ -1,0 +1,101 @@
+relationship edea752b-573c-4a44-b9ef-59468d068bf7
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Inschrijvingen.Enrolment_date
+	toColumn: LocalDateTable_04346c5c-d3e8-4a61-8556-58fb4a989c9a.Date
+
+relationship 56f025b1-41c1-43fb-9aff-3b5b3732e886
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Studenten.Geboortdatum
+	toColumn: LocalDateTable_1813365d-2065-414c-a89f-596ec59494fc.Date
+
+relationship AutoDetected_82f2c922-5121-4cbd-9abf-d5008ecd0904
+	fromColumn: Opleidingen.Departement_ID
+	toColumn: Departementen.Departement_ID
+
+relationship AutoDetected_467b741e-09ad-4533-a15f-e941ce1227e0
+	fromColumn: Opgenomen_Opleidingsonderdelen.Inschrijving_ID
+	toColumn: Inschrijvingen.Inschrijving_ID
+
+relationship AutoDetected_898e229a-b234-4016-9d43-ea1ae6329bf6
+	fromColumn: Resultaten_Opleidingsonderdelen.Inschrijving_ID
+	toColumn: Inschrijvingen.Inschrijving_ID
+
+relationship AutoDetected_4b9dc121-06e4-4f18-a97c-753b83048e19
+	isActive: false
+	fromColumn: Inschrijvingen.Opleiding_ID
+	toColumn: Opleidingen.Opleiding_ID
+
+relationship AutoDetected_fab1a6ec-7c92-4dd6-a15c-75ef2bbadf8a
+	crossFilteringBehavior: bothDirections
+	fromColumn: OPO_Opleidingen.Opleiding_ID
+	toColumn: Opleidingen.Opleiding_ID
+
+relationship cecfa03c-41f5-43d8-9a61-e5953b11251f
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Eerste_Inschrijvingen.Enrolment_date
+	toColumn: LocalDateTable_0ac5b76a-5a02-4f55-bba9-272b6df70cfc.Date
+
+relationship AutoDetected_9d568384-aa30-4349-81c2-9ad85072f062
+	isActive: false
+	fromColumn: Eerste_Inschrijvingen.Student_ID
+	toColumn: Studenten.Student_ID
+
+relationship AutoDetected_482fee59-b8d1-4d3a-8556-2ab53837ca0c
+	fromColumn: Eerste_Inschrijvingen.Opleiding_ID
+	toColumn: Opleidingen.Opleiding_ID
+
+relationship AutoDetected_38e96365-98bd-4c6a-a40a-42413cf6b8fa
+	isActive: false
+	fromColumn: Eerste_Inschrijvingen.'Departementen.Naam'
+	toColumn: Departementen.Naam
+
+relationship AutoDetected_c50ca43b-23dc-4d03-8750-9d095b6ade13
+	isActive: false
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Eerste_Inschrijvingen.Inschrijving_ID
+	toColumn: Inschrijvingen.Inschrijving_ID
+
+relationship 41d1fcff-4b87-afc6-7cb8-5924f9bc628b
+	fromColumn: Targets.Opleiding_ID
+	toColumn: Opleidingen.Opleiding_ID
+
+relationship 58898868-e068-65ae-007c-f4d9c7ae3215
+	fromColumn: Targets.Target_jaar
+	toColumn: Jaar_Dimensie.Jaar
+
+relationship 79aead78-6b81-c577-2e4d-8bb8cf9b9d6a
+	fromColumn: Eerste_Inschrijvingen.Inschrijving_Jaar
+	toColumn: Jaar_Dimensie.Jaar
+
+relationship AutoDetected_063d3432-bb46-4adb-b73c-c3579205f089
+	fromColumn: Resultaten_Opleidingsonderdelen.Student_ID
+	toColumn: Studenten.Student_ID
+
+relationship 28af9507-a6e5-b665-4e64-94207a06707d
+	isActive: false
+	fromColumn: Inschrijvingen.Student_ID
+	toColumn: Studenten.Student_ID
+
+relationship AutoDetected_c8578113-a306-4f3d-8b94-5c7f4e2e8a3f
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: ECTSPerOpleiding.Opleiding_ID
+	toColumn: Opleidingen.Opleiding_ID
+
+relationship AutoDetected_5a391fea-89f1-430a-84fb-1aa13b5f7467
+	isActive: false
+	fromColumn: Resultaten_Opleidingsonderdelen.Opleiding_ID
+	toColumn: Opleidingen.Opleiding_ID
+
+relationship AutoDetected_8b70a452-6adb-4d87-97b8-be084d7c771c
+	crossFilteringBehavior: bothDirections
+	fromCardinality: one
+	fromColumn: Opleidingsonderdelen.OPO_ID
+	toColumn: OPO_Opleidingen.OPO_ID
+
+relationship 1b79bd21-369f-75cb-83bf-2ec41abce5ab
+	crossFilteringBehavior: bothDirections
+	fromColumn: Opgenomen_Opleidingsonderdelen.OPO_ID
+	toColumn: Opleidingsonderdelen.OPO_ID
+

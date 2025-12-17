@@ -1,0 +1,143 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "c986bc1c358af8d09bc7",
+  "position": {
+    "x": 938.23023392303173,
+    "y": 105.77412593275761,
+    "z": 4000,
+    "height": 85.168776725077549,
+    "width": 201.93242223526454,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "slicer",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Opleiding_ID"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.Opleiding_ID",
+              "nativeQueryRef": "Opleiding_ID",
+              "active": true
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "OPO_ID"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.OPO_ID",
+              "nativeQueryRef": "OPO_ID",
+              "active": false
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "data": [
+        {
+          "properties": {
+            "mode": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Dropdown'"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "general": [
+        {
+          "properties": {}
+        }
+      ],
+      "items": [
+        {
+          "properties": {
+            "background": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "background": [
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E30046'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "9f70a48604e8cd060135",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "Opleiding_ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "be40d704323c6c1e9abe",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "OPO_ID"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "fb3bb3e471c58993df94",
+  "displayName": "Inschrijvingen",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "2be0bd995e9ca6b12125",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "182L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "564f6ec3fee18710a531",
+      "target": "c6cba84ea778a0a7a6e9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "0da8e746dbfa4515d9f0",
+      "target": "1e65c6a407d6e76ed6d2",
+      "type": "NoFilter"
+    },
+    {
+      "source": "9b9149864d948af68302",
+      "target": "1e65c6a407d6e76ed6d2",
+      "type": "NoFilter"
+    }
+  ]
+}

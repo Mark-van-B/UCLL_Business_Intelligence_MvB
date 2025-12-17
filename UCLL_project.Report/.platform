@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "UCLL_project"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "e9fc6ec7-7ce6-4688-9e99-27318e07abcd"
+  }
+}

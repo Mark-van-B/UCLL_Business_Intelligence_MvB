@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/2.0.0/schema.json",
+  "name": "457b359dae807c5e3bd2",
+  "displayName": "Dashboard Student",
+  "displayOption": "FitToPage",
+  "height": 720,
+  "width": 1280,
+  "pageBinding": {
+    "name": "7da0657b10c734db3ce6",
+    "type": "Default",
+    "parameters": []
+  },
+  "objects": {
+    "outspacePane": [
+      {
+        "properties": {
+          "width": {
+            "expr": {
+              "Literal": {
+                "Value": "201L"
+              }
+            }
+          }
+        }
+      }
+    ]
+  },
+  "visualInteractions": [
+    {
+      "source": "279c5e7f2bffc75ba2d0",
+      "target": "7b8b929e55e63198aae1",
+      "type": "DataFilter"
+    },
+    {
+      "source": "b72d472e6bf219079c05",
+      "target": "5c31e552362932e68c80",
+      "type": "NoFilter"
+    }
+  ]
+}

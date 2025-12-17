@@ -1,0 +1,140 @@
+table Studenten
+	lineageTag: 0329625a-6981-483d-ae22-ef8f5b33a103
+
+	column Student_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 53f17240-042f-4cd1-9f17-929fceb30020
+		summarizeBy: none
+		sourceColumn: Student_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Naam
+		dataType: string
+		lineageTag: d58feea2-0392-4041-b077-9a4efd139d5e
+		summarizeBy: none
+		sourceColumn: Naam
+
+		annotation SummarizationSetBy = Automatic
+
+	column Voornaam
+		dataType: string
+		lineageTag: 21d27d64-f7dc-4c27-8536-dcdd8db142ab
+		summarizeBy: none
+		sourceColumn: Voornaam
+
+		annotation SummarizationSetBy = Automatic
+
+	column Geslacht
+		dataType: string
+		lineageTag: e51f5a51-af36-4618-a91c-62d730b1ed78
+		summarizeBy: none
+		sourceColumn: Geslacht
+
+		annotation SummarizationSetBy = Automatic
+
+	column Geboortdatum
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 323844fa-2c48-456d-8603-e37b783e01fb
+		summarizeBy: none
+		sourceColumn: Geboortdatum
+
+		variation Variation
+			isDefault
+			relationship: 56f025b1-41c1-43fb-9aff-3b5b3732e886
+			defaultHierarchy: LocalDateTable_1813365d-2065-414c-a89f-596ec59494fc.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Regio
+		dataType: string
+		lineageTag: bfc222f1-16eb-4c66-979e-ccae9243c80f
+		summarizeBy: none
+		sourceColumn: Regio
+
+		annotation SummarizationSetBy = Automatic
+
+	column Onderwijsvorm
+		dataType: string
+		lineageTag: 81ca6ab0-f135-4542-9116-3b014d873b8a
+		summarizeBy: none
+		sourceColumn: Onderwijsvorm
+
+		annotation SummarizationSetBy = Automatic
+
+	column Thuistaal
+		dataType: string
+		lineageTag: 0007d92b-daf7-4f3e-a2df-530d7e8db5de
+		summarizeBy: none
+		sourceColumn: Thuistaal
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Uitwisselings Student'
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ce6b89d3-14ca-45e7-9baf-16e43ebeaba5
+		summarizeBy: none
+		sourceColumn: Uitwisselings Student
+
+		annotation SummarizationSetBy = Automatic
+
+	column Geboortejaar
+		dataType: string
+		lineageTag: b5fe9c46-b506-48b2-9828-36e4307f1b74
+		summarizeBy: none
+		sourceColumn: Geboortejaar
+
+		annotation SummarizationSetBy = Automatic
+
+	column Initialen
+		dataType: string
+		lineageTag: 452e4937-c478-429c-8979-65caaa5d8f1c
+		summarizeBy: none
+		sourceColumn: Initialen
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opleiding
+		dataType: string
+		lineageTag: 057f9ea7-e71b-4fb8-8586-d7bef6b76415
+		summarizeBy: none
+		sourceColumn: Opleiding
+
+		annotation SummarizationSetBy = Automatic
+
+	column Startjaar
+		dataType: int64
+		formatString: 0
+		lineageTag: a362b046-dcf6-4108-ad04-c41ba492c65b
+		summarizeBy: sum
+		sourceColumn: Startjaar
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Studenten = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents(FilePath), null, true),
+				    Studenten_Sheet = Source{[Item="Studenten",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Studenten_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Student_ID", Int64.Type}, {"Naam", type text}, {"Voornaam", type text}, {"Geslacht", type text}, {"Geboortdatum", type date}, {"Regio", type text}, {"Onderwijsvorm", type text}, {"Thuistaal", type text}, {"Uitwisselings Student", type logical}}),
+				    #"Added Custom" = Table.AddColumn(#"Changed Type", "Geboortejaar", each Date.Year([Geboortdatum])),
+				    #"Added Custom Column" = Table.AddColumn(#"Added Custom", "Initialen", each Text.Combine({Text.Start([Voornaam], 1), ".", Text.Start([Naam], 1), "."}), type text),
+				    #"Merged Queries" = Table.NestedJoin(#"Added Custom Column", {"Student_ID"}, Inschrijvingen, {"Student_ID"}, "Inschrijvingen", JoinKind.LeftOuter),
+				    #"Expanded Inschrijvingen" = Table.ExpandTableColumn(#"Merged Queries", "Inschrijvingen", {"Opleiding_ID", "Jaar"}, {"Inschrijvingen.Opleiding_ID", "Inschrijvingen.Jaar"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Inschrijvingen",{{"Inschrijvingen.Opleiding_ID", "Opleiding"}, {"Inschrijvingen.Jaar", "Startjaar"}}),
+				    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns", {"Student_ID"}),
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each [Opleiding] <> null and [Opleiding] <> "")
+				in
+				    #"Filtered Rows"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

@@ -1,0 +1,215 @@
+table Resultaten_Opleidingsonderdelen
+	lineageTag: 844f6786-7133-48bc-9c62-d468a83bd74c
+
+	measure Studie-efficiëntie = ```
+			
+			VAR Invested = SUM(Resultaten_Opleidingsonderdelen[InvestedECTS])
+			VAR Earned = 
+			    SUM(Resultaten_Opleidingsonderdelen[Behaalde_Credits])
+			RETURN DIVIDE(Earned, Invested, 0)
+			
+			```
+		lineageTag: 4cafb438-bc8a-4220-bd6b-7ac72bf17fa6
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Inschrijving_ID
+		dataType: string
+		isHidden
+		lineageTag: 8e10e165-f3cb-4a91-8eda-9788696c5d1e
+		summarizeBy: none
+		sourceColumn: Inschrijving_ID
+
+		changedProperty = IsHidden
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPO_ID
+		dataType: string
+		lineageTag: 2b205f2b-2b03-45fa-98f2-ccb9ef3a8549
+		summarizeBy: none
+		sourceColumn: OPO_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Periode
+		dataType: int64
+		formatString: 0
+		lineageTag: bb1961da-8cf4-48f3-bcc0-6ad673684b2b
+		summarizeBy: sum
+		sourceColumn: Periode
+
+		annotation SummarizationSetBy = Automatic
+
+	column Resultaat
+		dataType: int64
+		formatString: 0
+		lineageTag: 0c450299-dd76-44fe-95e8-4e6353c4eb0a
+		summarizeBy: sum
+		sourceColumn: Resultaat
+
+		annotation SummarizationSetBy = Automatic
+
+	column Student_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: 113b119f-b70a-4416-b5ca-acfb04d0d343
+		summarizeBy: none
+		sourceColumn: Student_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categorie_Naam
+		dataType: string
+		lineageTag: 47120fec-2445-4485-823a-7beaa23c9017
+		summarizeBy: none
+		sourceColumn: Categorie_Naam
+
+		annotation SummarizationSetBy = Automatic
+
+	column Categorie_Rang
+		dataType: string
+		lineageTag: 390a6d3e-3945-4c3c-a29a-5793da100f8c
+		summarizeBy: none
+		sourceColumn: Categorie_Rang
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opleiding_ID
+		dataType: string
+		lineageTag: a05161d3-3a5d-4f42-856a-bd95e73bec65
+		summarizeBy: none
+		sourceColumn: Opleiding_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'ECTS Opleiding'
+		dataType: double
+		lineageTag: df712967-ab8f-42ef-b8af-2e0328d50dc6
+		summarizeBy: sum
+		sourceColumn: ECTS Opleiding
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ECTS
+		dataType: int64
+		formatString: 0
+		lineageTag: 2d983194-f5af-4cb6-a66c-6c8bb83971a3
+		summarizeBy: sum
+		sourceColumn: ECTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fase_Semester
+		dataType: string
+		lineageTag: 198753aa-58d8-4ff1-8d13-e991b5babfaa
+		summarizeBy: none
+		sourceColumn: Fase_Semester
+		sortByColumn: Fase_Semester_Volgorde
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column Fase_Semester_Volgorde
+		dataType: double
+		lineageTag: f41b8f9f-98d5-4fa1-8db1-9683c17f1135
+		summarizeBy: sum
+		sourceColumn: Fase_Semester_Volgorde
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Vrijgesteld
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: ef892b0d-50c6-45b6-abd1-3a68a3072af6
+		summarizeBy: none
+		sourceColumn: Vrijgesteld
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvestedECTS
+		dataType: int64
+		formatString: 0
+		lineageTag: ec42681e-8a3b-4082-a03f-7af5a3f7551c
+		summarizeBy: sum
+		sourceColumn: InvestedECTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Behaalde_Credits
+		dataType: double
+		lineageTag: 31a5fb97-2a3f-4a46-802d-3e956bd86893
+		summarizeBy: sum
+		sourceColumn: Behaalde_Credits
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition Resultaten_Opleidingsonderdelen = m
+		mode: import
+		source = ```
+				let
+				    Source = Excel.Workbook(File.Contents(FilePath), null, true),
+				    Resultaten_Opleidingsonderdelen_Sheet = Source{[Item="Resultaten_Opleidingsonderdelen",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Resultaten_Opleidingsonderdelen_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Inschrijving_ID", type text}, {"OPO_ID", type text}, {"Periode", Int64.Type}, {"Resultaat", Int64.Type}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"Inschrijving_ID"}, Inschrijvingen, {"Inschrijving_ID"}, "Inschrijvingen", JoinKind.LeftOuter),
+				    #"Expanded Inschrijvingen" = Table.ExpandTableColumn(#"Merged Queries", "Inschrijvingen", {"Student_ID"}, {"Inschrijvingen.Student_ID"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Inschrijvingen",{{"Inschrijvingen.Student_ID", "Student_ID"}}),
+				    #"Added Custom" = Table.AddColumn(#"Renamed Columns", "ScoreBand", each if [Resultaat] <= 7 then "Gezakt" else if [Resultaat] <= 9 then "Tolereerbaar" else if [Resultaat] <= 12 then "Voldoende" else if [Resultaat] <= 15 then "Onderscheiding" else if [Resultaat] <= 17 then "Grote Onderscheiding" else "GROOTSTE ONDERSCHEIDING"),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Added Custom",{{"ScoreBand", "Categorie"}}),
+				    #"Added Custom1" = Table.AddColumn(#"Renamed Columns1", "Categorie_Rang", each if [Resultaat] <= 7 then -1
+				else if [Resultaat] <= 9 then 0
+				else if [Resultaat] <= 12 then 1
+				else if [Resultaat] <= 15 then 2
+				else if [Resultaat] <= 17 then 3
+				else 4),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Added Custom1",{"Inschrijving_ID", "OPO_ID", "Periode", "Resultaat", "Student_ID", "Categorie_Rang", "Categorie"}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Reordered Columns",{{"Categorie", "Categorie_Naam"}}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns2", {"OPO_ID"}, OPO_Opleidingen, {"OPO_ID"}, "OPO_Opleidingen", JoinKind.LeftOuter),
+				    #"Expanded OPO_Opleidingen" = Table.ExpandTableColumn(#"Merged Queries1", "OPO_Opleidingen", {"Opleiding_ID"}, {"OPO_Opleidingen.Opleiding_ID"}),
+				    #"Renamed Columns3" = Table.RenameColumns(#"Expanded OPO_Opleidingen",{{"OPO_Opleidingen.Opleiding_ID", "Opleiding_ID"}}),
+				    #"Reordered Columns1" = Table.ReorderColumns(#"Renamed Columns3",{"Inschrijving_ID", "Student_ID", "OPO_ID", "Opleiding_ID", "Periode", "Resultaat", "Categorie_Rang", "Categorie_Naam"}),
+				    #"Merged Queries2" = Table.NestedJoin(#"Reordered Columns1", {"Opleiding_ID"}, ECTSPerOpleiding, {"Opleiding_ID"}, "ECTSPerOpleiding", JoinKind.LeftOuter),
+				    #"Expanded ECTSPerOpleiding" = Table.ExpandTableColumn(#"Merged Queries2", "ECTSPerOpleiding", {"TotalECTS"}, {"TotalECTS"}),
+				    #"Renamed Columns4" = Table.RenameColumns(#"Expanded ECTSPerOpleiding",{{"TotalECTS", "ECTS Opleiding"}}),
+				    #"Merged Queries3" = Table.NestedJoin(#"Renamed Columns4", {"OPO_ID"}, #"Opleidingsonderdelen", {"OPO_ID"}, "Opleidingsonderdelen", JoinKind.LeftOuter),
+				    #"Expanded Opleidingsonderdelen" = Table.ExpandTableColumn(#"Merged Queries3", "Opleidingsonderdelen", {"ECTS"}, {"ECTS"}),
+				    #"Reordered Columns2" = Table.ReorderColumns(#"Expanded Opleidingsonderdelen",{"Inschrijving_ID", "Student_ID", "OPO_ID", "Opleiding_ID", "Periode", "Resultaat", "Categorie_Rang", "Categorie_Naam", "ECTS", "ECTS Opleiding"}),
+				    #"Merged Queries4" = Table.NestedJoin(#"Reordered Columns2", {"OPO_ID"}, Opleidingsonderdelen, {"OPO_ID"}, "Opleidingsonderdelen", JoinKind.LeftOuter),
+				    #"Expanded Opleidingsonderdelen1" = Table.ExpandTableColumn(#"Merged Queries4", "Opleidingsonderdelen", {"Fase_Semester", "Fase_Semester_Volgorde"}, {"Fase_Semester", "Fase_Semester_Volgorde"}),
+				    #"Merged Queries5" = Table.NestedJoin(#"Expanded Opleidingsonderdelen1", {"Inschrijving_ID"}, Opgenomen_Opleidingsonderdelen, {"Inschrijving_ID"}, "Opgenomen_Opleidingsonderdelen", JoinKind.LeftOuter),
+				    #"Expanded Opgenomen_Opleidingsonderdelen" = Table.ExpandTableColumn(#"Merged Queries5", "Opgenomen_Opleidingsonderdelen", {"Vrijgesteld", "ECTS"}, {"Vrijgesteld", "ECTS.1"}),
+				    #"Renamed Columns5" = Table.RenameColumns(#"Expanded Opgenomen_Opleidingsonderdelen",{{"ECTS.1", "InvestedECTS"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns5",{{"Fase_Semester_Volgorde", type number}}),
+				    #"Added Custom2" = Table.AddColumn(#"Changed Type1", "Behaalde_Credits", each 
+				    if [Vrijgesteld] = true then [InvestedECTS]
+				    else if [Periode] = 1 and [Resultaat] > 9 then [InvestedECTS]
+				    else if [Periode] = 2 and [Resultaat] > 9 then
+				        let
+				            periode1Result = List.First(
+				                Table.SelectRows(#"Changed Type1", 
+				                    (r) => r[Inschrijving_ID] = [Inschrijving_ID] 
+				                        and r[OPO_ID] = [OPO_ID] 
+				                        and r[Periode] = 1
+				                )[Resultaat]
+				            )
+				        in
+				            if periode1Result <> null and periode1Result <= 9 
+				            then [InvestedECTS] else 0
+				    else 0),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"Behaalde_Credits", type number}})
+				in
+				    #"Changed Type2"
+				```
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

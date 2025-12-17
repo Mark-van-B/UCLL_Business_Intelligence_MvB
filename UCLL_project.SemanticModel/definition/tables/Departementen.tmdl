@@ -1,0 +1,35 @@
+table Departementen
+	lineageTag: f60ff416-80a3-45e5-8bd0-aa894896bc8a
+
+	column Departement_ID
+		dataType: string
+		lineageTag: b025bf2f-99c7-4790-a547-2182db2460ee
+		summarizeBy: none
+		sourceColumn: Departement_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Naam
+		dataType: string
+		lineageTag: a22bd605-9520-459f-9d13-0457236cb599
+		summarizeBy: none
+		sourceColumn: Naam
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Departementen = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents(FilePath), null, true),
+				    Departementen_Sheet = Source{[Item="Departementen",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Departementen_Sheet,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Departement_ID", type text}, {"Naam", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

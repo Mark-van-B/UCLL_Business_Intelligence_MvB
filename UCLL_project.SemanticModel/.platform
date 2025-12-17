@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "UCLL_project"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "99b02692-98b9-496f-8a2f-607f44c85061"
+  }
+}

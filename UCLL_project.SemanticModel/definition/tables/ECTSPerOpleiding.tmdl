@@ -1,0 +1,36 @@
+table ECTSPerOpleiding
+	lineageTag: 35b37ff8-235f-45e5-92af-c53898dcff1f
+
+	column Opleiding_ID
+		dataType: string
+		lineageTag: 59647706-9799-4949-9b54-6e2a410a4d4f
+		summarizeBy: none
+		sourceColumn: Opleiding_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column TotalECTS
+		dataType: double
+		lineageTag: e4fd9f1d-6c2a-4ebb-87c2-4e9dbdbdff78
+		summarizeBy: sum
+		sourceColumn: TotalECTS
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ECTSPerOpleiding = m
+		mode: import
+		source =
+				let
+				    Source = OPO_Opleidingen,
+				    Grouped = Table.Group(Source, {"Opleiding_ID"}, {
+				        {"TotalECTS", each List.Sum([ECTS]), type number}
+				    })
+				in
+				    Grouped
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

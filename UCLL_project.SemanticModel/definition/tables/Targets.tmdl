@@ -1,0 +1,74 @@
+table Targets
+	lineageTag: 05af37b4-cb3f-4017-a493-f151e549e2c7
+
+	measure 'Effectief vs Verwacht %' =
+			
+			DIVIDE ( [Effectief] - [Verwacht], [Verwacht] )
+		lineageTag: 3a249b02-117e-49c2-bc00-6b2c20f83b78
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Verwacht = SUM ( Targets[Target] )
+		formatString: 0
+		lineageTag: b39ad887-bd67-49d9-9cb6-bf16420ae0ef
+
+	measure 'Verwacht per departement' = ```
+			
+			
+			```
+		formatString: 0
+		lineageTag: 7280b845-7b73-4cc2-b724-e1fddb7eb95b
+
+	column Target_jaar
+		dataType: int64
+		formatString: 0
+		lineageTag: 1837972d-54e9-4159-9f58-a0c467532bf6
+		summarizeBy: none
+		sourceColumn: Target_jaar
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opleiding_ID
+		dataType: string
+		lineageTag: 24dcdfcc-30f3-4d50-8e62-419e45ab7c5d
+		summarizeBy: none
+		sourceColumn: Opleiding_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Target
+		dataType: int64
+		formatString: 0
+		lineageTag: 1a96400b-acc4-4fe0-acd7-c24197079108
+		summarizeBy: sum
+		sourceColumn: Target
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Targets = m
+		mode: import
+		source =
+				let
+				    Source = Folder.Files(TargetsFolderPath),
+				    #"Filtered Hidden Files1" = Table.SelectRows(Source, each [Attributes]?[Hidden]? <> true),
+				    #"Invoke Custom Function1" = Table.AddColumn(#"Filtered Hidden Files1", "Transform File", each #"Transform File"([Content])),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Invoke Custom Function1", {"Name", "Source.Name"}),
+				    #"Removed Other Columns1" = Table.SelectColumns(#"Renamed Columns1", {"Source.Name", "Transform File"}),
+				    #"Expanded Table Column1" = Table.ExpandTableColumn(#"Removed Other Columns1", "Transform File", Table.ColumnNames(#"Transform File"(#"Sample File"))),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Expanded Table Column1",{{"Source.Name", type text}, {"O0001", Int64.Type}, {" O0002", Int64.Type}, {" O0003", Int64.Type}, {" O0004", Int64.Type}}),
+				    #"Unpivoted Only Selected Columns" = Table.Unpivot(#"Changed Type", {"O0001", " O0002", " O0003", " O0004"}, "Attribute", "Value"),
+				    #"Inserted Text Between Delimiters" = Table.AddColumn(#"Unpivoted Only Selected Columns", "Text Between Delimiters", each Text.BetweenDelimiters([Source.Name], "_", "_"), type text),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Inserted Text Between Delimiters",{"Source.Name", "Text Between Delimiters", "Attribute", "Value"}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Reordered Columns",{"Source.Name"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Columns",{{"Text Between Delimiters", "Target_jaar"}, {"Attribute", "OPO_ID"}, {"Value", "Target"}}),
+				    #"Cleaned Text" = Table.TransformColumns(#"Renamed Columns",{{"OPO_ID", Text.Clean, type text}}),
+				    #"Trimmed Text" = Table.TransformColumns(#"Cleaned Text",{{"OPO_ID", Text.Trim, type text}}),
+				    #"Renamed Columns2" = Table.RenameColumns(#"Trimmed Text",{{"OPO_ID", "Opleiding_ID"}}),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns2",{{"Target_jaar", Int64.Type}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

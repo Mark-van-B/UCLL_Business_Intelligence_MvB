@@ -1,0 +1,70 @@
+table Inschrijvingen
+	lineageTag: 211c0cfd-730c-4736-b188-a0e65a74945f
+
+	column Inschrijving_ID
+		dataType: string
+		lineageTag: 2682e580-cfb1-4c06-9cc8-c932f3187322
+		summarizeBy: none
+		sourceColumn: Inschrijving_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Student_ID
+		dataType: int64
+		formatString: 0
+		lineageTag: a74efe5b-da00-4ad3-9439-4ee10abdc9ea
+		summarizeBy: count
+		sourceColumn: Student_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opleiding_ID
+		dataType: string
+		lineageTag: f2089a91-f746-45cb-acd8-dca2714c9761
+		summarizeBy: none
+		sourceColumn: Opleiding_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Enrolment_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 071d32c6-1e08-4338-80db-a8c64665d256
+		summarizeBy: none
+		sourceColumn: Enrolment_date
+
+		variation Variation
+			isDefault
+			relationship: edea752b-573c-4a44-b9ef-59468d068bf7
+			defaultHierarchy: LocalDateTable_04346c5c-d3e8-4a61-8556-58fb4a989c9a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column Jaar
+		dataType: int64
+		formatString: 0
+		lineageTag: 59e10c94-fe79-428d-83e1-4dd3eb6546c9
+		summarizeBy: sum
+		sourceColumn: Jaar
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Inschrijvingen = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(Web.Contents(FilePath), null, true),
+				    Inschrijvingen_Sheet = Source{[Item="Inschrijvingen",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Inschrijvingen_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Inschrijving_ID", type text}, {"Student_ID", Int64.Type}, {"Opleiding_ID", type text}, {"Enrolment_date", type date}}),
+				    #"Inserted Year" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Enrolment_date]), Int64.Type),
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Year",{{"Year", "Jaar"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

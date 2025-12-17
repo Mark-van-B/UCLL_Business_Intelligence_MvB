@@ -1,0 +1,59 @@
+table Opgenomen_Opleidingsonderdelen
+	lineageTag: 3766d168-3a88-4b2e-907b-f33899b4b5a6
+
+	column Inschrijving_ID
+		dataType: string
+		lineageTag: 70a1a5b0-8693-4b18-bd35-f3df8414fc81
+		summarizeBy: none
+		sourceColumn: Inschrijving_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPO_ID
+		dataType: string
+		lineageTag: 2a52f76c-5923-4833-b439-8ad5de29567f
+		summarizeBy: none
+		sourceColumn: OPO_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Vrijgesteld
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 131fc9f2-6191-4ca2-8867-8d7f3a5981ae
+		summarizeBy: none
+		sourceColumn: Vrijgesteld
+
+		annotation SummarizationSetBy = Automatic
+
+	column ECTS
+		dataType: int64
+		formatString: 0
+		lineageTag: 4a5b3dae-689f-4a38-a966-9fc5d0f394cd
+		summarizeBy: sum
+		sourceColumn: ECTS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Opgenomen_Opleidingsonderdelen = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents(FilePath), null, true),
+				    Opgenomen_Opleidingsonderdelen_Sheet = Source{[Item="Opgenomen_Opleidingsonderdelen",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(Opgenomen_Opleidingsonderdelen_Sheet,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Inschrijving_ID", type text}, {"OPO_ID", type text}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"Inschrijving_ID", "OPO_ID"}, Vrijstellingen, {"Inschrijving_ID", "OPO_ID"}, "Vrijstellingen", JoinKind.LeftOuter),
+				    #"Added Custom" = Table.AddColumn(#"Merged Queries", "Vrijgesteld", each if Table.RowCount([Vrijstellingen])>0 then true else false),
+				    #"Removed Columns" = Table.RemoveColumns(#"Added Custom",{"Vrijstellingen"}),
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Removed Columns",{{"Vrijgesteld", type logical}}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Changed Type2", {"OPO_ID"}, Opleidingsonderdelen, {"OPO_ID"}, "Opleidingsonderdelen", JoinKind.Inner),
+				    #"Expanded Opleidingsonderdelen" = Table.ExpandTableColumn(#"Merged Queries1", "Opleidingsonderdelen", {"ECTS"}, {"ECTS"})
+				in
+				    #"Expanded Opleidingsonderdelen"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

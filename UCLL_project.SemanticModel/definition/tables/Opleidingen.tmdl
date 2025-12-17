@@ -1,0 +1,51 @@
+table Opleidingen
+	lineageTag: c375e505-96bb-406f-899f-a3235fe9165a
+
+	column Opleiding_ID
+		dataType: string
+		lineageTag: e8bde83c-e260-4f76-bc9e-673ca2351e37
+		summarizeBy: none
+		sourceColumn: Opleiding_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Departement_ID
+		dataType: string
+		lineageTag: 760f4c5f-cc05-4ee3-9acd-db5fa9c44786
+		summarizeBy: none
+		sourceColumn: Departement_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Naam
+		dataType: string
+		lineageTag: 1176efba-e6d4-4d99-8b54-f2dc0adb7cd4
+		summarizeBy: none
+		sourceColumn: Naam
+
+		annotation SummarizationSetBy = Automatic
+
+	column ECTS
+		dataType: int64
+		formatString: 0
+		lineageTag: db87527b-16c6-4883-b913-24441c182d8d
+		summarizeBy: sum
+		sourceColumn: ECTS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Opleidingen = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents(FilePath), null, true),
+				    Opleidingen_Sheet = Source{[Item="Opleidingen",Kind="Sheet"]}[Data],
+				    #"Promoted Headers" = Table.PromoteHeaders(Opleidingen_Sheet, [PromoteAllScalars=true]),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Opleiding_ID", type text}, {"Departement_ID", type text}, {"Naam", type text}, {"ECTS", Int64.Type}})
+				in
+				    #"Changed Type"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

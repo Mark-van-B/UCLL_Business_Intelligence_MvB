@@ -1,0 +1,165 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "7b8b929e55e63198aae1",
+  "position": {
+    "x": 19.767497977317568,
+    "y": 218.605271749159,
+    "z": 6000,
+    "height": 150.00042582788035,
+    "width": 712.79272118209815,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "OPO_Opleidingen"
+                        }
+                      },
+                      "Property": "ECTS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(OPO_Opleidingen.ECTS)",
+              "nativeQueryRef": "Sum of ECTS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Resultaten_Opleidingsonderdelen"
+                        }
+                      },
+                      "Property": "InvestedECTS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.InvestedECTS)",
+              "nativeQueryRef": "Sum of InvestedECTS"
+            },
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "OPO_Opleidingen"
+                        }
+                      },
+                      "Property": "Opleiding_ECTS"
+                    }
+                  },
+                  "Function": 0
+                }
+              },
+              "queryRef": "Sum(OPO_Opleidingen.Opleiding_ECTS)",
+              "nativeQueryRef": "Sum of Opleiding_ECTS"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Aggregation": {
+                "Expression": {
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "OPO_Opleidingen"
+                      }
+                    },
+                    "Property": "ECTS"
+                  }
+                },
+                "Function": 0
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "244702d9c0fc699b24b2",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "OPO_Opleidingen"
+                  }
+                },
+                "Property": "ECTS"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "86ff23fc0c5ede0900e2",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "OPO_Opleidingen"
+                  }
+                },
+                "Property": "Opleiding_ECTS"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "b39d28a786b1a009ae14",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Resultaten_Opleidingsonderdelen"
+                  }
+                },
+                "Property": "InvestedECTS"
+              }
+            },
+            "Function": 0
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

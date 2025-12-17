@@ -1,0 +1,60 @@
+table OPO_Opleidingen
+	lineageTag: 1164d228-47f4-480f-91e2-07419013cc3a
+
+	column Opleiding_ID
+		dataType: string
+		lineageTag: e5857ab0-7d04-471f-896e-674fdcffda54
+		summarizeBy: none
+		sourceColumn: Opleiding_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column OPO_ID
+		dataType: string
+		lineageTag: 3af89123-615f-4e0e-a846-bc73a6a1836a
+		summarizeBy: none
+		sourceColumn: OPO_ID
+
+		annotation SummarizationSetBy = Automatic
+
+	column ECTS
+		dataType: int64
+		formatString: 0
+		lineageTag: 124f6456-426b-4ae1-9aa1-e95027f6f6cd
+		summarizeBy: sum
+		sourceColumn: ECTS
+
+		annotation SummarizationSetBy = Automatic
+
+	column Opleiding_ECTS
+		dataType: int64
+		formatString: 0
+		lineageTag: c253c70d-a89a-4380-a62f-f7ca20cf21c5
+		summarizeBy: sum
+		sourceColumn: Opleiding_ECTS
+
+		annotation SummarizationSetBy = Automatic
+
+	partition OPO_Opleidingen = m
+		mode: import
+		source =
+				let
+				    Source = Excel.Workbook(File.Contents(FilePath), null, true),
+				    OPO_Opleidingen_Sheet = Source{[Item="OPO_Opleidingen",Kind="Sheet"]}[Data],
+				    #"Changed Type" = Table.TransformColumnTypes(OPO_Opleidingen_Sheet,{{"Column1", type text}, {"Column2", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Opleiding_ID", type text}, {"OPO_ID", type text}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"Opleiding_ID"}, Opleidingen, {"Opleiding_ID"}, "Opleidingen", JoinKind.LeftOuter),
+				    #"Expanded Opleidingen" = Table.ExpandTableColumn(#"Merged Queries", "Opleidingen", {"ECTS"}, {"Opleidingen.ECTS"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Opleidingen",{{"Opleidingen.ECTS", "Opleiding_Credits"}}),
+				    #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns", {"OPO_ID"}, #"Opleidingsonderdelen", {"OPO_ID"}, "Opleidingsonderdelen", JoinKind.LeftOuter),
+				    #"Expanded Opleidingsonderdelen" = Table.ExpandTableColumn(#"Merged Queries1", "Opleidingsonderdelen", {"ECTS"}, {"Opleidingsonderdelen.ECTS"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Opleidingsonderdelen",{"Opleiding_ID", "OPO_ID", "Opleidingsonderdelen.ECTS", "Opleiding_Credits"}),
+				    #"Renamed Columns1" = Table.RenameColumns(#"Reordered Columns",{{"Opleidingsonderdelen.ECTS", "ECTS"}, {"Opleiding_Credits", "Opleiding_ECTS"}})
+				in
+				    #"Renamed Columns1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

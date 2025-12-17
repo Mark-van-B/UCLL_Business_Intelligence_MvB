@@ -1,0 +1,22 @@
+table Jaar_Dimensie
+	lineageTag: 8fe85769-7ade-4cea-86db-0646202bf898
+
+	column Jaar
+		lineageTag: 41c4bbee-4882-41af-91f2-ad09ff73f068
+		summarizeBy: none
+		isNameInferred
+		sourceColumn: [Jaar]
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Jaar_Dimensie = calculated
+		mode: import
+		source =
+				
+				DISTINCT (
+				    UNION (
+				        SELECTCOLUMNS (Targets, "Jaar", Targets[Target_jaar]),
+				        SELECTCOLUMNS( Eerste_Inschrijvingen, "Jaar", Eerste_Inschrijvingen[Inschrijving_Jaar])))
+
+	annotation PBI_Id = 7779d7cb711649d2bbabe1884b5eb9f7
+
