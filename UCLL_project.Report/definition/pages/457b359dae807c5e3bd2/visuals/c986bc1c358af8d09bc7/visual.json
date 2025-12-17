@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "c986bc1c358af8d09bc7",
   "position": {
-    "x": 938.23023392303173,
-    "y": 105.77412593275761,
+    "x": 936.3954372623574,
+    "y": 105.12547528517111,
     "z": 4000,
-    "height": 85.168776725077549,
-    "width": 201.93242223526454,
+    "height": 85.657794676806077,
+    "width": 201.49049429657794,
     "tabOrder": 4000
   },
   "visual": {
@@ -107,37 +107,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "9f70a48604e8cd060135",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Resultaten_Opleidingsonderdelen"
-              }
-            },
-            "Property": "Opleiding_ID"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "be40d704323c6c1e9abe",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Resultaten_Opleidingsonderdelen"
-              }
-            },
-            "Property": "OPO_ID"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }

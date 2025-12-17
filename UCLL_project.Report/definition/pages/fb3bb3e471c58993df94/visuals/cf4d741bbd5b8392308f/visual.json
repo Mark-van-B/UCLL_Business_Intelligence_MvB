@@ -604,10 +604,29 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
                 }
               }
             }
+          }
+        },
+        {
+          "properties": {
+            "fillColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Eerste_Inschrijvingen.Effectief Vorig jaar %"
           }
         }
       ],
@@ -712,5 +731,51 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "f250002e0daceb78507f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Eerste_Inschrijvingen"
+              }
+            },
+            "Property": "Effectief vorig jaar"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "278b78d8a96d033c93a6",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Eerste_Inschrijvingen"
+              }
+            },
+            "Property": "verschil eff-jaar-1"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "fb7f5c185a78cf7941a4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Eerste_Inschrijvingen"
+              }
+            },
+            "Property": "Effectief Vorig jaar %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

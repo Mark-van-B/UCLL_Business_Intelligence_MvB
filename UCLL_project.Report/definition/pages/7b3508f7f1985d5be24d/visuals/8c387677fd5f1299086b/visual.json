@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "efd4ec7b33f7825efd23",
+  "name": "8c387677fd5f1299086b",
   "position": {
     "x": 241.21580547112464,
     "y": 0,
@@ -43,7 +43,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dashboard Inschrijvingen'"
+                  "Value": "'Dashboard Opleiding'"
                 }
               }
             },
@@ -121,7 +121,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Analyse van nieuwe inschrijvingen per academiejaar, departement en opleiding'"
+                  "Value": "'Analyse van het studierendement per academiejaar, fase en opleiding'"
                 }
               }
             },

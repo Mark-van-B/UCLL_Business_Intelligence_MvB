@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "2dfe2fef1a2bfc82ec81",
+  "name": "ad7793b23770cf239a88",
   "position": {
-    "x": 20.885780885780889,
-    "y": 203.8850038850039,
-    "z": 5000,
-    "height": 136.25485625485626,
-    "width": 699.17637917637921,
-    "tabOrder": 5000
+    "x": 21.109445277361317,
+    "y": 203.41829085457272,
+    "z": 4000,
+    "height": 136.25187406296851,
+    "width": 787.76611694152916,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -535,29 +535,10 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
-          }
-        },
-        {
-          "properties": {
-            "fillColor": {
-              "solid": {
-                "color": {
-                  "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 0,
-                      "Percent": -0.1
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "selector": {
-            "metadata": "Targets.Effectief vs Verwacht %"
           }
         }
       ],
@@ -665,65 +646,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "4c7757cf43f50d126347",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Eerste_Inschrijvingen"
-              }
-            },
-            "Property": "Effectief"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "24f092e1f31a7a560653",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Targets"
-              }
-            },
-            "Property": "Verwacht"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e9cf7a5d7daf3dd343fc",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Eerste_Inschrijvingen"
-              }
-            },
-            "Property": "Verschil eff-verw"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "73ce7a061f2f75e2424d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Targets"
-              }
-            },
-            "Property": "Effectief vs Verwacht %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }
