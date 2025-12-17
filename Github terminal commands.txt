@@ -1,0 +1,14 @@
+Navigate to your PBIP project folder in terminal:
+	- cd {filePath}
+
+Check status: 
+	- git status
+
+Stage all changes: 
+	- git add .
+
+Commit with a message:
+	- git commit -m "message goes here"
+
+Push to remote:
+	- git push origin main
