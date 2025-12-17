@@ -1,33 +1,57 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "7b8b929e55e63198aae1",
+  "name": "c3f503ae3fa108ca81c2",
   "position": {
-    "x": 8.2421396830720219,
-    "y": 221.16408149576591,
-    "z": 6000,
-    "height": 149.73220424247506,
-    "width": 712.94508258572989,
-    "tabOrder": 6000
+    "x": 57.69497778150415,
+    "y": 424.47019367820911,
+    "z": 8001,
+    "height": 295.34333864341409,
+    "width": 644.26058522679637,
+    "tabOrder": 8001
   },
   "visual": {
-    "visualType": "cardVisual",
+    "visualType": "pivotTable",
     "query": {
       "queryState": {
-        "Data": {
+        "Rows": {
           "projections": [
             {
               "field": {
-                "Measure": {
+                "Column": {
                   "Expression": {
                     "SourceRef": {
                       "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Property": "Studierendement FaseSemester"
+                  "Property": "OPO_ID"
                 }
               },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Studierendement FaseSemester",
-              "nativeQueryRef": "Studierendement FaseSemester"
+              "queryRef": "Resultaten_Opleidingsonderdelen.OPO_ID",
+              "nativeQueryRef": "OPO_ID",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Resultaten_Opleidingsonderdelen"
+                        }
+                      },
+                      "Property": "Resultaat"
+                    }
+                  },
+                  "Function": 1
+                }
+              },
+              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.Resultaat)",
+              "nativeQueryRef": "Average of Resultaat"
             },
             {
               "field": {
@@ -39,33 +63,14 @@
                           "Entity": "Resultaten_Opleidingsonderdelen"
                         }
                       },
-                      "Property": "ECTS"
+                      "Property": "Fase_Semester"
                     }
                   },
-                  "Function": 1
+                  "Function": 3
                 }
               },
-              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.ECTS)",
-              "nativeQueryRef": "Average of ECTS"
-            },
-            {
-              "field": {
-                "Aggregation": {
-                  "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Resultaten_Opleidingsonderdelen"
-                        }
-                      },
-                      "Property": "ECTS Opleiding"
-                    }
-                  },
-                  "Function": 1
-                }
-              },
-              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.ECTS Opleiding)",
-              "nativeQueryRef": "Average of ECTS Opleiding"
+              "queryRef": "Min(Resultaten_Opleidingsonderdelen.Fase_Semester)",
+              "nativeQueryRef": "First Fase_Semester"
             }
           ]
         }
@@ -74,19 +79,23 @@
         "sort": [
           {
             "field": {
-              "Measure": {
+              "Aggregation": {
                 "Expression": {
-                  "SourceRef": {
-                    "Entity": "Resultaten_Opleidingsonderdelen"
+                  "Column": {
+                    "Expression": {
+                      "SourceRef": {
+                        "Entity": "Resultaten_Opleidingsonderdelen"
+                      }
+                    },
+                    "Property": "ECTS"
                   }
                 },
-                "Property": "Studierendement FaseSemester"
+                "Function": 1
               }
             },
             "direction": "Descending"
           }
-        ],
-        "isDefaultSort": true
+        ]
       }
     },
     "drillFilterOtherVisuals": true
@@ -94,53 +103,53 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "dd1474541db18c9f5a51",
+        "name": "b30df913b7328144f4f2",
         "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Resultaten_Opleidingsonderdelen"
-                  }
-                },
-                "Property": "ECTS"
-              }
-            },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "52afa538cd726523c6fc",
-        "field": {
-          "Aggregation": {
-            "Expression": {
-              "Column": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Resultaten_Opleidingsonderdelen"
-                  }
-                },
-                "Property": "ECTS Opleiding"
-              }
-            },
-            "Function": 1
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "557128bbbaa92b8b4ff4",
-        "field": {
-          "Measure": {
+          "Column": {
             "Expression": {
               "SourceRef": {
                 "Entity": "Resultaten_Opleidingsonderdelen"
               }
             },
-            "Property": "Studierendement FaseSemester"
+            "Property": "OPO_ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "0d1da0b31ad95360ff0a",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Resultaten_Opleidingsonderdelen"
+                  }
+                },
+                "Property": "Resultaat"
+              }
+            },
+            "Function": 1
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "571adea23a84d9b1393e",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Resultaten_Opleidingsonderdelen"
+                  }
+                },
+                "Property": "Fase_Semester"
+              }
+            },
+            "Function": 3
           }
         },
         "type": "Advanced"

@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Studenten"
+                      "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
                   "Property": "Student_ID"
                 }
               },
-              "queryRef": "Studenten.Student_ID",
+              "queryRef": "Resultaten_Opleidingsonderdelen.Student_ID",
               "nativeQueryRef": "Student_ID",
               "active": true
             }
@@ -152,5 +152,23 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "2dd722aa44f6902c6b10",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "Student_ID"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

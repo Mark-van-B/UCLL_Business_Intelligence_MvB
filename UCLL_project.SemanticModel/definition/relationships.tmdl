@@ -95,7 +95,6 @@ relationship AutoDetected_8b70a452-6adb-4d87-97b8-be084d7c771c
 	toColumn: OPO_Opleidingen.OPO_ID
 
 relationship 1b79bd21-369f-75cb-83bf-2ec41abce5ab
-	crossFilteringBehavior: bothDirections
 	fromColumn: Opgenomen_Opleidingsonderdelen.OPO_ID
 	toColumn: Opleidingsonderdelen.OPO_ID
 
