@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "2dfe2fef1a2bfc82ec81",
   "position": {
-    "x": 20.885780885780889,
-    "y": 203.8850038850039,
+    "x": 21.109445277361317,
+    "y": 195.74212893553224,
     "z": 5000,
-    "height": 136.25485625485626,
-    "width": 699.17637917637921,
+    "height": 127.61619190404797,
+    "width": 698.53073463268368,
     "tabOrder": 5000
   },
   "visual": {
@@ -20,6 +20,20 @@
                 "Measure": {
                   "Expression": {
                     "SourceRef": {
+                      "Entity": "Targets"
+                    }
+                  },
+                  "Property": "Verwacht filtered"
+                }
+              },
+              "queryRef": "Targets.Verwacht filtered",
+              "nativeQueryRef": "Verwacht filtered"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
                       "Entity": "Eerste_Inschrijvingen"
                     }
                   },
@@ -28,20 +42,6 @@
               },
               "queryRef": "Eerste_Inschrijvingen.Effectief",
               "nativeQueryRef": "Effectief"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Targets"
-                    }
-                  },
-                  "Property": "Verwacht"
-                }
-              },
-              "queryRef": "Targets.Verwacht",
-              "nativeQueryRef": "Verwacht"
             },
             {
               "field": {
@@ -82,10 +82,10 @@
               "Measure": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Eerste_Inschrijvingen"
+                    "Entity": "Targets"
                   }
                 },
-                "Property": "Effectief"
+                "Property": "Verwacht filtered"
               }
             },
             "direction": "Descending"
@@ -155,6 +155,20 @@
               "expr": {
                 "Literal": {
                   "Value": "'left'"
+                }
+              }
+            },
+            "underline": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "italic": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
                 }
               }
             }
@@ -615,13 +629,26 @@
             "verticalSpacing": {
               "expr": {
                 "Literal": {
-                  "Value": "12L"
+                  "Value": "0L"
                 }
               }
             }
           },
           "selector": {
             "id": "default"
+          }
+        }
+      ],
+      "layout": [
+        {
+          "properties": {
+            "alignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'middle'"
+                }
+              }
+            }
           }
         }
       ]
@@ -669,7 +696,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4c7757cf43f50d126347",
+        "name": "4674bc7235fee9faba61",
         "field": {
           "Measure": {
             "Expression": {
@@ -683,21 +710,7 @@
         "type": "Advanced"
       },
       {
-        "name": "24f092e1f31a7a560653",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Targets"
-              }
-            },
-            "Property": "Verwacht"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "e9cf7a5d7daf3dd343fc",
+        "name": "a55bb281938678dfc0ef",
         "field": {
           "Measure": {
             "Expression": {
@@ -711,7 +724,7 @@
         "type": "Advanced"
       },
       {
-        "name": "73ce7a061f2f75e2424d",
+        "name": "9e60f3bd368595cb53b5",
         "field": {
           "Measure": {
             "Expression": {
@@ -720,6 +733,20 @@
               }
             },
             "Property": "Effectief vs Verwacht %"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e571f5e1ebc7f6c82bba",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Targets"
+              }
+            },
+            "Property": "Verwacht filtered"
           }
         },
         "type": "Advanced"

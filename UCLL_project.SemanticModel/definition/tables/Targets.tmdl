@@ -19,6 +19,24 @@ table Targets
 		formatString: 0
 		lineageTag: 7280b845-7b73-4cc2-b724-e1fddb7eb95b
 
+	measure 'Verwacht filtered' =
+			
+			VAR SelectedYear =
+			    SELECTEDVALUE('Jaar_Dimensie'[Jaar])
+			RETURN
+			CALCULATE(
+			    IF (
+			    SelectedYear = BLANK (),
+			    [Verwacht],
+			    CALCULATE (
+			        MAX ( 'Targets'[Target] ),
+			        'Targets'[Target_jaar] = SelectedYear
+			    )
+			)
+			)
+		formatString: 0
+		lineageTag: df0117e3-2421-4d1a-bea0-3eacda2052e5
+
 	column Target_jaar
 		dataType: int64
 		formatString: 0
@@ -70,5 +88,5 @@ table Targets
 
 	annotation PBI_NavigationStepName = Navigation
 
-	annotation PBI_ResultType = Table
+	annotation PBI_ResultType = Exception
 

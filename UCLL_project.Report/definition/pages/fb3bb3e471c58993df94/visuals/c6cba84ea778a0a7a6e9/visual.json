@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "c6cba84ea778a0a7a6e9",
   "position": {
-    "x": 720.06216006216016,
-    "y": 349.09090909090912,
+    "x": 702.36881559220387,
+    "y": 363.65817091454272,
     "z": 7000,
-    "height": 341.13442113442119,
-    "width": 542.035742035742,
+    "height": 340.62968515742125,
+    "width": 568.99550224887548,
     "tabOrder": 7000
   },
   "visual": {
@@ -56,11 +56,11 @@
                       "Entity": "Targets"
                     }
                   },
-                  "Property": "Verwacht"
+                  "Property": "Verwacht filtered"
                 }
               },
-              "queryRef": "Targets.Verwacht",
-              "nativeQueryRef": "Verwacht"
+              "queryRef": "Targets.Verwacht filtered",
+              "nativeQueryRef": "Verwacht filtered"
             }
           ]
         }
@@ -242,7 +242,19 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": -0.1
+                    }
+                  }
                 }
               }
             }
@@ -309,5 +321,51 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "ac14062eb02f671fa50c",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Jaar_Dimensie"
+              }
+            },
+            "Property": "Jaar"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "474072413265492fd024",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Eerste_Inschrijvingen"
+              }
+            },
+            "Property": "Effectief"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "e0d7445633e0c6655e23",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Targets"
+              }
+            },
+            "Property": "Verwacht filtered"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
   }
 }

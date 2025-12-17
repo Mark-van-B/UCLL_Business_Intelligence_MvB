@@ -17,20 +17,17 @@ table Eerste_Inschrijvingen
 		formatString: 0
 		lineageTag: 8f8697a1-8359-4159-9aeb-4f1d59287bcb
 
-	measure 'Effectief Vorig jaar %' =
+	measure 'Effectief Vorig jaar %' = ```
 			
-			IF (
-			    ISBLANK ( [Effectief vorig jaar] ),
-			    "",
 			    DIVIDE ( [Effectief] - [Effectief vorig jaar], [Effectief vorig jaar] )
-			)
+			```
 		lineageTag: c87b61c6-3010-4cd4-8420-964d428d6b31
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Verschil eff-verw' =
 			
-			CALCULATE([Effectief]-[Verwacht])
+			CALCULATE([Effectief]-[Verwacht filtered])
 		formatString: 0
 		lineageTag: 92cc4a4c-483d-4b05-b184-648a26aeaff7
 
