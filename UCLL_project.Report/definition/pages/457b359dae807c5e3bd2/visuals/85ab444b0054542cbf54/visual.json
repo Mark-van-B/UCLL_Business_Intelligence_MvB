@@ -283,20 +283,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "9079fb6ce85790e49c9f",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Resultaten_Opleidingsonderdelen"
-              }
-            },
-            "Property": "Fase_Semester"
-          }
-        },
-        "type": "Categorical"
       }
     ]
   }

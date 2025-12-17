@@ -1,11 +1,19 @@
 table Resultaten_Opleidingsonderdelen
 	lineageTag: 844f6786-7133-48bc-9c62-d468a83bd74c
 
-	measure Studie-efficiëntie = ```
+	measure 'Studierendement FaseSemester' = ```
 			
-			VAR Invested = SUM(Resultaten_Opleidingsonderdelen[InvestedECTS])
+			VAR CurrentFaseSemester = VALUES(Resultaten_Opleidingsonderdelen[Fase_Semester])
+			VAR Invested = 
+			    CALCULATE(
+			        SUM(Resultaten_Opleidingsonderdelen[InvestedECTS]),
+			        Resultaten_Opleidingsonderdelen[Fase_Semester] IN CurrentFaseSemester
+			    )
 			VAR Earned = 
-			    SUM(Resultaten_Opleidingsonderdelen[Behaalde_Credits])
+			    CALCULATE(
+			        SUM(Resultaten_Opleidingsonderdelen[Behaalde_Credits]),
+			        Resultaten_Opleidingsonderdelen[Fase_Semester] IN CurrentFaseSemester
+			    )
 			RETURN DIVIDE(Earned, Invested, 0)
 			
 			```

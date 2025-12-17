@@ -42,11 +42,11 @@
                       "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Property": "Studie-efficiëntie"
+                  "Property": "Studierendement FaseSemester"
                 }
               },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Studie-efficiëntie",
-              "nativeQueryRef": "Studie-efficiëntie"
+              "queryRef": "Resultaten_Opleidingsonderdelen.Studierendement FaseSemester",
+              "nativeQueryRef": "Studierendement FaseSemester"
             }
           ]
         }
@@ -87,21 +87,7 @@
         "howCreated": "User"
       },
       {
-        "name": "f6edf443468e017ca8b3",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Resultaten_Opleidingsonderdelen"
-              }
-            },
-            "Property": "Studie-efficiëntie"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "1d6019b8b9c91b0327c0",
+        "name": "bbc15efc749184418b6b",
         "field": {
           "Column": {
             "Expression": {
@@ -113,6 +99,20 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "75e5ddf59f8494eb0ee4",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "Studierendement FaseSemester"
+          }
+        },
+        "type": "Advanced"
       }
     ]
   }

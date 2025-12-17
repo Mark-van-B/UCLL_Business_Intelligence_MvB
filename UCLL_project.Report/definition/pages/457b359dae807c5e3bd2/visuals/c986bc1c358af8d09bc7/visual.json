@@ -49,6 +49,42 @@
         }
       }
     },
+    "expansionStates": [
+      {
+        "roles": [
+          "Values"
+        ],
+        "levels": [
+          {
+            "queryRefs": [
+              "Resultaten_Opleidingsonderdelen.Opleiding_ID"
+            ],
+            "isCollapsed": true,
+            "identityKeys": [
+              {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Opleiding_ID"
+                }
+              }
+            ],
+            "isPinned": true
+          },
+          {
+            "queryRefs": [
+              "Resultaten_Opleidingsonderdelen.OPO_ID"
+            ],
+            "isCollapsed": true,
+            "isPinned": true
+          }
+        ],
+        "root": {}
+      }
+    ],
     "objects": {
       "data": [
         {
@@ -107,37 +143,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "9f70a48604e8cd060135",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Resultaten_Opleidingsonderdelen"
-              }
-            },
-            "Property": "Opleiding_ID"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "be40d704323c6c1e9abe",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Resultaten_Opleidingsonderdelen"
-              }
-            },
-            "Property": "OPO_ID"
-          }
-        },
-        "type": "Categorical"
-      }
-    ]
   }
 }
