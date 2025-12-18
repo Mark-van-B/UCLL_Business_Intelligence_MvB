@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "1e65c6a407d6e76ed6d2",
   "position": {
-    "x": 21.109445277361317,
-    "y": 338.71064467766115,
+    "x": 584.50184501845013,
+    "y": 343.61623616236159,
     "z": 8000,
-    "height": 363.65817091454272,
-    "width": 652.47376311844073,
+    "height": 363.69003690036897,
+    "width": 684.87084870848707,
     "tabOrder": 8000
   },
   "visual": {
@@ -53,7 +53,7 @@
               },
               "queryRef": "Opleidingen.Departementen.Naam Hierarchy.Naam",
               "nativeQueryRef": "Departementen.Naam Hierarchy Naam",
-              "active": false
+              "active": true
             }
           ]
         },
@@ -87,6 +87,20 @@
               "queryRef": "Targets.Verwacht filtered",
               "nativeQueryRef": "Verwacht",
               "displayName": "Verwacht"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Eerste_Inschrijvingen"
+                    }
+                  },
+                  "Property": "Effectief vorig jaar"
+                }
+              },
+              "queryRef": "Eerste_Inschrijvingen.Effectief vorig jaar",
+              "nativeQueryRef": "Effectief vorig jaar"
             }
           ]
         }
@@ -334,6 +348,39 @@
           "selector": {
             "metadata": "Targets.Verwacht filtered"
           }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 9,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            },
+            "fillTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "borderShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Eerste_Inschrijvingen.Effectief vorig jaar"
+          }
         }
       ],
       "labels": [
@@ -345,6 +392,20 @@
                   "Value": "true"
                 }
               }
+            },
+            "labelOrientation": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "enableTitleDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
             }
           }
         },
@@ -353,7 +414,7 @@
             "showSeries": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -388,7 +449,7 @@
             "labelPosition": {
               "expr": {
                 "Literal": {
-                  "Value": "'InsideEnd'"
+                  "Value": "'OutsideEnd'"
                 }
               }
             },
@@ -430,7 +491,14 @@
             "enableValueDataLabel": {
               "expr": {
                 "Literal": {
-                  "Value": "false"
+                  "Value": "true"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
                 }
               }
             }
@@ -571,6 +639,59 @@
               }
             ],
             "metadata": "Eerste_Inschrijvingen.Effectief"
+          }
+        },
+        {
+          "properties": {
+            "dynamicLabelValue": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Eerste_Inschrijvingen"
+                    }
+                  },
+                  "Property": "Effectief Vorig jaar %"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Eerste_Inschrijvingen.Effectief vorig jaar",
+            "highlightMatching": 1
+          }
+        },
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            },
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 1,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Eerste_Inschrijvingen.Effectief vorig jaar"
           }
         }
       ]
@@ -758,34 +879,6 @@
         "howCreated": "User"
       },
       {
-        "name": "648a834b6e3ba5cf3800",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Eerste_Inschrijvingen"
-              }
-            },
-            "Property": "Effectief"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "6b1d2058777ef1dcdf52",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Targets"
-              }
-            },
-            "Property": "Verwacht filtered"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "66b6c0c067123097cbea",
         "field": {
           "HierarchyLevel": {
@@ -899,7 +992,7 @@
         }
       },
       {
-        "name": "35e23537adc427afff35",
+        "name": "e5327e1ad0fa3ce78a71",
         "field": {
           "HierarchyLevel": {
             "Expression": {
@@ -916,6 +1009,107 @@
           }
         },
         "type": "Categorical"
+      },
+      {
+        "name": "7b993a86a826d814cd8c",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Eerste_Inschrijvingen"
+              }
+            },
+            "Property": "Effectief"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "da9893a281b600c8953f",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Targets"
+              }
+            },
+            "Property": "Verwacht filtered"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "df173a7b513960cbc207",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Eerste_Inschrijvingen"
+              }
+            },
+            "Property": "Effectief vorig jaar"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6efe206fdeea839f87c6",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Opleidingen"
+                  }
+                },
+                "Hierarchy": "Departementen.Naam Hierarchy"
+              }
+            },
+            "Level": "Departementen.Naam"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "o",
+              "Entity": "Opleidingen",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "In": {
+                  "Expressions": [
+                    {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Source": "o"
+                          }
+                        },
+                        "Property": "Departementen.Naam"
+                      }
+                    }
+                  ],
+                  "Values": [
+                    [
+                      {
+                        "Literal": {
+                          "Value": "'Technologie'"
+                        }
+                      }
+                    ]
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "Drill"
       }
     ]
   }

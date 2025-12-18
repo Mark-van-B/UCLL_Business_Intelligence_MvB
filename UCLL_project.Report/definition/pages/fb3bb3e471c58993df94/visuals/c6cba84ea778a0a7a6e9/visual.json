@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "c6cba84ea778a0a7a6e9",
   "position": {
-    "x": 702.36881559220387,
-    "y": 338.71064467766115,
+    "x": 8.2656826568265682,
+    "y": 343.61623616236159,
     "z": 7000,
-    "height": 363.65817091454272,
-    "width": 558.44077961019491,
+    "height": 363.69003690036897,
+    "width": 558.52398523985232,
     "tabOrder": 7000
   },
   "visual": {
@@ -31,9 +31,6 @@
               "active": true
             }
           ]
-        },
-        "Y": {
-          "projections": []
         },
         "Y2": {
           "projections": [
@@ -810,6 +807,13 @@
                   }
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
             }
           }
         }
@@ -916,7 +920,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "a6c356cc7a08822fab0f",
+        "name": "e76e73832863c25661e2",
         "field": {
           "Column": {
             "Expression": {
@@ -930,21 +934,7 @@
         "type": "Advanced"
       },
       {
-        "name": "29b97f1f06b8b1b5372d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Targets"
-              }
-            },
-            "Property": "Verwacht filtered"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "caec18541eb414e104a0",
+        "name": "0325dcee375a8eb2a033",
         "field": {
           "Measure": {
             "Expression": {
@@ -953,6 +943,20 @@
               }
             },
             "Property": "Effectief"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6e3a9bc023aa0ae911ae",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Targets"
+              }
+            },
+            "Property": "Verwacht filtered"
           }
         },
         "type": "Advanced"

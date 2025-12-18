@@ -21,9 +21,8 @@ table Eerste_Inschrijvingen
 			
 			    DIVIDE ( [Effectief] - [Effectief vorig jaar], [Effectief vorig jaar] )
 			```
+		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: c87b61c6-3010-4cd4-8420-964d428d6b31
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure 'Verschil eff-verw' =
 			
