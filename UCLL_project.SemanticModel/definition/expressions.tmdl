@@ -4,9 +4,12 @@ expression Vrijstellingen =
 		    Vrijstellingen_Sheet = Source{[Item="Vrijstellingen",Kind="Sheet"]}[Data],
 		    #"Changed Type" = Table.TransformColumnTypes(Vrijstellingen_Sheet,{{"Column1", type text}, {"Column2", type text}}),
 		    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
-		    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Inschrijving_ID", type text}, {"OPO_ID", type text}})
+		    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Inschrijving_ID", type text}, {"OPO_ID", type text}}),
+		    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"OPO_ID"}, OPO_Opleidingen, {"OPO_ID"}, "OPO_Opleidingen", JoinKind.LeftOuter),
+		    #"Expanded OPO_Opleidingen" = Table.ExpandTableColumn(#"Merged Queries", "OPO_Opleidingen", {"Opleiding_ID"}, {"OPO_Opleidingen.Opleiding_ID"}),
+		    #"Filtered Rows" = Table.SelectRows(#"Expanded OPO_Opleidingen", each ([OPO_Opleidingen.Opleiding_ID] <> null))
 		in
-		    #"Changed Type1"
+		    #"Filtered Rows"
 	lineageTag: 66b59fb0-7e91-4d4f-bfb3-d0cdbd387e4c
 
 	annotation PBI_NavigationStepName = Navigation

@@ -72,9 +72,10 @@ table Targets
 				    #"Cleaned Text" = Table.TransformColumns(#"Renamed Columns",{{"OPO_ID", Text.Clean, type text}}),
 				    #"Trimmed Text" = Table.TransformColumns(#"Cleaned Text",{{"OPO_ID", Text.Trim, type text}}),
 				    #"Renamed Columns2" = Table.RenameColumns(#"Trimmed Text",{{"OPO_ID", "Opleiding_ID"}}),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns2",{{"Target_jaar", Int64.Type}})
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns2",{{"Target_jaar", Int64.Type}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Changed Type1", each ([Opleiding_ID] <> "O0004"))
 				in
-				    #"Changed Type1"
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

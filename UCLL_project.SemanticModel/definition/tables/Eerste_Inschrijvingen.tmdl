@@ -192,9 +192,10 @@ table Eerste_Inschrijvingen
 				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Opleidingen",{"Student_ID", "Opleidingen.Departement_ID", "Opleiding_ID", "Opleidingen.Naam", "Enrolment_date", "Inschrijving_Jaar"}),
 				    #"Merged Queries1" = Table.NestedJoin(#"Reordered Columns", {"Opleidingen.Departement_ID"}, Departementen, {"Departement_ID"}, "Departementen", JoinKind.LeftOuter),
 				    #"Expanded Departementen" = Table.ExpandTableColumn(#"Merged Queries1", "Departementen", {"Naam"}, {"Departementen.Naam"}),
-				    #"Sorted Rows2" = Table.Sort(#"Expanded Departementen",{{"Student_ID", Order.Ascending}})
+				    #"Sorted Rows2" = Table.Sort(#"Expanded Departementen",{{"Student_ID", Order.Ascending}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Sorted Rows2", each ([Opleidingen.Departement_ID] = "D0004"))
 				in
-				    #"Sorted Rows2"
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

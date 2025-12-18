@@ -25,9 +25,11 @@ table Departementen
 				    Departementen_Sheet = Source{[Item="Departementen",Kind="Sheet"]}[Data],
 				    #"Changed Type" = Table.TransformColumnTypes(Departementen_Sheet,{{"Column1", type text}, {"Column2", type text}}),
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
-				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Departement_ID", type text}, {"Naam", type text}})
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Departement_ID", type text}, {"Naam", type text}}),
+				    #"Removed Top Rows" = Table.Skip(#"Changed Type1",3),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(#"Removed Top Rows",1)
 				in
-				    #"Changed Type1"
+				    #"Removed Bottom Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

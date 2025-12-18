@@ -63,9 +63,10 @@ table Opleidingen
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Opleiding_ID", type text}, {"Departement_ID", type text}, {"Naam", type text}, {"ECTS", Int64.Type}}),
 				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"Departement_ID"}, Departementen, {"Departement_ID"}, "Departementen", JoinKind.LeftOuter),
 				    #"Expanded Departementen" = Table.ExpandTableColumn(#"Merged Queries", "Departementen", {"Naam"}, {"Departementen.Naam"}),
-				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Departementen",{"Opleiding_ID", "Naam", "ECTS", "Departement_ID", "Departementen.Naam"})
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Departementen",{"Opleiding_ID", "Naam", "ECTS", "Departement_ID", "Departementen.Naam"}),
+				    #"Removed Bottom Rows" = Table.RemoveLastN(#"Reordered Columns",1)
 				in
-				    #"Reordered Columns"
+				    #"Removed Bottom Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

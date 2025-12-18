@@ -60,9 +60,10 @@ table Inschrijvingen
 				    #"Promoted Headers" = Table.PromoteHeaders(Inschrijvingen_Sheet, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Inschrijving_ID", type text}, {"Student_ID", Int64.Type}, {"Opleiding_ID", type text}, {"Enrolment_date", type date}}),
 				    #"Inserted Year" = Table.AddColumn(#"Changed Type", "Year", each Date.Year([Enrolment_date]), Int64.Type),
-				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Year",{{"Year", "Jaar"}})
+				    #"Renamed Columns" = Table.RenameColumns(#"Inserted Year",{{"Year", "Jaar"}}),
+				    #"Filtered Rows" = Table.SelectRows(#"Renamed Columns", each ([Opleiding_ID] <> "O0004"))
 				in
-				    #"Renamed Columns"
+				    #"Filtered Rows"
 
 	annotation PBI_NavigationStepName = Navigation
 

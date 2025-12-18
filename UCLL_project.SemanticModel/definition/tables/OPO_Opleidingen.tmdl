@@ -35,6 +35,14 @@ table OPO_Opleidingen
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Opleidingen.Naam'
+		dataType: string
+		lineageTag: 770a4963-0b26-4670-a2d2-32b015fb656f
+		summarizeBy: none
+		sourceColumn: Opleidingen.Naam
+
+		annotation SummarizationSetBy = Automatic
+
 	partition OPO_Opleidingen = m
 		mode: import
 		source =
@@ -45,7 +53,7 @@ table OPO_Opleidingen
 				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Opleiding_ID", type text}, {"OPO_ID", type text}}),
 				    #"Merged Queries" = Table.NestedJoin(#"Changed Type1", {"Opleiding_ID"}, Opleidingen, {"Opleiding_ID"}, "Opleidingen", JoinKind.LeftOuter),
-				    #"Expanded Opleidingen" = Table.ExpandTableColumn(#"Merged Queries", "Opleidingen", {"ECTS"}, {"Opleidingen.ECTS"}),
+				    #"Expanded Opleidingen" = Table.ExpandTableColumn(#"Merged Queries", "Opleidingen", {"Naam", "ECTS"}, {"Opleidingen.Naam", "Opleidingen.ECTS"}),
 				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Opleidingen",{{"Opleidingen.ECTS", "Opleiding_Credits"}}),
 				    #"Merged Queries1" = Table.NestedJoin(#"Renamed Columns", {"OPO_ID"}, #"Opleidingsonderdelen", {"OPO_ID"}, "Opleidingsonderdelen", JoinKind.LeftOuter),
 				    #"Expanded Opleidingsonderdelen" = Table.ExpandTableColumn(#"Merged Queries1", "Opleidingsonderdelen", {"ECTS"}, {"Opleidingsonderdelen.ECTS"}),

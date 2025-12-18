@@ -130,7 +130,7 @@ table Studenten
 				    #"Expanded Inschrijvingen" = Table.ExpandTableColumn(#"Merged Queries", "Inschrijvingen", {"Opleiding_ID", "Jaar"}, {"Inschrijvingen.Opleiding_ID", "Inschrijvingen.Jaar"}),
 				    #"Renamed Columns" = Table.RenameColumns(#"Expanded Inschrijvingen",{{"Inschrijvingen.Opleiding_ID", "Opleiding"}, {"Inschrijvingen.Jaar", "Startjaar"}}),
 				    #"Removed Duplicates" = Table.Distinct(#"Renamed Columns", {"Student_ID"}),
-				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each [Opleiding] <> null and [Opleiding] <> "")
+				    #"Filtered Rows" = Table.SelectRows(#"Removed Duplicates", each ([Opleiding] <> null and [Opleiding] <> ""))
 				in
 				    #"Filtered Rows"
 
