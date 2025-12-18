@@ -23,6 +23,19 @@
           }
         }
       }
+    ],
+    "displayArea": [
+      {
+        "properties": {
+          "verticalAlignment": {
+            "expr": {
+              "Literal": {
+                "Value": "'Top'"
+              }
+            }
+          }
+        }
+      }
     ]
   },
   "visualInteractions": [
@@ -34,10 +47,70 @@
     {
       "source": "0da8e746dbfa4515d9f0",
       "target": "1e65c6a407d6e76ed6d2",
-      "type": "NoFilter"
+      "type": "DataFilter"
     },
     {
       "source": "9b9149864d948af68302",
+      "target": "1e65c6a407d6e76ed6d2",
+      "type": "DataFilter"
+    },
+    {
+      "source": "1e65c6a407d6e76ed6d2",
+      "target": "2dfe2fef1a2bfc82ec81",
+      "type": "NoFilter"
+    },
+    {
+      "source": "1e65c6a407d6e76ed6d2",
+      "target": "cf4d741bbd5b8392308f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "1e65c6a407d6e76ed6d2",
+      "target": "c6cba84ea778a0a7a6e9",
+      "type": "NoFilter"
+    },
+    {
+      "source": "1e65c6a407d6e76ed6d2",
+      "target": "9b9149864d948af68302",
+      "type": "NoFilter"
+    },
+    {
+      "source": "1e65c6a407d6e76ed6d2",
+      "target": "0da8e746dbfa4515d9f0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "1e65c6a407d6e76ed6d2",
+      "target": "564f6ec3fee18710a531",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6cba84ea778a0a7a6e9",
+      "target": "564f6ec3fee18710a531",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6cba84ea778a0a7a6e9",
+      "target": "0da8e746dbfa4515d9f0",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6cba84ea778a0a7a6e9",
+      "target": "9b9149864d948af68302",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6cba84ea778a0a7a6e9",
+      "target": "cf4d741bbd5b8392308f",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6cba84ea778a0a7a6e9",
+      "target": "2dfe2fef1a2bfc82ec81",
+      "type": "NoFilter"
+    },
+    {
+      "source": "c6cba84ea778a0a7a6e9",
       "target": "1e65c6a407d6e76ed6d2",
       "type": "NoFilter"
     }

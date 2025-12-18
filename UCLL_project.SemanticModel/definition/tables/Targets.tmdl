@@ -4,35 +4,25 @@ table Targets
 	measure 'Effectief vs Verwacht %' =
 			
 			DIVIDE ( [Effectief] - [Verwacht], [Verwacht] )
+		formatString: 0.0%;-0.0%;0.0%
 		lineageTag: 3a249b02-117e-49c2-bc00-6b2c20f83b78
-
-		annotation PBI_FormatHint = {"isGeneralNumber":true}
 
 	measure Verwacht = SUM ( Targets[Target] )
 		formatString: 0
 		lineageTag: b39ad887-bd67-49d9-9cb6-bf16420ae0ef
 
-	measure 'Verwacht per departement' = ```
-			
-			
-			```
-		formatString: 0
-		lineageTag: 7280b845-7b73-4cc2-b724-e1fddb7eb95b
-
 	measure 'Verwacht filtered' =
 			
 			VAR SelectedYear =
-			    SELECTEDVALUE('Jaar_Dimensie'[Jaar])
+			    SELECTEDVALUE ( 'Jaar_Dimensie'[Jaar] )
 			RETURN
-			CALCULATE(
-			    IF (
-			    SelectedYear = BLANK (),
+			IF (
+			    ISBLANK ( SelectedYear ),
 			    [Verwacht],
 			    CALCULATE (
-			        MAX ( 'Targets'[Target] ),
-			        'Targets'[Target_jaar] = SelectedYear
+			        SUM ( Targets[Target] ),
+			        KEEPFILTERS ( Targets[Target_jaar] = SelectedYear )
 			    )
-			)
 			)
 		formatString: 0
 		lineageTag: df0117e3-2421-4d1a-bea0-3eacda2052e5
@@ -88,5 +78,5 @@ table Targets
 
 	annotation PBI_NavigationStepName = Navigation
 
-	annotation PBI_ResultType = Exception
+	annotation PBI_ResultType = Table
 

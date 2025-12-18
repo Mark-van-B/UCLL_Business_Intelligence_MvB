@@ -34,6 +34,25 @@ table Opleidingen
 
 		annotation SummarizationSetBy = Automatic
 
+	column 'Departementen.Naam'
+		dataType: string
+		lineageTag: 9c0ab26f-e689-41d2-85da-4b52c6b14ab8
+		summarizeBy: none
+		sourceColumn: Departementen.Naam
+
+		annotation SummarizationSetBy = Automatic
+
+	hierarchy 'Departementen.Naam Hierarchy'
+		lineageTag: 54c93478-a8dc-4277-9421-940a2c816d58
+
+		level 'Departementen.Naam'
+			lineageTag: 4bf8be10-fa5a-4599-b304-883cac5f23c8
+			column: 'Departementen.Naam'
+
+		level Naam
+			lineageTag: 25915c84-7ae6-4df7-8824-4ae0f797e795
+			column: Naam
+
 	partition Opleidingen = m
 		mode: import
 		source =
@@ -41,9 +60,12 @@ table Opleidingen
 				    Source = Excel.Workbook(File.Contents(FilePath), null, true),
 				    Opleidingen_Sheet = Source{[Item="Opleidingen",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(Opleidingen_Sheet, [PromoteAllScalars=true]),
-				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Opleiding_ID", type text}, {"Departement_ID", type text}, {"Naam", type text}, {"ECTS", Int64.Type}})
+				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Opleiding_ID", type text}, {"Departement_ID", type text}, {"Naam", type text}, {"ECTS", Int64.Type}}),
+				    #"Merged Queries" = Table.NestedJoin(#"Changed Type", {"Departement_ID"}, Departementen, {"Departement_ID"}, "Departementen", JoinKind.LeftOuter),
+				    #"Expanded Departementen" = Table.ExpandTableColumn(#"Merged Queries", "Departementen", {"Naam"}, {"Departementen.Naam"}),
+				    #"Reordered Columns" = Table.ReorderColumns(#"Expanded Departementen",{"Opleiding_ID", "Naam", "ECTS", "Departement_ID", "Departementen.Naam"})
 				in
-				    #"Changed Type"
+				    #"Reordered Columns"
 
 	annotation PBI_NavigationStepName = Navigation
 

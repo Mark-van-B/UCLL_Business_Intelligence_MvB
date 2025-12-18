@@ -20,13 +20,13 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Eerste_Inschrijvingen"
+                      "Entity": "Opleidingen"
                     }
                   },
                   "Property": "Departementen.Naam"
                 }
               },
-              "queryRef": "Eerste_Inschrijvingen.Departementen.Naam",
+              "queryRef": "Opleidingen.Departementen.Naam",
               "nativeQueryRef": "Departementen.Naam",
               "active": true
             }
@@ -34,35 +34,6 @@
         }
       }
     },
-    "expansionStates": [
-      {
-        "roles": [
-          "Values"
-        ],
-        "levels": [
-          {
-            "queryRefs": [
-              "Eerste_Inschrijvingen.Departementen.Naam"
-            ],
-            "isCollapsed": true,
-            "identityKeys": [
-              {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Eerste_Inschrijvingen"
-                    }
-                  },
-                  "Property": "Departementen.Naam"
-                }
-              }
-            ],
-            "isPinned": true
-          }
-        ],
-        "root": {}
-      }
-    ],
     "objects": {
       "general": [
         {
@@ -110,7 +81,7 @@
             "selectAllCheckboxEnabled": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             }
@@ -305,6 +276,7 @@
             }
           ]
         },
+        "howCreated": "User",
         "objects": {
           "general": [
             {
@@ -320,6 +292,93 @@
             }
           ]
         }
+      },
+      {
+        "name": "2eeced5dd4e454dbd835",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Departementen"
+              }
+            },
+            "Property": "Naam"
+          }
+        },
+        "type": "Categorical",
+        "filter": {
+          "Version": 2,
+          "From": [
+            {
+              "Name": "d",
+              "Entity": "Departementen",
+              "Type": 0
+            }
+          ],
+          "Where": [
+            {
+              "Condition": {
+                "Not": {
+                  "Expression": {
+                    "In": {
+                      "Expressions": [
+                        {
+                          "Column": {
+                            "Expression": {
+                              "SourceRef": {
+                                "Source": "d"
+                              }
+                            },
+                            "Property": "Naam"
+                          }
+                        }
+                      ],
+                      "Values": [
+                        [
+                          {
+                            "Literal": {
+                              "Value": "null"
+                            }
+                          }
+                        ]
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "howCreated": "User",
+        "objects": {
+          "general": [
+            {
+              "properties": {
+                "isInvertedSelectionMode": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "true"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        }
+      },
+      {
+        "name": "0375b35c52bc59163960",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Opleidingen"
+              }
+            },
+            "Property": "Departementen.Naam"
+          }
+        },
+        "type": "Categorical"
       }
     ]
   }

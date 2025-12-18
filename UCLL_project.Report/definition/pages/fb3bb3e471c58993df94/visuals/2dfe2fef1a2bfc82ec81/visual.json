@@ -3,7 +3,7 @@
   "name": "2dfe2fef1a2bfc82ec81",
   "position": {
     "x": 21.109445277361317,
-    "y": 195.74212893553224,
+    "y": 203.41829085457272,
     "z": 5000,
     "height": 127.61619190404797,
     "width": 698.53073463268368,
@@ -23,11 +23,11 @@
                       "Entity": "Targets"
                     }
                   },
-                  "Property": "Verwacht"
+                  "Property": "Verwacht filtered"
                 }
               },
-              "queryRef": "Targets.Verwacht",
-              "nativeQueryRef": "Verwacht"
+              "queryRef": "Targets.Verwacht filtered",
+              "nativeQueryRef": "Verwacht filtered"
             },
             {
               "field": {
@@ -85,7 +85,7 @@
                     "Entity": "Targets"
                   }
                 },
-                "Property": "Verwacht"
+                "Property": "Verwacht filtered"
               }
             },
             "direction": "Descending"
@@ -517,7 +517,7 @@
             "bottomMargin": {
               "expr": {
                 "Literal": {
-                  "Value": "30L"
+                  "Value": "20L"
                 }
               }
             }
@@ -686,6 +686,26 @@
                   }
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "spacing": [
+        {
+          "properties": {
+            "verticalSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
             }
           }
         }
@@ -696,7 +716,21 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "4674bc7235fee9faba61",
+        "name": "745d4e04e08ae25cef60",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Targets"
+              }
+            },
+            "Property": "Verwacht filtered"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1b65c5806c9f0a1fe22f",
         "field": {
           "Measure": {
             "Expression": {
@@ -710,7 +744,7 @@
         "type": "Advanced"
       },
       {
-        "name": "a55bb281938678dfc0ef",
+        "name": "0208aabbf58b6befe6a1",
         "field": {
           "Measure": {
             "Expression": {
@@ -724,7 +758,7 @@
         "type": "Advanced"
       },
       {
-        "name": "9e60f3bd368595cb53b5",
+        "name": "0d98d63decf7e6e4fb07",
         "field": {
           "Measure": {
             "Expression": {
@@ -733,20 +767,6 @@
               }
             },
             "Property": "Effectief vs Verwacht %"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d146b9666e564ce1e38d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Targets"
-              }
-            },
-            "Property": "Verwacht"
           }
         },
         "type": "Advanced"

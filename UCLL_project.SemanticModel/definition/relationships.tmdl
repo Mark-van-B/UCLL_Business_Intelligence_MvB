@@ -44,11 +44,6 @@ relationship AutoDetected_482fee59-b8d1-4d3a-8556-2ab53837ca0c
 	fromColumn: Eerste_Inschrijvingen.Opleiding_ID
 	toColumn: Opleidingen.Opleiding_ID
 
-relationship AutoDetected_38e96365-98bd-4c6a-a40a-42413cf6b8fa
-	isActive: false
-	fromColumn: Eerste_Inschrijvingen.'Departementen.Naam'
-	toColumn: Departementen.Naam
-
 relationship AutoDetected_c50ca43b-23dc-4d03-8750-9d095b6ade13
 	isActive: false
 	crossFilteringBehavior: bothDirections
@@ -98,4 +93,13 @@ relationship 1b79bd21-369f-75cb-83bf-2ec41abce5ab
 	crossFilteringBehavior: bothDirections
 	fromColumn: Opgenomen_Opleidingsonderdelen.OPO_ID
 	toColumn: Opleidingsonderdelen.OPO_ID
+
+relationship 9fd6f90c-a83e-6a23-8293-fb4c2a798367
+	isActive: false
+	fromColumn: Opgenomen_Opleidingsonderdelen.OPO_ID
+	toColumn: OPO_Opleidingen.OPO_ID
+
+relationship 90de6c3d-017e-6e23-eb16-2f7acdd6e217
+	fromColumn: Resultaten_Opleidingsonderdelen.OPO_ID
+	toColumn: OPO_Opleidingen.OPO_ID
 

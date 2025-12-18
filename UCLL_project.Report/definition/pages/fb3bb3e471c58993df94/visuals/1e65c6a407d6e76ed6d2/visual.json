@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "1e65c6a407d6e76ed6d2",
   "position": {
-    "x": 8.63568215892054,
-    "y": 372.29385307346325,
+    "x": 21.109445277361317,
+    "y": 338.71064467766115,
     "z": 8000,
-    "height": 340.62968515742125,
-    "width": 667.82608695652175,
+    "height": 363.65817091454272,
+    "width": 652.47376311844073,
     "tabOrder": 8000
   },
   "visual": {
@@ -22,7 +22,7 @@
                     "Hierarchy": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Eerste_Inschrijvingen"
+                          "Entity": "Opleidingen"
                         }
                       },
                       "Hierarchy": "Departementen.Naam Hierarchy"
@@ -31,7 +31,7 @@
                   "Level": "Departementen.Naam"
                 }
               },
-              "queryRef": "Eerste_Inschrijvingen.Departementen.Naam Hierarchy.Departementen.Naam",
+              "queryRef": "Opleidingen.Departementen.Naam Hierarchy.Departementen.Naam",
               "nativeQueryRef": "Departementen.Naam Hierarchy Departementen.Naam",
               "active": true
             },
@@ -42,18 +42,18 @@
                     "Hierarchy": {
                       "Expression": {
                         "SourceRef": {
-                          "Entity": "Eerste_Inschrijvingen"
+                          "Entity": "Opleidingen"
                         }
                       },
                       "Hierarchy": "Departementen.Naam Hierarchy"
                     }
                   },
-                  "Level": "Opleidingen.Naam"
+                  "Level": "Naam"
                 }
               },
-              "queryRef": "Eerste_Inschrijvingen.Departementen.Naam Hierarchy.Opleidingen.Naam",
-              "nativeQueryRef": "Departementen.Naam Hierarchy Opleidingen.Naam",
-              "active": true
+              "queryRef": "Opleidingen.Departementen.Naam Hierarchy.Naam",
+              "nativeQueryRef": "Departementen.Naam Hierarchy Naam",
+              "active": false
             }
           ]
         },
@@ -81,11 +81,12 @@
                       "Entity": "Targets"
                     }
                   },
-                  "Property": "Verwacht"
+                  "Property": "Verwacht filtered"
                 }
               },
-              "queryRef": "Targets.Verwacht",
-              "nativeQueryRef": "Verwacht"
+              "queryRef": "Targets.Verwacht filtered",
+              "nativeQueryRef": "Verwacht",
+              "displayName": "Verwacht"
             }
           ]
         }
@@ -99,7 +100,7 @@
                   "Hierarchy": {
                     "Expression": {
                       "SourceRef": {
-                        "Entity": "Eerste_Inschrijvingen"
+                        "Entity": "Opleidingen"
                       }
                     },
                     "Hierarchy": "Departementen.Naam Hierarchy"
@@ -117,13 +118,13 @@
                   "Hierarchy": {
                     "Expression": {
                       "SourceRef": {
-                        "Entity": "Eerste_Inschrijvingen"
+                        "Entity": "Opleidingen"
                       }
                     },
                     "Hierarchy": "Departementen.Naam Hierarchy"
                   }
                 },
-                "Level": "Opleidingen.Naam"
+                "Level": "Naam"
               }
             },
             "direction": "Ascending"
@@ -173,6 +174,13 @@
                       "Percent": 0
                     }
                   }
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
                 }
               }
             }
@@ -231,7 +239,14 @@
             "position": {
               "expr": {
                 "Literal": {
-                  "Value": "'RightCenter'"
+                  "Value": "'BottomCenter'"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
                 }
               }
             }
@@ -250,6 +265,314 @@
             }
           }
         }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#003469'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Eerste_Inschrijvingen.Effectief"
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#ABE1FF'"
+                    }
+                  }
+                }
+              }
+            },
+            "borderShow": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "borderColorMatchFill": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "borderColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#003469'"
+                    }
+                  }
+                }
+              }
+            },
+            "borderTransparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "31D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Targets.Verwacht filtered"
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "showSeries": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'OutsideEnd'"
+                }
+              }
+            },
+            "optimizeLabelDisplay": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Eerste_Inschrijvingen.Effectief"
+          }
+        },
+        {
+          "properties": {
+            "labelPosition": {
+              "expr": {
+                "Literal": {
+                  "Value": "'InsideEnd'"
+                }
+              }
+            },
+            "enableTitleDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "titleContentType": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Custom'"
+                }
+              }
+            },
+            "horizontalAlignment": {
+              "expr": {
+                "Literal": {
+                  "Value": "'center'"
+                }
+              }
+            },
+            "enableBackground": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "enableDetailDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "enableValueDataLabel": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Targets.Verwacht filtered"
+          }
+        },
+        {
+          "properties": {
+            "dynamicLabelValue": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Targets"
+                    }
+                  },
+                  "Property": "Effectief vs Verwacht %"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Targets.Verwacht filtered",
+            "highlightMatching": 1
+          }
+        },
+        {
+          "properties": {
+            "dynamicLabelValue": {
+              "expr": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Targets"
+                    }
+                  },
+                  "Property": "Effectief vs Verwacht %"
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Eerste_Inschrijvingen.Effectief",
+            "highlightMatching": 1
+          }
+        },
+        {
+          "properties": {
+            "color": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Conditional": {
+                      "Cases": [
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 3,
+                              "Left": {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "Targets"
+                                    }
+                                  },
+                                  "Property": "Effectief vs Verwacht %"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#FF0000'"
+                            }
+                          }
+                        },
+                        {
+                          "Condition": {
+                            "Comparison": {
+                              "ComparisonKind": 2,
+                              "Left": {
+                                "Measure": {
+                                  "Expression": {
+                                    "SourceRef": {
+                                      "Entity": "Targets"
+                                    }
+                                  },
+                                  "Property": "Effectief vs Verwacht %"
+                                }
+                              },
+                              "Right": {
+                                "Literal": {
+                                  "Value": "0D"
+                                }
+                              }
+                            }
+                          },
+                          "Value": {
+                            "Literal": {
+                              "Value": "'#00FF00'"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Eerste_Inschrijvingen.Effectief"
+          }
+        }
       ]
     },
     "visualContainerObjects": {
@@ -266,7 +589,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Per departement'"
+                  "Value": "'Per departement > opleiding'"
                 }
               }
             },
@@ -278,6 +601,13 @@
                       "Value": "'#E30046'"
                     }
                   }
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
                 }
               }
             }
@@ -354,6 +684,19 @@
             }
           }
         }
+      ],
+      "visualTooltip": [
+        {
+          "properties": {
+            "fontFamily": {
+              "expr": {
+                "Literal": {
+                  "Value": "'wf_standard-font, helvetica, arial, sans-serif'"
+                }
+              }
+            }
+          }
+        }
       ]
     },
     "drillFilterOtherVisuals": true
@@ -422,14 +765,42 @@
         "howCreated": "User"
       },
       {
-        "name": "d9363c8de8cceecdcb4e",
+        "name": "648a834b6e3ba5cf3800",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Eerste_Inschrijvingen"
+              }
+            },
+            "Property": "Effectief"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "6b1d2058777ef1dcdf52",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Targets"
+              }
+            },
+            "Property": "Verwacht filtered"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "66b6c0c067123097cbea",
         "field": {
           "HierarchyLevel": {
             "Expression": {
               "Hierarchy": {
                 "Expression": {
                   "SourceRef": {
-                    "Entity": "Eerste_Inschrijvingen"
+                    "Entity": "Opleidingen"
                   }
                 },
                 "Hierarchy": "Departementen.Naam Hierarchy"
@@ -438,47 +809,26 @@
             "Level": "Departementen.Naam"
           }
         },
-        "type": "Categorical",
-        "filter": {
-          "Version": 2,
-          "From": [
-            {
-              "Name": "e",
-              "Entity": "Eerste_Inschrijvingen",
-              "Type": 0
-            }
-          ],
-          "Where": [
-            {
-              "Condition": {
-                "In": {
-                  "Expressions": [
-                    {
-                      "Column": {
-                        "Expression": {
-                          "SourceRef": {
-                            "Source": "e"
-                          }
-                        },
-                        "Property": "Departementen.Naam"
-                      }
-                    }
-                  ],
-                  "Values": [
-                    [
-                      {
-                        "Literal": {
-                          "Value": "'Technologie'"
-                        }
-                      }
-                    ]
-                  ]
-                }
+        "type": "Categorical"
+      },
+      {
+        "name": "35e23537adc427afff35",
+        "field": {
+          "HierarchyLevel": {
+            "Expression": {
+              "Hierarchy": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Opleidingen"
+                  }
+                },
+                "Hierarchy": "Departementen.Naam Hierarchy"
               }
-            }
-          ]
+            },
+            "Level": "Naam"
+          }
         },
-        "howCreated": "Drill"
+        "type": "Categorical"
       }
     ]
   }

@@ -3,7 +3,7 @@
   "name": "cf4d741bbd5b8392308f",
   "position": {
     "x": 719.64017991004494,
-    "y": 195.74212893553224,
+    "y": 203.41829085457272,
     "z": 6000,
     "height": 127.61619190404797,
     "width": 534.45277361319336,
@@ -712,6 +712,13 @@
                   }
                 }
               }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "16D"
+                }
+              }
             }
           }
         }
@@ -725,6 +732,13 @@
                   "Value": "false"
                 }
               }
+            },
+            "verticalSpacing": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
             }
           }
         }
@@ -735,7 +749,7 @@
   "filterConfig": {
     "filters": [
       {
-        "name": "1b5ca9f9c7e2925f0c5e",
+        "name": "61cfb9034d14fdbe6c4d",
         "field": {
           "Measure": {
             "Expression": {
@@ -749,7 +763,7 @@
         "type": "Advanced"
       },
       {
-        "name": "c90b17f85899eb091a62",
+        "name": "43f5c2518f762cd473ca",
         "field": {
           "Measure": {
             "Expression": {
@@ -763,7 +777,7 @@
         "type": "Advanced"
       },
       {
-        "name": "7abd5d7c6c24a8061f29",
+        "name": "b444e968b51e78dfceb2",
         "field": {
           "Measure": {
             "Expression": {

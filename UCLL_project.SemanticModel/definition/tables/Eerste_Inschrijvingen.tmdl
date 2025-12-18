@@ -59,6 +59,37 @@ table Eerste_Inschrijvingen
 			```
 		lineageTag: 3c96d8ce-72a9-44c3-b1fb-0b6d46e7ecf8
 
+	measure 'Banner filters' =
+			
+			VAR SelYear  = SELECTEDVALUE ( 'Jaar_Dimensie'[Jaar] )
+			VAR YearText =
+			    IF ( ISBLANK ( SelYear ), "All time", FORMAT ( SelYear, "0" ) )
+			
+			VAR DeptCount = COUNTROWS ( VALUES ( Opleidingen[Departementen.Naam] ) )
+			VAR DeptText  =
+			    SWITCH (
+			        TRUE (),
+			        DeptCount = 0, "Globaal",
+			        DeptCount = 1, SELECTEDVALUE ( Opleidingen[Departementen.Naam]),
+			        YearText & " - " & FORMAT ( DeptCount, "0" ) & " departementen"
+			    )
+			
+			VAR OplCount = COUNTROWS ( VALUES ( Opleidingen[Naam] ) )
+			VAR OplText  =
+			    SWITCH (
+			        TRUE (),
+			        OplCount = 0, "",
+			        OplCount = 1, " - " & SELECTEDVALUE (Opleidingen[Naam] ),
+			        " - " & FORMAT ( OplCount, "0" ) & " opleidingen"
+			    )
+			
+			RETURN
+			    YearText
+			    & " - "
+			    & IF ( DeptCount = 0, "Globaal", DeptText )
+			    & OplText
+		lineageTag: 36404d74-f934-4c5b-93d6-6e2b7ae2a656
+
 	column Student_ID
 		dataType: int64
 		formatString: 0
