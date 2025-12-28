@@ -745,51 +745,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "69926d1515dc60b9e46d",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Eerste_Inschrijvingen"
-              }
-            },
-            "Property": "Effectief vorig jaar"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "d57b6a94f1b432421a54",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Eerste_Inschrijvingen"
-              }
-            },
-            "Property": "verschil eff-jaar-1"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "2f8c2ade5c64b6abd703",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Eerste_Inschrijvingen"
-              }
-            },
-            "Property": "Effectief Vorig jaar %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

@@ -992,67 +992,6 @@
         }
       },
       {
-        "name": "e5327e1ad0fa3ce78a71",
-        "field": {
-          "HierarchyLevel": {
-            "Expression": {
-              "Hierarchy": {
-                "Expression": {
-                  "SourceRef": {
-                    "Entity": "Opleidingen"
-                  }
-                },
-                "Hierarchy": "Departementen.Naam Hierarchy"
-              }
-            },
-            "Level": "Naam"
-          }
-        },
-        "type": "Categorical"
-      },
-      {
-        "name": "7b993a86a826d814cd8c",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Eerste_Inschrijvingen"
-              }
-            },
-            "Property": "Effectief"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "da9893a281b600c8953f",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Targets"
-              }
-            },
-            "Property": "Verwacht filtered"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "df173a7b513960cbc207",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Eerste_Inschrijvingen"
-              }
-            },
-            "Property": "Effectief vorig jaar"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
         "name": "6efe206fdeea839f87c6",
         "field": {
           "HierarchyLevel": {

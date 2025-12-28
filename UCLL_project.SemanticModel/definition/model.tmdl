@@ -16,7 +16,7 @@ queryGroup 'Transform File from Query1\Helper Queries'
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Departementen","Inschrijvingen","Opgenomen_Opleidingsonderdelen","Opleidingen","Opleidingsonderdelen","OPO_Opleidingen","Resultaten_Opleidingsonderdelen","Studenten","Vrijstellingen","FilePath","TargetsFolderPath","Targets","Parameter1","Transform Sample File","Sample File","Transform File","Eerste_Inschrijvingen","ECTSPerOpleiding"]
+annotation PBI_QueryOrder = ["Departementen","Inschrijvingen","Opgenomen_Opleidingsonderdelen","Opleidingen","Opleidingsonderdelen","OPO_Opleidingen","Resultaten_Opleidingsonderdelen","Studenten","Vrijstellingen","FilePath","TargetsFolderPath","Targets","Parameter1","Transform Sample File","Sample File","Transform File","Eerste_Inschrijvingen","ECTSPerOpleiding","Measures_studierendement"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
@@ -36,6 +36,7 @@ ref table LocalDateTable_0ac5b76a-5a02-4f55-bba9-272b6df70cfc
 ref table Jaar_Dimensie
 ref table ECTSPerOpleiding
 ref table Opleidingsonderdelen
+ref table Measures_studierendement
 
 ref cultureInfo en-US
 

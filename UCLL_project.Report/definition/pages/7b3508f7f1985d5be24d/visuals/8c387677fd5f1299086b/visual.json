@@ -43,7 +43,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Dashboard Opleiding'"
+                  "Value": "'Dashboard Studierendement'"
                 }
               }
             },
@@ -121,7 +121,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Analyse van het studierendement per academiejaar, fase en opleiding'"
+                  "Value": "'Analyse per academiejaar, fase en opleiding'"
                 }
               }
             },

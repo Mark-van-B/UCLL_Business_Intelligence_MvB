@@ -4,7 +4,7 @@
     {
       "ordinal": 0,
       "scrollPosition": {
-        "x": 0,
+        "x": 633.40340212782917,
         "y": 0
       },
       "nodes": [
@@ -163,6 +163,18 @@
             "width": 234
           },
           "zIndex": 7
+        },
+        {
+          "location": {
+            "x": 1712.2605449849661,
+            "y": 507.04554833979705
+          },
+          "nodeIndex": "Measures_studierendement",
+          "size": {
+            "height": 104,
+            "width": 234
+          },
+          "zIndex": 0
         }
       ],
       "name": "All tables",

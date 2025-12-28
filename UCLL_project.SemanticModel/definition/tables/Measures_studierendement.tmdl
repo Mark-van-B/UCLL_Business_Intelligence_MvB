@@ -1,0 +1,121 @@
+table Measures_studierendement
+	lineageTag: 769e1141-4dce-430e-b7ba-a3376ca02d4d
+
+	measure 'Opgenomen SP' =
+			
+			SUM ( Opgenomen_Opleidingsonderdelen[ECTS] )
+		formatString: 0
+		lineageTag: 192df984-796f-419d-af5d-e98e63386cfa
+
+	measure 'Vrijgestelde SP' =
+			
+			CALCULATE (
+			    SUM ( Opgenomen_Opleidingsonderdelen[ECTS] ),
+			    Opgenomen_Opleidingsonderdelen[Vrijgesteld] = TRUE()
+			)
+		formatString: 0
+		lineageTag: 4ac7690f-4a69-4898-aa4a-f474deb96706
+
+	measure 'Behaalde SP' =
+			
+			SUMX (
+			    VALUES ( Resultaten_Opleidingsonderdelen[OPO_ID] ),
+			    VAR BestResult =
+			        CALCULATE ( MAX ( Resultaten_Opleidingsonderdelen[Resultaat] ) )
+			    VAR Ects =
+			        CALCULATE ( MAX ( Resultaten_Opleidingsonderdelen[ECTS] ) )
+			    RETURN
+			        IF ( BestResult >= 10, Ects, 0 )
+			)
+		formatString: 0
+		lineageTag: dca2753d-6297-4e80-a23d-fe34a01f3f76
+
+	measure 'Getolereerde SP' =
+			
+			CALCULATE (
+			    SUM ( Resultaten_Opleidingsonderdelen[ECTS] ),
+			    Resultaten_Opleidingsonderdelen[Vrijgesteld] = TRUE()
+			)
+		formatString: 0
+		lineageTag: 11f04bb5-222a-4639-88b5-69a621c9dbd7
+
+	measure 'Studierendement %' =
+			
+			DIVIDE ( [Verworven SP], [Opgenomen SP], 0 )
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 4080d38f-7b03-4a30-8c10-628ca33668f8
+
+	measure 'Laatste studierendement %' =
+			
+			CALCULATE (
+			    [Gemiddeld studierendement %],
+			    Resultaten_Opleidingsonderdelen[Periode]
+			        = MAX ( Resultaten_Opleidingsonderdelen[Periode] )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 61110ecc-b733-4b41-b1c7-d0572275b15e
+
+	measure 'Laatste Studierendement' =
+			
+			CALCULATE (
+			    [Studierendement %],
+			    Resultaten_Opleidingsonderdelen[Periode] =
+			        MAX ( Resultaten_Opleidingsonderdelen[Periode] )
+			)
+		lineageTag: 8910d5c3-dc03-429d-ad52-cfdedbf394ef
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gemiddeld opgenomen SP' =
+			
+			AVERAGEX (
+			    VALUES ( Inschrijvingen[Inschrijving_ID] ),
+			    CALCULATE ( [Opgenomen SP] )
+			)
+		lineageTag: 23289c3c-8891-40ec-bc94-7052d4426c97
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gemiddeld verworven SP' =
+			
+			AVERAGEX (
+			    VALUES ( Inschrijvingen[Inschrijving_ID] ),
+			    CALCULATE ( [Verworven SP] )
+			)
+		lineageTag: 8cdcdb37-6ac5-4707-bbbf-355bed070873
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure 'Gemiddeld studierendement %' =
+			
+			AVERAGEX (
+			    VALUES ( Inschrijvingen[Inschrijving_ID] ),
+			    VAR Opgenomen = CALCULATE ( [Opgenomen SP] )
+			    VAR Verworven = CALCULATE ( [Verworven SP] )
+			    VAR SR = DIVIDE ( Verworven, Opgenomen )
+			    RETURN
+			        IF ( SR > 1, 1, SR )
+			)
+		formatString: 0.00%;-0.00%;0.00%
+		lineageTag: 18173bdc-337b-43ac-94a5-8c909691e4d5
+
+	measure 'Verworven SP' =
+			
+			[Behaalde SP] + [Vrijgestelde SP] + [Getolereerde SP]
+		formatString: 0
+		lineageTag: 4c46a3b5-9c65-4c9e-8f3c-42c3603a3628
+
+	partition Measures_studierendement = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("i44FAA==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Measures_studierendement = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Measures_studierendement", type text}}),
+				    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"Measures_studierendement"})
+				in
+				    #"Removed Columns"
+
+	changedProperty = Name
+
+	annotation PBI_ResultType = Table
+

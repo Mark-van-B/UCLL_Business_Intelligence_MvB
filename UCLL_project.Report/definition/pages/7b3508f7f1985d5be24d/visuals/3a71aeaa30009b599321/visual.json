@@ -1,0 +1,169 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
+  "name": "3a71aeaa30009b599321",
+  "position": {
+    "x": 768.33333333333337,
+    "y": 206.66666666666669,
+    "z": 14000,
+    "height": 238.33333333333334,
+    "width": 498.33333333333337,
+    "tabOrder": 14000
+  },
+  "visual": {
+    "visualType": "lineChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Jaar_Dimensie"
+                    }
+                  },
+                  "Property": "Jaar"
+                }
+              },
+              "queryRef": "Jaar_Dimensie.Jaar",
+              "nativeQueryRef": "Jaar",
+              "active": true
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Measures_studierendement"
+                    }
+                  },
+                  "Property": "Gemiddeld studierendement %"
+                }
+              },
+              "queryRef": "Measures_studierendement.Gemiddeld studierendement %",
+              "nativeQueryRef": "Gemiddeld studierendement %"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Measures_studierendement"
+                  }
+                },
+                "Property": "Gemiddeld studierendement %"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "valueAxis": [
+        {
+          "properties": {
+            "start": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "end": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Studierendement per academiejaar (laatste stand)'"
+                }
+              }
+            },
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E30046'"
+                    }
+                  }
+                }
+              }
+            },
+            "bold": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "14D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "80268e9b1d147cbe05b0",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Jaar_Dimensie"
+              }
+            },
+            "Property": "Jaar"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "c39dcfd450dc2455ad30",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Measures_studierendement"
+              }
+            },
+            "Property": "Gemiddeld studierendement %"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}

@@ -64,7 +64,7 @@ table Opleidingsonderdelen
 		mode: import
 		source =
 				let
-				    Source = Excel.Workbook(File.Contents("C:\Users\jarno\Downloads\UCLL_Data.xlsx"), null, true),
+				    Source = Excel.Workbook(File.Contents("C:\Users\jensb\OneDrive\Afbeeldingen\Documenten\2de jaar\1ste semester\BI & visual analatics\Eindopdracht\UCLL_Data.xlsx"), null, true),
 				    Opleidingsonderdelen_Sheet = Source{[Item="Opleidingsonderdelen",Kind="Sheet"]}[Data],
 				    #"Promoted Headers" = Table.PromoteHeaders(Opleidingsonderdelen_Sheet, [PromoteAllScalars=true]),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"OPO_ID", type text}, {"Naam", type text}, {"Fase", Int64.Type}, {"Semester", Int64.Type}, {"ECTS", Int64.Type}}),
