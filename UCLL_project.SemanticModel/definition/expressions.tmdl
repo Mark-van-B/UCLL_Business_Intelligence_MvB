@@ -16,14 +16,14 @@ expression Vrijstellingen =
 
 	annotation PBI_ResultType = Table
 
-expression FilePath = "C:\Users\jensb\OneDrive\Afbeeldingen\Documenten\2de jaar\1ste semester\BI & visual analatics\Eindopdracht\UCLL_Data.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression FilePath = "C:\Users\MARK0\Desktop\UCLL\BI & Visual Analytics\Opdracht UCLL_Case\UCLL_Data.xlsx" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: be100913-49a4-4636-b3ab-628f4ef8892b
 
 	annotation PBI_NavigationStepName = Navigation
 
 	annotation PBI_ResultType = Text
 
-expression TargetsFolderPath = "C:\Users\jensb\OneDrive\Afbeeldingen\Documenten\2de jaar\1ste semester\BI & visual analatics\Eindopdracht\UCLL_Targets" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
+expression TargetsFolderPath = "C:\Users\MARK0\Desktop\UCLL\BI & Visual Analytics\Opdracht UCLL_Case\UCLL_Targets" meta [IsParameterQuery=true, Type="Any", IsParameterQueryRequired=true]
 	lineageTag: 9ceb122e-0e8d-4f8b-aac4-98cfc65cc47b
 
 	annotation PBI_NavigationStepName = Navigation

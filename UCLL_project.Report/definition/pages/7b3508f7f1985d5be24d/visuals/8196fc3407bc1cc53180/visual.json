@@ -20,20 +20,17 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Jaar_Dimensie"
+                      "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Property": "Jaar"
+                  "Property": "Fase_Semester"
                 }
               },
-              "queryRef": "Jaar_Dimensie.Jaar",
-              "nativeQueryRef": "Jaar"
+              "queryRef": "Resultaten_Opleidingsonderdelen.Fase_Semester",
+              "nativeQueryRef": "Fase_Semester"
             }
           ]
         }
-      },
-      "sortDefinition": {
-        "isDefaultSort": true
       }
     },
     "objects": {

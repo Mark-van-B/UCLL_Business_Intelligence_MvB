@@ -4,7 +4,9 @@ Navigate to your PBIP project folder in terminal:
 Check status: 
 	- git status
 
-Stage all changes: 
+
+
+(Optional) Stage all changes: 
 	- git add .
 
 Commit with a message:

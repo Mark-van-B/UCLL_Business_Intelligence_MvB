@@ -4,10 +4,10 @@
   "position": {
     "x": 666.66666666666674,
     "y": 456.66666666666669,
-    "z": 13000,
+    "z": 7000,
     "height": 245,
     "width": 600,
-    "tabOrder": 13000
+    "tabOrder": 7000
   },
   "visual": {
     "visualType": "clusteredColumnChart",
@@ -219,20 +219,6 @@
             }
           ]
         }
-      },
-      {
-        "name": "c30cc76292c53b628bbd",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_studierendement"
-              }
-            },
-            "Property": "Gemiddeld studierendement %"
-          }
-        },
-        "type": "Advanced"
       }
     ]
   }

@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "7b8b929e55e63198aae1",
   "position": {
-    "x": 19.767497977317568,
-    "y": 218.605271749159,
-    "z": 6000,
+    "x": 9.3023519893259135,
+    "y": 222.09365374515619,
+    "z": 4000,
     "height": 150.00042582788035,
-    "width": 712.79272118209815,
-    "tabOrder": 6000
+    "width": 1237.2128145803465,
+    "tabOrder": 4000
   },
   "visual": {
     "visualType": "cardVisual",
@@ -17,60 +17,59 @@
           "projections": [
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "OPO_Opleidingen"
-                        }
-                      },
-                      "Property": "ECTS"
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Function": 0
+                  "Property": "Gemiddelde_Resultaten"
                 }
               },
-              "queryRef": "Sum(OPO_Opleidingen.ECTS)",
-              "nativeQueryRef": "Sum of ECTS"
+              "queryRef": "Resultaten_Opleidingsonderdelen.Gemiddelde_Resultaten_Per_Semester",
+              "nativeQueryRef": "Gemiddelde_Resultaten"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Resultaten_Opleidingsonderdelen"
-                        }
-                      },
-                      "Property": "InvestedECTS"
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Function": 0
+                  "Property": "Verworven_Credits"
                 }
               },
-              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.InvestedECTS)",
-              "nativeQueryRef": "Sum of InvestedECTS"
+              "queryRef": "Resultaten_Opleidingsonderdelen.Verworven_Credits",
+              "nativeQueryRef": "Verworven_Credits"
             },
             {
               "field": {
-                "Aggregation": {
+                "Measure": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "OPO_Opleidingen"
-                        }
-                      },
-                      "Property": "Opleiding_ECTS"
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Function": 0
+                  "Property": "Opleidings_ECTS"
                 }
               },
-              "queryRef": "Sum(OPO_Opleidingen.Opleiding_ECTS)",
-              "nativeQueryRef": "Sum of Opleiding_ECTS"
+              "queryRef": "Resultaten_Opleidingsonderdelen.Opleidings_ECTS",
+              "nativeQueryRef": "Opleidings_ECTS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Studie-efficiëntie"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.Studie-efficiëntie",
+              "nativeQueryRef": "Studie-efficiëntie"
             }
           ]
         }
@@ -79,18 +78,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Measure": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "OPO_Opleidingen"
-                      }
-                    },
-                    "Property": "ECTS"
+                  "SourceRef": {
+                    "Entity": "Resultaten_Opleidingsonderdelen"
                   }
                 },
-                "Function": 0
+                "Property": "Gemiddelde_Resultaten"
               }
             },
             "direction": "Descending"
@@ -98,6 +92,128 @@
         ],
         "isDefaultSort": true
       }
+    },
+    "objects": {
+      "shapeCustomRectangle": [
+        {
+          "properties": {
+            "rectangleRoundedCurveCustomStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "shadowCustom": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "outline": [
+        {
+          "properties": {
+            "lineColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#E30046'"
+                    }
+                  }
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "64D"
+                }
+              }
+            },
+            "weight": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "glowCustom": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ],
+      "accentBar": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

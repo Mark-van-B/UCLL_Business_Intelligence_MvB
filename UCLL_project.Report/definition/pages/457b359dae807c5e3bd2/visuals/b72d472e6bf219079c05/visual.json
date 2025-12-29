@@ -2,15 +2,15 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "b72d472e6bf219079c05",
   "position": {
-    "x": 702.795650795427,
-    "y": 424.73302374158419,
-    "z": 8000,
-    "height": 294.86861000764657,
-    "width": 569.87560379716149,
-    "tabOrder": 8000
+    "x": 732.56021915941574,
+    "y": 424.41980951299485,
+    "z": 6000,
+    "height": 295.34967566109776,
+    "width": 539.536415380903,
+    "tabOrder": 6000
   },
   "visual": {
-    "visualType": "areaChart",
+    "visualType": "lineStackedColumnComboChart",
     "query": {
       "queryState": {
         "Category": {
@@ -32,6 +32,42 @@
             }
           ]
         },
+        "Series": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Categorie_Naam"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.Categorie_Naam",
+              "nativeQueryRef": "Categorie_Naam"
+            }
+          ]
+        },
+        "Tooltips": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Gemiddelde_Resultaten"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.Gemiddelde_Resultaten",
+              "nativeQueryRef": "Gemiddelde_Resultaten"
+            }
+          ]
+        },
         "Y": {
           "projections": [
             {
@@ -42,11 +78,44 @@
                       "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Property": "Studie-efficiëntie"
+                  "Property": "Aantal_Per_Categorie"
                 }
               },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Studie-efficiëntie",
-              "nativeQueryRef": "Studie-efficiëntie"
+              "queryRef": "Resultaten_Opleidingsonderdelen.Aantal_Per_Categorie",
+              "nativeQueryRef": "Aantal_Per_Categorie"
+            }
+          ]
+        },
+        "Y2": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Gem_Resultaten_Per_Semester"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.Gem_Resultaten_Per_Semester",
+              "nativeQueryRef": "Gemiddelde_Resultaten__",
+              "displayName": "Gemiddelde_Resultaten__"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Gemiddelde_Resultaten"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.Gemiddelde_Resultaten",
+              "nativeQueryRef": "Gemiddelde_Resultaten"
             }
           ]
         }
@@ -56,10 +125,404 @@
       "valueAxis": [
         {
           "properties": {
-            "start": {
+            "secEnd": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            },
+            "secStart": {
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "labels": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dataPoint": [
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#FF0000'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Resultaten_Opleidingsonderdelen"
+                          }
+                        },
+                        "Property": "Categorie_Naam"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Gezakt'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 8,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Resultaten_Opleidingsonderdelen"
+                          }
+                        },
+                        "Property": "Categorie_Naam"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Tolereerbaar'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.6
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Resultaten_Opleidingsonderdelen"
+                          }
+                        },
+                        "Property": "Categorie_Naam"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Voldoende'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 2,
+                      "Percent": 0.2
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Resultaten_Opleidingsonderdelen"
+                          }
+                        },
+                        "Property": "Categorie_Naam"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'Onderscheiding'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#00FF26'"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "data": [
+              {
+                "scopeId": {
+                  "Comparison": {
+                    "ComparisonKind": 0,
+                    "Left": {
+                      "Column": {
+                        "Expression": {
+                          "SourceRef": {
+                            "Entity": "Resultaten_Opleidingsonderdelen"
+                          }
+                        },
+                        "Property": "Categorie_Naam"
+                      }
+                    },
+                    "Right": {
+                      "Literal": {
+                        "Value": "'GROOTSTE ONDERSCHEIDING'"
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "properties": {
+            "fill": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Resultaten_Opleidingsonderdelen.Gem_Resultaten_Per_Semester"
+          }
+        }
+      ],
+      "lineStyles": [
+        {
+          "properties": {
+            "lineStyle": {
+              "expr": {
+                "Literal": {
+                  "Value": "'solid'"
+                }
+              }
+            },
+            "strokeLineJoin": {
+              "expr": {
+                "Literal": {
+                  "Value": "'round'"
+                }
+              }
+            },
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "7D"
+                }
+              }
+            }
+          }
+        },
+        {
+          "properties": {
+            "strokeWidth": {
+              "expr": {
+                "Literal": {
+                  "Value": "3D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Resultaten_Opleidingsonderdelen.Gemiddelde_Resultaten"
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "dropShadow": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            },
+            "position": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Outer'"
+                }
+              }
+            },
+            "preset": {
+              "expr": {
+                "Literal": {
+                  "Value": "'BottomRight'"
+                }
+              }
+            },
+            "angle": {
+              "expr": {
+                "Literal": {
+                  "Value": "45L"
+                }
+              }
+            },
+            "shadowDistance": {
+              "expr": {
+                "Literal": {
+                  "Value": "10L"
+                }
+              }
+            },
+            "shadowBlur": {
+              "expr": {
+                "Literal": {
+                  "Value": "10L"
+                }
+              }
+            },
+            "shadowSpread": {
+              "expr": {
+                "Literal": {
+                  "Value": "3L"
+                }
+              }
+            },
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "70L"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Resultaten per Categorie en Semester'"
                 }
               }
             }

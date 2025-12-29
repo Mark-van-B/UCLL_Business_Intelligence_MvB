@@ -2,12 +2,12 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "a6968dea3638aac9b8d9",
   "position": {
-    "x": 0,
-    "y": 424.73302374158419,
-    "z": 7000,
-    "height": 294.86861000764657,
-    "width": 710.43473395624687,
-    "tabOrder": 7000
+    "x": 9.3023519893259135,
+    "y": 424.41980951299485,
+    "z": 5000,
+    "height": 295.34967566109776,
+    "width": 702.32757519410654,
+    "tabOrder": 5000
   },
   "visual": {
     "visualType": "tableEx",
@@ -23,11 +23,12 @@
                       "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Property": "Student_ID"
+                  "Property": "Fase_Semester"
                 }
               },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Student_ID",
-              "nativeQueryRef": "Student_ID"
+              "queryRef": "Resultaten_Opleidingsonderdelen.Fase_Semester",
+              "nativeQueryRef": " ",
+              "displayName": " "
             },
             {
               "field": {
@@ -41,26 +42,50 @@
                 }
               },
               "queryRef": "Resultaten_Opleidingsonderdelen.OPO_ID",
-              "nativeQueryRef": "OPO_ID"
+              "nativeQueryRef": "OPO",
+              "displayName": "OPO"
             },
             {
               "field": {
-                "Aggregation": {
+                "Column": {
                   "Expression": {
-                    "Column": {
-                      "Expression": {
-                        "SourceRef": {
-                          "Entity": "Resultaten_Opleidingsonderdelen"
-                        }
-                      },
-                      "Property": "Resultaat"
+                    "SourceRef": {
+                      "Entity": "Opleidingsonderdelen"
                     }
                   },
-                  "Function": 5
+                  "Property": "Naam"
+                }
+              },
+              "queryRef": "Opleidingsonderdelen.Naam",
+              "nativeQueryRef": "Naam"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Resultaat"
                 }
               },
               "queryRef": "Sum(Resultaten_Opleidingsonderdelen.Resultaat)",
-              "nativeQueryRef": "Count of Resultaat"
+              "nativeQueryRef": "Resultaat"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Periode"
+                }
+              },
+              "queryRef": "Sum(Resultaten_Opleidingsonderdelen.Periode)",
+              "nativeQueryRef": "Periode"
             },
             {
               "field": {
@@ -74,39 +99,139 @@
                 }
               },
               "queryRef": "Resultaten_Opleidingsonderdelen.Categorie_Naam",
-              "nativeQueryRef": "Categorie_Naam"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Resultaten_Opleidingsonderdelen"
-                    }
-                  },
-                  "Property": "Fase_Semester"
-                }
-              },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Fase_Semester",
-              "nativeQueryRef": "Fase_Semester"
-            },
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Resultaten_Opleidingsonderdelen"
-                    }
-                  },
-                  "Property": "Studie-efficiëntie"
-                }
-              },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Studie-efficiëntie",
-              "nativeQueryRef": "Studie-efficiëntie"
+              "nativeQueryRef": "Categorie",
+              "displayName": "Categorie"
             }
           ]
         }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Resultaten_Opleidingsonderdelen"
+                  }
+                },
+                "Property": "Fase_Semester"
+              }
+            },
+            "direction": "Ascending"
+          }
+        ]
       }
+    },
+    "objects": {
+      "values": [
+        {
+          "properties": {},
+          "selector": {
+            "data": [
+              {
+                "dataViewWildcard": {
+                  "matchingOption": 1
+                }
+              }
+            ],
+            "metadata": "Sum(Resultaten_Opleidingsonderdelen.Resultaat)"
+          }
+        },
+        {
+          "properties": {
+            "backColorSecondary": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "Literal": {
+                      "Value": "'#F7F7F7'"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "grid": [
+        {
+          "properties": {
+            "gridHorizontal": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "columnWidth": [
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "67.5216092485551D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Sum(Resultaten_Opleidingsonderdelen.Periode)"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "36.53471096337615D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Resultaten_Opleidingsonderdelen.Fase_Semester"
+          }
+        }
+      ],
+      "total": [
+        {
+          "properties": {
+            "totals": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "border": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "radius": {
+              "expr": {
+                "Literal": {
+                  "Value": "9D"
+                }
+              }
+            }
+          }
+        }
+      ]
     },
     "drillFilterOtherVisuals": true
   }

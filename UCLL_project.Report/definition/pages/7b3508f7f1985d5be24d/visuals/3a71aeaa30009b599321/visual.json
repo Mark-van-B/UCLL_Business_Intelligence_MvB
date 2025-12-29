@@ -4,10 +4,10 @@
   "position": {
     "x": 768.33333333333337,
     "y": 206.66666666666669,
-    "z": 14000,
+    "z": 8000,
     "height": 238.33333333333334,
     "width": 498.33333333333337,
-    "tabOrder": 14000
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "lineChart",
@@ -20,14 +20,14 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Jaar_Dimensie"
+                      "Entity": "Inschrijvingen"
                     }
                   },
                   "Property": "Jaar"
                 }
               },
-              "queryRef": "Jaar_Dimensie.Jaar",
-              "nativeQueryRef": "Jaar",
+              "queryRef": "Inschrijvingen.Jaar",
+              "nativeQueryRef": "Jaar1",
               "active": true
             }
           ]
@@ -133,37 +133,5 @@
       ]
     },
     "drillFilterOtherVisuals": true
-  },
-  "filterConfig": {
-    "filters": [
-      {
-        "name": "80268e9b1d147cbe05b0",
-        "field": {
-          "Column": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Jaar_Dimensie"
-              }
-            },
-            "Property": "Jaar"
-          }
-        },
-        "type": "Advanced"
-      },
-      {
-        "name": "c39dcfd450dc2455ad30",
-        "field": {
-          "Measure": {
-            "Expression": {
-              "SourceRef": {
-                "Entity": "Measures_studierendement"
-              }
-            },
-            "Property": "Gemiddeld studierendement %"
-          }
-        },
-        "type": "Advanced"
-      }
-    ]
   }
 }

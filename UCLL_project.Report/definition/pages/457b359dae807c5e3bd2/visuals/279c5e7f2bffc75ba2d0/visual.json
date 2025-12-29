@@ -2,11 +2,11 @@
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
   "name": "279c5e7f2bffc75ba2d0",
   "position": {
-    "x": 1137.8859315589355,
-    "y": 105.12547528517111,
+    "x": 1139.5238095238094,
+    "y": 105.71428571428571,
     "z": 3000,
-    "height": 85.657794676806077,
-    "width": 141.1406844106464,
+    "height": 84.761904761904759,
+    "width": 140.47619047619048,
     "tabOrder": 3000
   },
   "visual": {
@@ -27,8 +27,9 @@
                 }
               },
               "queryRef": "Studenten.Student_ID",
-              "nativeQueryRef": "Student_ID",
-              "active": true
+              "nativeQueryRef": "Student",
+              "active": true,
+              "displayName": "Student"
             }
           ]
         }
@@ -69,6 +70,47 @@
                   }
                 }
               }
+            },
+            "filter": {
+              "filter": {
+                "Version": 2,
+                "From": [
+                  {
+                    "Name": "s",
+                    "Entity": "Studenten",
+                    "Type": 0
+                  }
+                ],
+                "Where": [
+                  {
+                    "Condition": {
+                      "In": {
+                        "Expressions": [
+                          {
+                            "Column": {
+                              "Expression": {
+                                "SourceRef": {
+                                  "Source": "s"
+                                }
+                              },
+                              "Property": "Student_ID"
+                            }
+                          }
+                        ],
+                        "Values": [
+                          [
+                            {
+                              "Literal": {
+                                "Value": "1L"
+                              }
+                            }
+                          ]
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
             }
           }
         }
@@ -92,6 +134,24 @@
               "expr": {
                 "Literal": {
                   "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "header": [
+        {
+          "properties": {
+            "fontColor": {
+              "solid": {
+                "color": {
+                  "expr": {
+                    "ThemeDataColor": {
+                      "ColorId": 0,
+                      "Percent": 0
+                    }
+                  }
                 }
               }
             }

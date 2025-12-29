@@ -1693,6 +1693,26 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.727
 			          }
+			        },
+			        {
+			          "OPO": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
+			          "Opleidingsonderdeel": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -1879,6 +1899,16 @@ cultureInfo en-US
 			            "Type": "Noun",
 			            "State": "Generated",
 			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Categorie": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
 			          }
 			        }
 			      ]
@@ -2070,29 +2100,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "resultaten_opleidingsonderdelen.invested_ECT": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
-			          "ConceptualProperty": "InvestedECTS"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "invested ECT": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "InvestedECTS": {
-			            "Type": "Noun",
-			            "State": "Generated",
-			            "Weight": 0.99
-			          }
-			        }
-			      ]
-			    },
 			    "resultaten_opleidingsonderdelen.behaalde_credit": {
 			      "Definition": {
 			        "Binding": {
@@ -2212,28 +2219,6 @@ cultureInfo en-US
 			              "Agent": "Thesaurus"
 			            },
 			            "Weight": 0.461
-			          }
-			        }
-			      ]
-			    },
-			    "resultaten_opleidingsonderdelen.studieefficiëntie": {
-			      "Definition": {
-			        "Binding": {
-			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
-			          "ConceptualProperty": "Studie-efficiëntie"
-			        }
-			      },
-			      "State": "Generated",
-			      "Terms": [
-			        {
-			          "studie-efficiëntie": {
-			            "State": "Generated"
-			          }
-			        },
-			        {
-			          "studie efficiëntie": {
-			            "State": "Generated",
-			            "Weight": 0.97
 			          }
 			        }
 			      ]
@@ -4701,75 +4686,666 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
-			    }
-			  },
-			  "Relationships": {
-			    "eerste_inschrijvingen_departementen_naam_hierarchy_departementen_naam_has_eerste_inschrijvingen_departementen_naam_hierarchy_opleidingen_naam": {
-			      "Binding": {
-			        "ConceptualEntity": "Eerste_Inschrijvingen"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam": {
-			          "Target": {
-			            "Entity": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
-			          }
-			        },
-			        "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam": {
-			          "Target": {
-			            "Entity": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
-			          }
+			    },
+			    "OPO_opleidingen.opleidingen_naam": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "OPO_Opleidingen",
+			          "ConceptualProperty": "Opleidingen.Naam"
 			        }
 			      },
-			      "Phrasings": [
+			      "State": "Generated",
+			      "Terms": [
 			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
-			            },
-			            "Object": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "departementen_naams_have_opleidingen_naams"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
-			            },
-			            "Object": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "opleidingen_naams_have_departementen_naams"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "opleidingen_naams_are_in_departementen_naams"
+			          "opleidingen.naam": {
+			            "State": "Generated"
+			          }
 			        }
 			      ]
 			    },
+			    "resultaten_opleidingsonderdelen.effective_credit": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Effective_Credits"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "effective credit": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Effective_Credits": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "credit": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "effective recognition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "effective acknowledgement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "effective acknowledgment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "recognition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "acknowledgement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "acknowledgment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.491
+			          }
+			        },
+			        {
+			          "effective praise": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "effective acclaim": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "effective glory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "effective tribute": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.invested_ECT": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "InvestedECTS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "invested ECT": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "InvestedECTS": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.studieefficiëntie": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Studie-efficiëntie"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "studie-efficiëntie": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "studie efficiëntie": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "measures studierendement": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "measure studierendement": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.78
+			          }
+			        },
+			        {
+			          "Measures_studierendement": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.opgenomen_SP": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Opgenomen SP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "opgenomen SP": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.vrijgestelde_SP": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Vrijgestelde SP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vrijgestelde SP": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.behaalde_SP": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Behaalde SP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "behaalde SP": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.getolereerde_SP": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Getolereerde SP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "getolereerde SP": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.studierendement_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Studierendement %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "studierendement %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "studierendement percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "studierendement pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.laatste_studierendement_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Laatste studierendement %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "laatste studierendement %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "laatste studierendement percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "laatste studierendement pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.laatste_studierendement": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Laatste Studierendement"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "laatste studierendement": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.gemiddeld_opgenomen_SP": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Gemiddeld opgenomen SP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "gemiddeld opgenomen SP": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.gemiddeld_verworven_SP": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Gemiddeld verworven SP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "gemiddeld verworven SP": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.gemiddeld_studierendement_": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Gemiddeld studierendement %"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "gemiddeld studierendement %": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "gemiddeld studierendement percentage": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.762
+			          }
+			        },
+			        {
+			          "gemiddeld studierendement pct": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        }
+			      ]
+			    },
+			    "measures_studierendement.verworven_SP": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Measures_studierendement",
+			          "ConceptualProperty": "Verworven SP"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "verworven SP": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.opleidings_ECTS": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Opleidings_ECTS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "opleidings ECTS": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Opleidings_ECTS": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.gemiddelde_resultaten": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Gemiddelde_Resultaten"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "gemiddelde resultaten": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Gemiddelde_Resultaten": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.verworven_credits": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Verworven_Credits"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "verworven credits": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Verworven_Credits": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "verworven recognition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "verworven acknowledgement": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "verworven acknowledgment": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "verworven praise": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "verworven thanks": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "verworven acclaim": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "verworven glory": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "verworven tribute": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "verworven status": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "verworven repute": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.461
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.gem_resultaten_per_semester": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Gem_Resultaten_Per_Semester"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "gem resultaten per semester": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Gem_Resultaten_Per_Semester": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "Gemiddelde_Resultaten__": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    }
+			  },
+			  "Relationships": {
 			    "eerste_inschrijvingen_departementen_naam_hierarchy_has_opleidingen_naam": {
 			      "Binding": {
 			        "ConceptualEntity": "Eerste_Inschrijvingen"
@@ -6105,6 +6681,963 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "inschrijvingens_have_opgenomen_opleidingsonderdelens"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_gem_resultaten_per_semester": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.gem_resultaten_per_semester": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.gem_resultaten_per_semester"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.gem_resultaten_per_semester"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_gem_resultaten_per_semester"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_verworven_credits": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.verworven_credits": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.verworven_credits"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.verworven_credits"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_verworven_credits"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_gemiddelde_resultaten": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.gemiddelde_resultaten": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.gemiddelde_resultaten"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.gemiddelde_resultaten"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_gemiddelde_resultaten"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_opleidings_ECTS": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.opleidings_ECTS": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.opleidings_ECTS"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.opleidings_ECTS"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_opleidings_ECTS"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_measures_studierendement_verworven_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.verworven_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.verworven_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.verworven_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_verworven_SP"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_verworven_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.verworven_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.verworven_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.verworven_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_verworven_SP"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_measures_studierendement_gemiddeld_studierendement_": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.gemiddeld_studierendement_": {
+			          "Target": {
+			            "Entity": "measures_studierendement.gemiddeld_studierendement_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.gemiddeld_studierendement_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_gemiddeld_studierendement_"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_gemiddeld_studierendement_": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.gemiddeld_studierendement_": {
+			          "Target": {
+			            "Entity": "measures_studierendement.gemiddeld_studierendement_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.gemiddeld_studierendement_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_gemiddeld_studierendement_"
+			        }
+			      ]
+			    },
+			    "inschrijvingen_has_measures_studierendement_gemiddeld_studierendement_": {
+			      "Binding": {
+			        "ConceptualEntity": "Inschrijvingen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "inschrijvingen": {
+			          "Target": {
+			            "Entity": "inschrijvingen"
+			          }
+			        },
+			        "measures_studierendement.gemiddeld_studierendement_": {
+			          "Target": {
+			            "Entity": "measures_studierendement.gemiddeld_studierendement_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "inschrijvingen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.gemiddeld_studierendement_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "inschrijvingens_have_gemiddeld_studierendement_"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_measures_studierendement_gemiddeld_verworven_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.gemiddeld_verworven_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.gemiddeld_verworven_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.gemiddeld_verworven_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_gemiddeld_verworven_SP"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_gemiddeld_verworven_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.gemiddeld_verworven_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.gemiddeld_verworven_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.gemiddeld_verworven_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_gemiddeld_verworven_SP"
+			        }
+			      ]
+			    },
+			    "inschrijvingen_has_measures_studierendement_gemiddeld_verworven_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Inschrijvingen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "inschrijvingen": {
+			          "Target": {
+			            "Entity": "inschrijvingen"
+			          }
+			        },
+			        "measures_studierendement.gemiddeld_verworven_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.gemiddeld_verworven_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "inschrijvingen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.gemiddeld_verworven_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "inschrijvingens_have_gemiddeld_verworven_SP"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_gemiddeld_opgenomen_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.gemiddeld_opgenomen_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.gemiddeld_opgenomen_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.gemiddeld_opgenomen_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_gemiddeld_opgenomen_SP"
+			        }
+			      ]
+			    },
+			    "inschrijvingen_has_measures_studierendement_gemiddeld_opgenomen_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Inschrijvingen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "inschrijvingen": {
+			          "Target": {
+			            "Entity": "inschrijvingen"
+			          }
+			        },
+			        "measures_studierendement.gemiddeld_opgenomen_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.gemiddeld_opgenomen_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "inschrijvingen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.gemiddeld_opgenomen_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "inschrijvingens_have_gemiddeld_opgenomen_SP"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_measures_studierendement_laatste_studierendement": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.laatste_studierendement": {
+			          "Target": {
+			            "Entity": "measures_studierendement.laatste_studierendement"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.laatste_studierendement"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_laatste_studierendement"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_laatste_studierendement": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.laatste_studierendement": {
+			          "Target": {
+			            "Entity": "measures_studierendement.laatste_studierendement"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.laatste_studierendement"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_laatste_studierendement"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_measures_studierendement_laatste_studierendement_": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.laatste_studierendement_": {
+			          "Target": {
+			            "Entity": "measures_studierendement.laatste_studierendement_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.laatste_studierendement_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_laatste_studierendement_"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_laatste_studierendement_": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.laatste_studierendement_": {
+			          "Target": {
+			            "Entity": "measures_studierendement.laatste_studierendement_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.laatste_studierendement_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_laatste_studierendement_"
+			        }
+			      ]
+			    },
+			    "inschrijvingen_has_measures_studierendement_laatste_studierendement_": {
+			      "Binding": {
+			        "ConceptualEntity": "Inschrijvingen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "inschrijvingen": {
+			          "Target": {
+			            "Entity": "inschrijvingen"
+			          }
+			        },
+			        "measures_studierendement.laatste_studierendement_": {
+			          "Target": {
+			            "Entity": "measures_studierendement.laatste_studierendement_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "inschrijvingen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.laatste_studierendement_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "inschrijvingens_have_laatste_studierendement_"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_measures_studierendement_studierendement_": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.studierendement_": {
+			          "Target": {
+			            "Entity": "measures_studierendement.studierendement_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.studierendement_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_studierendement_"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_studierendement_": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.studierendement_": {
+			          "Target": {
+			            "Entity": "measures_studierendement.studierendement_"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.studierendement_"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_studierendement_"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_measures_studierendement_getolereerde_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.getolereerde_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.getolereerde_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.getolereerde_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_getolereerde_SP"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_measures_studierendement_behaalde_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.behaalde_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.behaalde_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.behaalde_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_behaalde_SP"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_vrijgestelde_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.vrijgestelde_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.vrijgestelde_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.vrijgestelde_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_vrijgestelde_SP"
+			        }
+			      ]
+			    },
+			    "opgenomen_opleidingsonderdelen_has_measures_studierendement_opgenomen_SP": {
+			      "Binding": {
+			        "ConceptualEntity": "Opgenomen_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "opgenomen_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "opgenomen_opleidingsonderdelen"
+			          }
+			        },
+			        "measures_studierendement.opgenomen_SP": {
+			          "Target": {
+			            "Entity": "measures_studierendement.opgenomen_SP"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "opgenomen_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "measures_studierendement.opgenomen_SP"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opgenomen_opleidingsonderdelens_have_opgenomen_SP"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_studieefficiëntie": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.studieefficiëntie": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.studieefficiëntie"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.studieefficiëntie"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_studieefficiëntie"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_invested_ECT": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.invested_ECT": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.invested_ECT"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.invested_ECT"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_invested_ECTs"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_effective_credit": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.effective_credit": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.effective_credit"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.effective_credit"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_effective_credits"
+			        }
+			      ]
+			    },
+			    "OPO_opleidingen_has_opleidingen_naam": {
+			      "Binding": {
+			        "ConceptualEntity": "OPO_Opleidingen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "OPO_opleidingen": {
+			          "Target": {
+			            "Entity": "OPO_opleidingen"
+			          }
+			        },
+			        "OPO_opleidingen.opleidingen_naam": {
+			          "Target": {
+			            "Entity": "OPO_opleidingen.opleidingen_naam"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "OPO_opleidingen"
+			            },
+			            "Object": {
+			              "Role": "OPO_opleidingen.opleidingen_naam"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "OPO_opleidingens_have_opleidingen_naams"
 			        }
 			      ]
 			    },
@@ -7659,39 +9192,6 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
-			    "resultaten_opleidingsonderdelen_has_studieefficiëntie": {
-			      "Binding": {
-			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "resultaten_opleidingsonderdelen": {
-			          "Target": {
-			            "Entity": "resultaten_opleidingsonderdelen"
-			          }
-			        },
-			        "resultaten_opleidingsonderdelen.studieefficiëntie": {
-			          "Target": {
-			            "Entity": "resultaten_opleidingsonderdelen.studieefficiëntie"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "resultaten_opleidingsonderdelen"
-			            },
-			            "Object": {
-			              "Role": "resultaten_opleidingsonderdelen.studieefficiëntie"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "resultaten_opleidingsonderdelens_have_studieefficiëntie"
-			        }
-			      ]
-			    },
 			    "resultaten_opleidingsonderdelen_has_behaalde_credit": {
 			      "Binding": {
 			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
@@ -7722,39 +9222,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "resultaten_opleidingsonderdelens_have_behaalde_credits"
-			        }
-			      ]
-			    },
-			    "resultaten_opleidingsonderdelen_has_invested_ECT": {
-			      "Binding": {
-			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "resultaten_opleidingsonderdelen": {
-			          "Target": {
-			            "Entity": "resultaten_opleidingsonderdelen"
-			          }
-			        },
-			        "resultaten_opleidingsonderdelen.invested_ECT": {
-			          "Target": {
-			            "Entity": "resultaten_opleidingsonderdelen.invested_ECT"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "resultaten_opleidingsonderdelen"
-			            },
-			            "Object": {
-			              "Role": "resultaten_opleidingsonderdelen.invested_ECT"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "resultaten_opleidingsonderdelens_have_invested_ECTs"
 			        }
 			      ]
 			    },
@@ -8646,6 +10113,72 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "departementens_have_departement_ID"
+			        }
+			      ]
+			    },
+			    "eerste_inschrijvingen_departementen_naam_hierarchy_departementen_naam_has_eerste_inschrijvingen_departementen_naam_hierarchy_opleidingen_naam": {
+			      "Binding": {
+			        "ConceptualEntity": "Eerste_Inschrijvingen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam": {
+			          "Target": {
+			            "Entity": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
+			          }
+			        },
+			        "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam": {
+			          "Target": {
+			            "Entity": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
+			            },
+			            "Object": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "departementen_naams_have_opleidingen_naams"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
+			            },
+			            "Object": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opleidingen_naams_have_departementen_naams"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opleidingen_naams_are_in_departementen_naams"
 			        }
 			      ]
 			    }

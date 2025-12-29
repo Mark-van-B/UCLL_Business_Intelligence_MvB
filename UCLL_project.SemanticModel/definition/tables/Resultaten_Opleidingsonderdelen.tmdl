@@ -3,15 +3,158 @@ table Resultaten_Opleidingsonderdelen
 
 	measure Studie-efficiëntie = ```
 			
-			VAR Invested = SUM(Resultaten_Opleidingsonderdelen[InvestedECTS])
-			VAR Earned = 
-			    SUM(Resultaten_Opleidingsonderdelen[Behaalde_Credits])
+			VAR CreditsTable =
+			    VALUES('Resultaten_Opleidingsonderdelen'[OPO_ID])
+			VAR Earned =
+			    SUMX(
+			        CreditsTable,
+			        VAR GradeP1 = CALCULATE(
+			                            MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                            'Resultaten_Opleidingsonderdelen'[Periode] = 1
+			                        )
+			        VAR GradeP2 = CALCULATE(
+			                            MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                            'Resultaten_Opleidingsonderdelen'[Periode] = 2
+			                        )
+			        VAR BestGrade = IF(NOT(ISBLANK(GradeP2)) && GradeP2 > GradeP1, GradeP2, GradeP1)
+			        VAR Invested = MAX('Resultaten_Opleidingsonderdelen'[InvestedECTS])
+			        RETURN IF(BestGrade >= 10, Invested, 0)
+			    )
+			VAR Invested =
+			    SUMX(
+			        CreditsTable,
+			        MAX('Resultaten_Opleidingsonderdelen'[InvestedECTS])
+			    )
 			RETURN DIVIDE(Earned, Invested, 0)
 			
 			```
-		lineageTag: 4cafb438-bc8a-4220-bd6b-7ac72bf17fa6
+		lineageTag: f5f6689e-177c-499d-9c6f-ec531a540e65
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Opleidings_ECTS = ```
+			
+			AVERAGEX(
+			    VALUES('Resultaten_Opleidingsonderdelen'[ECTS Opleiding]),
+			    'Resultaten_Opleidingsonderdelen'[ECTS Opleiding]
+			)
+			
+			```
+		lineageTag: d16b8ce8-4563-4531-bdbf-6fe51b9a40bb
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Gemiddelde_Resultaten = ```
+			
+			AVERAGEX(
+			    SUMMARIZE(
+			        'Resultaten_Opleidingsonderdelen',
+			        'Resultaten_Opleidingsonderdelen'[Student_ID],
+			        'Resultaten_Opleidingsonderdelen'[OPO_ID],
+			        "Grade",
+			            VAR GradeP1 =
+			                CALCULATE(
+			                    MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                    'Resultaten_Opleidingsonderdelen'[Periode] = 1
+			                )
+			            VAR GradeP2 =
+			                CALCULATE(
+			                    MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                    'Resultaten_Opleidingsonderdelen'[Periode] = 2
+			                )
+			            RETURN IF(NOT(ISBLANK(GradeP2)) && GradeP2 > GradeP1, GradeP2, GradeP1)
+			    ),
+			    [Grade]
+			)
+			
+			```
+		lineageTag: e2fbc638-6a6d-4cfa-90c3-c75e686f5f9a
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Verworven_Credits = ```
+			
+			SUMX(
+			    SUMMARIZE(
+			        'Resultaten_Opleidingsonderdelen',
+			        'Resultaten_Opleidingsonderdelen'[Student_ID],
+			        'Resultaten_Opleidingsonderdelen'[OPO_ID],
+			        'Resultaten_Opleidingsonderdelen'[Fase_Semester],
+			        "EarnedCredits",
+			            VAR GradeP1 =
+			                CALCULATE(
+			                    MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                    'Resultaten_Opleidingsonderdelen'[Periode] = 1
+			                )
+			            VAR GradeP2 =
+			                CALCULATE(
+			                    MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                    'Resultaten_Opleidingsonderdelen'[Periode] = 2
+			                )
+			            VAR FinalGrade = IF(NOT(ISBLANK(GradeP2)) && GradeP2 > GradeP1, GradeP2, GradeP1)
+			            VAR Credits = MAX('Resultaten_Opleidingsonderdelen'[ECTS])
+			            RETURN IF(FinalGrade >= 10, Credits, 0)
+			    ),
+			    [EarnedCredits]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: acde68d7-9fb6-4898-9df7-8375fa971305
+
+	measure Gem_Resultaten_Per_Semester = ```
+			
+			AVERAGEX(
+			    SUMMARIZE(
+			        'Resultaten_Opleidingsonderdelen',
+			        'Resultaten_Opleidingsonderdelen'[Student_ID],
+			        'Resultaten_Opleidingsonderdelen'[OPO_ID],
+			        'Resultaten_Opleidingsonderdelen'[Fase_Semester],
+			        "Grade",
+			            VAR GradeP1 = CALCULATE(
+			                                MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                                'Resultaten_Opleidingsonderdelen'[Periode] = 1
+			                            )
+			            VAR GradeP2 = CALCULATE(
+			                                MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                                'Resultaten_Opleidingsonderdelen'[Periode] = 2
+			                            )
+			            RETURN IF(NOT(ISBLANK(GradeP2)) && GradeP2 > GradeP1, GradeP2, GradeP1)
+			    ),
+			    [Grade]
+			)
+			
+			```
+		lineageTag: cc859a79-f46b-4339-8682-57d1b7972027
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	measure Aantal_Per_Categorie = ```
+			
+			COUNTROWS(
+			    SUMMARIZE(
+			        'Resultaten_Opleidingsonderdelen',
+			        'Resultaten_Opleidingsonderdelen'[Student_ID],
+			        'Resultaten_Opleidingsonderdelen'[OPO_ID],
+			        'Resultaten_Opleidingsonderdelen'[Fase_Semester],
+			        "BestGrade",
+			            VAR GradeP1 =
+			                CALCULATE(
+			                    MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                    'Resultaten_Opleidingsonderdelen'[Periode] = 1
+			                )
+			            VAR GradeP2 =
+			                CALCULATE(
+			                    MAX('Resultaten_Opleidingsonderdelen'[Resultaat]),
+			                    'Resultaten_Opleidingsonderdelen'[Periode] = 2
+			                )
+			            RETURN IF(NOT(ISBLANK(GradeP2)) && GradeP2 > GradeP1, GradeP2, GradeP1)
+			    )
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 14a5d55f-073e-48db-abcd-7e6c5b8cb9e7
 
 	column Inschrijving_ID
 		dataType: string
@@ -64,13 +207,17 @@ table Resultaten_Opleidingsonderdelen
 		lineageTag: 47120fec-2445-4485-823a-7beaa23c9017
 		summarizeBy: none
 		sourceColumn: Categorie_Naam
+		sortByColumn: Categorie_Rang
+
+		changedProperty = SortByColumn
 
 		annotation SummarizationSetBy = Automatic
 
 	column Categorie_Rang
-		dataType: string
+		dataType: int64
+		formatString: 0
 		lineageTag: 390a6d3e-3945-4c3c-a29a-5793da100f8c
-		summarizeBy: none
+		summarizeBy: sum
 		sourceColumn: Categorie_Rang
 
 		annotation SummarizationSetBy = Automatic
@@ -132,15 +279,6 @@ table Resultaten_Opleidingsonderdelen
 
 		annotation SummarizationSetBy = Automatic
 
-	column InvestedECTS
-		dataType: int64
-		formatString: 0
-		lineageTag: ec42681e-8a3b-4082-a03f-7af5a3f7551c
-		summarizeBy: sum
-		sourceColumn: InvestedECTS
-
-		annotation SummarizationSetBy = Automatic
-
 	column Behaalde_Credits
 		dataType: double
 		lineageTag: 31a5fb97-2a3f-4a46-802d-3e956bd86893
@@ -150,6 +288,49 @@ table Resultaten_Opleidingsonderdelen
 		annotation SummarizationSetBy = Automatic
 
 		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column Effective_Credits = ```
+			
+			VAR P2 =
+			    CALCULATE(
+			        MAX('Resultaten_Opleidingsonderdelen'[ECTS]),
+			        'Resultaten_Opleidingsonderdelen'[Periode] = 2,
+			        ALLEXCEPT(
+			            'Resultaten_Opleidingsonderdelen',
+			            'Resultaten_Opleidingsonderdelen'[Student_ID],
+			            'Resultaten_Opleidingsonderdelen'[OPO_ID],
+			            'Resultaten_Opleidingsonderdelen'[Fase_Semester]
+			        )
+			    )
+			VAR P1 =
+			    CALCULATE(
+			        MAX('Resultaten_Opleidingsonderdelen'[ECTS]),
+			        'Resultaten_Opleidingsonderdelen'[Periode] = 1,
+			        ALLEXCEPT(
+			            'Resultaten_Opleidingsonderdelen',
+			            'Resultaten_Opleidingsonderdelen'[Student_ID],
+			            'Resultaten_Opleidingsonderdelen'[OPO_ID],
+			            'Resultaten_Opleidingsonderdelen'[Fase_Semester]
+			        )
+			    )
+			VAR FinalCredits = IF(NOT(ISBLANK(P2)), P2, P1)
+			RETURN IF(FinalCredits > 0 || 'Resultaten_Opleidingsonderdelen'[Vrijgesteld], FinalCredits, 0)
+			
+			```
+		formatString: 0
+		lineageTag: ff87e129-d432-42e8-a599-25e5d1b9eeb6
+		summarizeBy: sum
+
+		annotation SummarizationSetBy = Automatic
+
+	column InvestedECTS
+		dataType: int64
+		formatString: 0
+		lineageTag: b6afeeb9-4154-4da3-89b3-c397fff6995a
+		summarizeBy: sum
+		sourceColumn: InvestedECTS
+
+		annotation SummarizationSetBy = Automatic
 
 	partition Resultaten_Opleidingsonderdelen = m
 		mode: import
@@ -184,7 +365,7 @@ table Resultaten_Opleidingsonderdelen
 				    #"Reordered Columns2" = Table.ReorderColumns(#"Expanded Opleidingsonderdelen",{"Inschrijving_ID", "Student_ID", "OPO_ID", "Opleiding_ID", "Periode", "Resultaat", "Categorie_Rang", "Categorie_Naam", "ECTS", "ECTS Opleiding"}),
 				    #"Merged Queries4" = Table.NestedJoin(#"Reordered Columns2", {"OPO_ID"}, Opleidingsonderdelen, {"OPO_ID"}, "Opleidingsonderdelen", JoinKind.LeftOuter),
 				    #"Expanded Opleidingsonderdelen1" = Table.ExpandTableColumn(#"Merged Queries4", "Opleidingsonderdelen", {"Fase_Semester", "Fase_Semester_Volgorde"}, {"Fase_Semester", "Fase_Semester_Volgorde"}),
-				    #"Merged Queries5" = Table.NestedJoin(#"Expanded Opleidingsonderdelen1", {"Inschrijving_ID"}, Opgenomen_Opleidingsonderdelen, {"Inschrijving_ID"}, "Opgenomen_Opleidingsonderdelen", JoinKind.LeftOuter),
+				    #"Merged Queries5" = Table.NestedJoin(#"Expanded Opleidingsonderdelen1", {"OPO_ID"}, Opgenomen_Opleidingsonderdelen, {"OPO_ID"}, "Opgenomen_Opleidingsonderdelen", JoinKind.LeftOuter),
 				    #"Expanded Opgenomen_Opleidingsonderdelen" = Table.ExpandTableColumn(#"Merged Queries5", "Opgenomen_Opleidingsonderdelen", {"Vrijgesteld", "ECTS"}, {"Vrijgesteld", "ECTS.1"}),
 				    #"Renamed Columns5" = Table.RenameColumns(#"Expanded Opgenomen_Opleidingsonderdelen",{{"ECTS.1", "InvestedECTS"}}),
 				    #"Changed Type1" = Table.TransformColumnTypes(#"Renamed Columns5",{{"Fase_Semester_Volgorde", type number}}),
@@ -204,10 +385,9 @@ table Resultaten_Opleidingsonderdelen
 				            if periode1Result <> null and periode1Result <= 9 
 				            then [InvestedECTS] else 0
 				    else 0),
-				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"Behaalde_Credits", type number}}),
-				    #"Filtered Rows" = Table.SelectRows(#"Changed Type2", each ([Opleiding_ID] <> null))
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"Behaalde_Credits", type number}, {"Categorie_Rang", Int64.Type}})
 				in
-				    #"Filtered Rows"
+				    #"Changed Type2"
 				```
 
 	annotation PBI_NavigationStepName = Navigation
