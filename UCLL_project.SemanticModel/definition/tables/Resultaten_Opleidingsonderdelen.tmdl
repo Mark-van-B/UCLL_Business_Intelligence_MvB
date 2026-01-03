@@ -174,6 +174,24 @@ table Resultaten_Opleidingsonderdelen
 		formatString: 0
 		lineageTag: 6b81efbe-be82-47cd-9a41-1ef5c4fa7eb1
 
+	measure Vrijgesteld-ECTS =
+			SUMX(
+			SUMMARIZE(
+			'Resultaten_Opleidingsonderdelen',
+			'Resultaten_Opleidingsonderdelen'[Student_ID],
+			'Resultaten_Opleidingsonderdelen'[OPO_ID],
+			'Resultaten_Opleidingsonderdelen'[Fase_Semester],
+			"TotalECTS",
+			CALCULATE(
+			MAX('Resultaten_Opleidingsonderdelen'[ECTS]),
+			'Resultaten_Opleidingsonderdelen'[Vrijgesteld] = TRUE
+			)
+			),
+			[TotalECTS]
+			)
+		formatString: 0
+		lineageTag: 21779771-dad0-426a-8c0d-aa9c54db953f
+
 	column Inschrijving_ID
 		dataType: string
 		isHidden
@@ -358,6 +376,12 @@ table Resultaten_Opleidingsonderdelen
 
 		annotation SummarizationSetBy = Automatic
 
+	column VrijesteldText = SWITCH([Vrijgesteld], TRUE(), "Ja", FALSE(), "Nee")
+		lineageTag: 53c15c3c-8b6b-4e93-8bc6-ea8eadd735f7
+		summarizeBy: none
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Resultaten_Opleidingsonderdelen = m
 		mode: import
 		source = ```
@@ -412,7 +436,10 @@ table Resultaten_Opleidingsonderdelen
 				            then [InvestedECTS] else 0
 				    else 0),
 				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"Behaalde_Credits", type number}, {"Categorie_Rang", Int64.Type}}),
-				    #"Added Custom3" = Table.AddColumn(#"Changed Type2", "UniqueKey", each [Inschrijving_ID]&[OPO_ID]&Number.ToText([Periode])&[Fase_Semester]),
+				    #"Added Custom3" = Table.AddColumn(#"Changed Type2", "UniqueKey", each [Inschrijving_ID]&[OPO_ID] & 
+				Number.ToText([Periode]) & 
+				[Fase_Semester] & 
+				(if [Vrijgesteld] then "Y" else "N")),
 				    #"Removed Duplicates" = Table.Distinct(#"Added Custom3", {"UniqueKey"})
 				in
 				    #"Removed Duplicates"

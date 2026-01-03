@@ -6,7 +6,7 @@
     "y": 424.41980951299485,
     "z": 5000,
     "height": 295.34967566109776,
-    "width": 702.32757519410654,
+    "width": 709.304339186101,
     "tabOrder": 5000
   },
   "visual": {
@@ -121,6 +121,21 @@
               "queryRef": "Resultaten_Opleidingsonderdelen.Categorie_Naam",
               "nativeQueryRef": "Categorie",
               "displayName": "Categorie"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "VrijesteldText"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.VrijesteldText",
+              "nativeQueryRef": "Vrijstelling",
+              "displayName": "Vrijstelling"
             }
           ]
         }
@@ -129,18 +144,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Column": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Resultaten_Opleidingsonderdelen"
-                      }
-                    },
-                    "Property": "ECTS"
+                  "SourceRef": {
+                    "Entity": "Resultaten_Opleidingsonderdelen"
                   }
                 },
-                "Function": 3
+                "Property": "Fase_Semester"
               }
             },
             "direction": "Ascending"
@@ -212,13 +222,27 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "30.744261598594157D"
+                  "Value": "30.763914721265927D"
                 }
               }
             }
           },
           "selector": {
             "metadata": "Resultaten_Opleidingsonderdelen.Fase_Semester"
+          }
+        },
+        {
+          "properties": {
+            "value": {
+              "expr": {
+                "Literal": {
+                  "Value": "199.41853404663178D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "metadata": "Opleidingsonderdelen.Naam"
           }
         }
       ],
@@ -259,5 +283,112 @@
       ]
     },
     "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "8939b891ea1c0bc93726",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "Fase_Semester"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "1a5f2a07d053a7873d96",
+        "field": {
+          "Aggregation": {
+            "Expression": {
+              "Column": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Resultaten_Opleidingsonderdelen"
+                  }
+                },
+                "Property": "ECTS"
+              }
+            },
+            "Function": 3
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "3dcbe606192825b97eaa",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "OPO_ID"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "81380cad801b57d0688d",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Opleidingsonderdelen"
+              }
+            },
+            "Property": "Naam"
+          }
+        },
+        "type": "Categorical"
+      },
+      {
+        "name": "86ded254150c02230e5a",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "Resultaat"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "1e6e78571c6c83455705",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "Periode"
+          }
+        },
+        "type": "Advanced"
+      },
+      {
+        "name": "9425316fa78070516269",
+        "field": {
+          "Column": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Resultaten_Opleidingsonderdelen"
+              }
+            },
+            "Property": "Categorie_Naam"
+          }
+        },
+        "type": "Categorical"
+      }
+    ]
   }
 }

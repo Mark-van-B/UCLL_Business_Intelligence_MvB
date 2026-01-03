@@ -27,8 +27,8 @@
                 }
               },
               "queryRef": "Resultaten_Opleidingsonderdelen.Gemiddelde_Resultaten_Per_Semester",
-              "nativeQueryRef": "Gemiddelde Resultaat",
-              "displayName": "Gemiddelde Resultaat"
+              "nativeQueryRef": "Gemiddeld Resultaat",
+              "displayName": "Gemiddeld Resultaat"
             },
             {
               "field": {
@@ -44,6 +44,21 @@
               "queryRef": "Resultaten_Opleidingsonderdelen.Verworven_Credits",
               "nativeQueryRef": "Verworven ECTS",
               "displayName": "Verworven ECTS"
+            },
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Resultaten_Opleidingsonderdelen"
+                    }
+                  },
+                  "Property": "Vrijgesteld-ECTS"
+                }
+              },
+              "queryRef": "Resultaten_Opleidingsonderdelen.ExemptedECTS",
+              "nativeQueryRef": "Waarvan vrijgesteld:",
+              "displayName": "Waarvan vrijgesteld:"
             },
             {
               "field": {
@@ -72,7 +87,8 @@
                 }
               },
               "queryRef": "Resultaten_Opleidingsonderdelen.Studie-efficiëntie",
-              "nativeQueryRef": "Studie-efficiëntie"
+              "nativeQueryRef": "Studie-efficiëntie",
+              "format": "0.00%;-0.00%;0.00%"
             }
           ]
         }

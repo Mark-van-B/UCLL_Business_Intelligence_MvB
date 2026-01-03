@@ -1888,6 +1888,9 @@ cultureInfo en-US
 			        }
 			      },
 			      "State": "Generated",
+			      "Visibility": {
+			        "Value": "Hidden"
+			      },
 			      "Terms": [
 			        {
 			          "categorie naam": {
@@ -5187,6 +5190,16 @@ cultureInfo en-US
 			          }
 			        },
 			        {
+			          "Gemiddeld Resultaat": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        },
+			        {
 			          "Gemiddelde Resultaat": {
 			            "State": "Suggested",
 			            "Source": {
@@ -5585,6 +5598,254 @@ cultureInfo en-US
 			        },
 			        {
 			          "Opgenomen ECTS": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.vrijgesteldECTS": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Vrijgesteld-ECTS"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vrijgesteld-ECTS": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "vrijgesteld ECTS": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "Waarvan vrijgesteld:": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
+			    },
+			    "legende": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Legende"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "legende": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "legende.categorie": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Legende",
+			          "ConceptualProperty": "Categorie"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "categorie": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "legende.kleur_code": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Legende",
+			          "ConceptualProperty": "Kleur Code"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "kleur code": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "kleur id": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.75
+			          }
+			        },
+			        {
+			          "kleur key": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        }
+			      ]
+			    },
+			    "legende.rangorde": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Legende",
+			          "ConceptualProperty": "Rangorde"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "rangorde": {
+			            "State": "Generated"
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.vrijesteld_text": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "VrijesteldText"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "vrijesteld text": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "VrijesteldText": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "vrijesteld manuscript": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "vrijesteld transcript": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "vrijesteld typescript": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "vrijesteld edition": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "vrijesteld version": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.5
+			          }
+			        },
+			        {
+			          "vrijesteld writing": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "vrijesteld script": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "vrijesteld copy": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.485
+			          }
+			        },
+			        {
+			          "vrijesteld schoolbook": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "vrijesteld reader": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "Vrijstelling": {
 			            "State": "Suggested",
 			            "Source": {
 			              "Type": "External",
@@ -6606,6 +6867,52 @@ cultureInfo en-US
 			        }
 			      ]
 			    },
+			    "resultaten_opleidingsonderdelen_has_legende": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "legende": {
+			          "Target": {
+			            "Entity": "legende"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "legende"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_legendes"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "legende"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "legendes_have_resultaten_opleidingsonderdelens"
+			        }
+			      ]
+			    },
 			    "resultaten_opleidingsonderdelen_has_OPO_opleidingen": {
 			      "Binding": {
 			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
@@ -6998,6 +7305,171 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "inschrijvingens_have_opgenomen_opleidingsonderdelens"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_vrijesteld_text": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.vrijesteld_text": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.vrijesteld_text"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.vrijesteld_text"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_vrijesteld_texts"
+			        }
+			      ]
+			    },
+			    "legende_has_rangorde": {
+			      "Binding": {
+			        "ConceptualEntity": "Legende"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "legende": {
+			          "Target": {
+			            "Entity": "legende"
+			          }
+			        },
+			        "legende.rangorde": {
+			          "Target": {
+			            "Entity": "legende.rangorde"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "legende"
+			            },
+			            "Object": {
+			              "Role": "legende.rangorde"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "legendes_have_rangordes"
+			        }
+			      ]
+			    },
+			    "legende_has_kleur_code": {
+			      "Binding": {
+			        "ConceptualEntity": "Legende"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "legende": {
+			          "Target": {
+			            "Entity": "legende"
+			          }
+			        },
+			        "legende.kleur_code": {
+			          "Target": {
+			            "Entity": "legende.kleur_code"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "legende"
+			            },
+			            "Object": {
+			              "Role": "legende.kleur_code"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "legendes_have_kleur_codes"
+			        }
+			      ]
+			    },
+			    "legende_has_categorie": {
+			      "Binding": {
+			        "ConceptualEntity": "Legende"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "legende": {
+			          "Target": {
+			            "Entity": "legende"
+			          }
+			        },
+			        "legende.categorie": {
+			          "Target": {
+			            "Entity": "legende.categorie"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "legende"
+			            },
+			            "Object": {
+			              "Role": "legende.categorie"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "legendes_have_categories"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_vrijgesteldECTS": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.vrijgesteldECTS": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.vrijgesteldECTS"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.vrijgesteldECTS"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_vrijgesteldECTS"
 			        }
 			      ]
 			    },
@@ -9869,39 +10341,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "resultaten_opleidingsonderdelens_have_categorie_rang"
-			        }
-			      ]
-			    },
-			    "resultaten_opleidingsonderdelen_has_categorie_naam": {
-			      "Binding": {
-			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "resultaten_opleidingsonderdelen": {
-			          "Target": {
-			            "Entity": "resultaten_opleidingsonderdelen"
-			          }
-			        },
-			        "resultaten_opleidingsonderdelen.categorie_naam": {
-			          "Target": {
-			            "Entity": "resultaten_opleidingsonderdelen.categorie_naam"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "resultaten_opleidingsonderdelen"
-			            },
-			            "Object": {
-			              "Role": "resultaten_opleidingsonderdelen.categorie_naam"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "resultaten_opleidingsonderdelens_have_categorie_naams"
 			        }
 			      ]
 			    },
