@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "b72d472e6bf219079c05",
+  "name": "f94a4da548baa5a5375a",
   "position": {
     "x": 732.56021915941574,
     "y": 424.41980951299485,
@@ -47,24 +47,6 @@
               },
               "queryRef": "Resultaten_Opleidingsonderdelen.Categorie_Naam",
               "nativeQueryRef": "Categorie_Naam"
-            }
-          ]
-        },
-        "Tooltips": {
-          "projections": [
-            {
-              "field": {
-                "Measure": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Resultaten_Opleidingsonderdelen"
-                    }
-                  },
-                  "Property": "Gemiddelde_Resultaten"
-                }
-              },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Gemiddelde_Resultaten",
-              "nativeQueryRef": "Gemiddelde_Resultaten"
             }
           ]
         },
@@ -203,9 +185,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 8,
-                      "Percent": 0.2
+                    "Literal": {
+                      "Value": "'#E1C233'"
                     }
                   }
                 }
@@ -245,9 +226,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0.6
+                    "Literal": {
+                      "Value": "'#A0D1FF'"
                     }
                   }
                 }
@@ -287,9 +267,8 @@
               "solid": {
                 "color": {
                   "expr": {
-                    "ThemeDataColor": {
-                      "ColorId": 2,
-                      "Percent": 0.2
+                    "Literal": {
+                      "Value": "'#41A4FF'"
                     }
                   }
                 }
@@ -486,7 +465,7 @@
             "show": {
               "expr": {
                 "Literal": {
-                  "Value": "true"
+                  "Value": "false"
                 }
               }
             },
@@ -597,7 +576,7 @@
             "text": {
               "expr": {
                 "Literal": {
-                  "Value": "'Resultaten per Categorie en Semester'"
+                  "Value": "'Resultaten per Semester'"
                 }
               }
             }

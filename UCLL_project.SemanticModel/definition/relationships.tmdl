@@ -108,3 +108,7 @@ relationship fb0f77e9-bdd7-8fb2-f646-8c6b08e628e7
 	fromColumn: Resultaten_Opleidingsonderdelen.OPO_ID
 	toColumn: Opleidingsonderdelen.OPO_ID
 
+relationship a55264a1-777b-a992-2760-4e84fe7cf5b4
+	fromColumn: Resultaten_Opleidingsonderdelen.Categorie_Naam
+	toColumn: Legende.Categorie
+

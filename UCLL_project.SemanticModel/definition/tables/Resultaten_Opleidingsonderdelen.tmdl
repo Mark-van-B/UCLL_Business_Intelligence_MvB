@@ -156,6 +156,24 @@ table Resultaten_Opleidingsonderdelen
 		formatString: 0
 		lineageTag: 14a5d55f-073e-48db-abcd-7e6c5b8cb9e7
 
+	measure Filtered_ECTS_Total = ```
+			
+			
+			SUMX(
+			    SUMMARIZE(
+			        'Resultaten_Opleidingsonderdelen',
+			        'Resultaten_Opleidingsonderdelen'[Student_ID],
+			        'Resultaten_Opleidingsonderdelen'[OPO_ID],
+			        'Resultaten_Opleidingsonderdelen'[Fase_Semester],
+			        "TotalECTS", MAX('Resultaten_Opleidingsonderdelen'[ECTS])
+			    ),
+			    [TotalECTS]
+			)
+			
+			```
+		formatString: 0
+		lineageTag: 6b81efbe-be82-47cd-9a41-1ef5c4fa7eb1
+
 	column Inschrijving_ID
 		dataType: string
 		isHidden
@@ -332,6 +350,14 @@ table Resultaten_Opleidingsonderdelen
 
 		annotation SummarizationSetBy = Automatic
 
+	column UniqueKey
+		dataType: string
+		lineageTag: 452703d7-c2a3-4c72-8486-609f3efa7ca6
+		summarizeBy: none
+		sourceColumn: UniqueKey
+
+		annotation SummarizationSetBy = Automatic
+
 	partition Resultaten_Opleidingsonderdelen = m
 		mode: import
 		source = ```
@@ -385,9 +411,10 @@ table Resultaten_Opleidingsonderdelen
 				            if periode1Result <> null and periode1Result <= 9 
 				            then [InvestedECTS] else 0
 				    else 0),
-				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"Behaalde_Credits", type number}, {"Categorie_Rang", Int64.Type}})
+				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"Behaalde_Credits", type number}, {"Categorie_Rang", Int64.Type}}),
+				    #"Added Custom3" = Table.AddColumn(#"Changed Type2", "UniqueKey", each [Inschrijving_ID]&[OPO_ID]&Number.ToText([Periode])&[Fase_Semester])
 				in
-				    #"Changed Type2"
+				    #"Added Custom3"
 				```
 
 	annotation PBI_NavigationStepName = Navigation

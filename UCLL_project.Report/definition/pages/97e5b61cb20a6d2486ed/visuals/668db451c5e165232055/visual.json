@@ -1,13 +1,13 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "5c31e552362932e68c80",
+  "name": "668db451c5e165232055",
   "position": {
-    "x": 18.604703978651827,
-    "y": 106.97704787724801,
-    "z": 2000,
+    "x": 360.46613958637914,
+    "y": 105.81425387858228,
+    "z": 8000,
     "height": 84.883961902598969,
-    "width": 360.46613958637914,
-    "tabOrder": 2000
+    "width": 559.3039133582206,
+    "tabOrder": 8000
   },
   "visual": {
     "visualType": "advancedSlicerVisual",
@@ -23,11 +23,11 @@
                       "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
-                  "Property": "Fase_Semester"
+                  "Property": "Opleiding_ID"
                 }
               },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Fase_Semester",
-              "nativeQueryRef": "Fase_Semester"
+              "queryRef": "Resultaten_Opleidingsonderdelen.Opleiding_ID",
+              "nativeQueryRef": "Opleiding_ID"
             }
           ]
         }
@@ -82,6 +82,13 @@
         {
           "properties": {
             "overFlowDirection": {
+              "expr": {
+                "Literal": {
+                  "Value": "1D"
+                }
+              }
+            },
+            "overFlowStyle": {
               "expr": {
                 "Literal": {
                   "Value": "1D"
@@ -586,6 +593,20 @@
                   "Value": "''"
                 }
               }
+            },
+            "heading": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Normal'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "10D"
+                }
+              }
             }
           }
         }
@@ -637,11 +658,6 @@
           }
         }
       ]
-    },
-    "syncGroup": {
-      "groupName": "Jaar",
-      "fieldChanges": true,
-      "filterChanges": true
     },
     "drillFilterOtherVisuals": true
   },

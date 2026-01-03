@@ -1,0 +1,49 @@
+table Legende
+	lineageTag: 39e8ac1e-b655-416c-ae98-685e21864c4a
+
+	column Categorie
+		dataType: string
+		lineageTag: 9fa2cb74-fb51-4c73-9244-bbb9310c6fd0
+		summarizeBy: none
+		sourceColumn: Categorie
+		sortByColumn: Rangorde
+
+		changedProperty = SortByColumn
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Kleur Code'
+		dataType: string
+		lineageTag: 09590def-f48d-47f1-9355-f9f04c64c726
+		summarizeBy: none
+		sourceColumn: Kleur Code
+
+		annotation SummarizationSetBy = Automatic
+
+	column Rangorde
+		dataType: int64
+		formatString: 0
+		lineageTag: f9274b0e-cab2-475a-a941-209a6d988b32
+		summarizeBy: none
+		sourceColumn: Rangorde
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Legende = m
+		mode: import
+		source =
+				let
+				    Source = Table.FromRows(Json.Document(Binary.Decompress(Binary.FromText("ZYqxDoIwFAB/hTxXhhaIcSW0r7LQBBqXpkOVFyUSmlQmv15KdPLGu7MWFL39c4UcDohsA1xuwYSZIlG8eh9TkrwpynJPlzCPgZaRkq+Z4Ii715uKr9uDpnFa7ilWvK6+UcWwUva/cH4Sv6XX2gxGZroTsh+as2xF26l0MYZYHMG5Dw==", BinaryEncoding.Base64), Compression.Deflate)), let _t = ((type nullable text) meta [Serialized.Text = true]) in type table [Categorie = _t, #"Kleur Code" = _t]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Categorie", type text}, {"Kleur Code", type text}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","#118DFF","#8F0FFF",Replacer.ReplaceText,{"Kleur Code"}),
+				    #"Merged Queries" = Table.NestedJoin(#"Replaced Value", {"Categorie"}, Resultaten_Opleidingsonderdelen, {"Categorie_Naam"}, "Resultaten_Opleidingsonderdelen", JoinKind.LeftOuter),
+				    #"Expanded Resultaten_Opleidingsonderdelen" = Table.ExpandTableColumn(#"Merged Queries", "Resultaten_Opleidingsonderdelen", {"Categorie_Rang"}, {"Resultaten_Opleidingsonderdelen.Categorie_Rang"}),
+				    #"Removed Duplicates" = Table.Distinct(#"Expanded Resultaten_Opleidingsonderdelen", {"Categorie"}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Removed Duplicates",{{"Resultaten_Opleidingsonderdelen.Categorie_Rang", "Rangorde"}})
+				in
+				    #"Renamed Columns"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

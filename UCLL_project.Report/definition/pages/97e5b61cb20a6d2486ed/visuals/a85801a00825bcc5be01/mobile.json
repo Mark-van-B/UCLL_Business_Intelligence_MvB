@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.2.0/schema.json",
+  "position": {
+    "x": 0,
+    "y": 111,
+    "z": 7,
+    "height": 61,
+    "width": 162,
+    "tabOrder": 7
+  },
+  "objects": {
+    "general": [],
+    "data": [],
+    "selection": [],
+    "items": [],
+    "header": [
+      {
+        "properties": {
+          "text": {
+            "expr": {
+              "Literal": {
+                "Value": "'OPO'"
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

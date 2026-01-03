@@ -5185,6 +5185,16 @@ cultureInfo en-US
 			            "State": "Generated",
 			            "Weight": 0.99
 			          }
+			        },
+			        {
+			          "Gemiddelde Resultaat": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -5308,6 +5318,16 @@ cultureInfo en-US
 			            },
 			            "Weight": 0.461
 			          }
+			        },
+			        {
+			          "Verworven ECTS": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
 			        }
 			      ]
 			    },
@@ -5343,9 +5363,306 @@ cultureInfo en-US
 			          }
 			        }
 			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.aantal_per_categorie": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Aantal_Per_Categorie"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "aantal per categorie": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Aantal_Per_Categorie": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.unique_key": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "UniqueKey"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "unique key": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "UniqueKey": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "key": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "main": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "basic": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "fundamental": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "central": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "major": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "keynote": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "essential": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.476
+			          }
+			        },
+			        {
+			          "unique solution": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "unique explanation": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        },
+			        {
+			          "unique basis": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.475
+			          }
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen.filtered_ECTS_total": {
+			      "Definition": {
+			        "Binding": {
+			          "ConceptualEntity": "Resultaten_Opleidingsonderdelen",
+			          "ConceptualProperty": "Filtered_ECTS_Total"
+			        }
+			      },
+			      "State": "Generated",
+			      "Terms": [
+			        {
+			          "filtered ECTS total": {
+			            "State": "Generated"
+			          }
+			        },
+			        {
+			          "Filtered_ECTS_Total": {
+			            "Type": "Noun",
+			            "State": "Generated",
+			            "Weight": 0.99
+			          }
+			        },
+			        {
+			          "ECTS total": {
+			            "State": "Generated",
+			            "Weight": 0.97
+			          }
+			        },
+			        {
+			          "filtered ect aggregate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "filtered ect overall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.739
+			          }
+			        },
+			        {
+			          "ect aggregate": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "ect overall": {
+			            "Type": "Noun",
+			            "State": "Suggested",
+			            "Source": {
+			              "Agent": "Thesaurus"
+			            },
+			            "Weight": 0.727
+			          }
+			        },
+			        {
+			          "Opgenomen ECTS": {
+			            "State": "Suggested",
+			            "Source": {
+			              "Type": "External",
+			              "Agent": "PowerBI.VisualColumnRename"
+			            },
+			            "Weight": 0.9
+			          }
+			        }
+			      ]
 			    }
 			  },
 			  "Relationships": {
+			    "eerste_inschrijvingen_departementen_naam_hierarchy_departementen_naam_has_eerste_inschrijvingen_departementen_naam_hierarchy_opleidingen_naam": {
+			      "Binding": {
+			        "ConceptualEntity": "Eerste_Inschrijvingen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam": {
+			          "Target": {
+			            "Entity": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
+			          }
+			        },
+			        "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam": {
+			          "Target": {
+			            "Entity": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
+			            },
+			            "Object": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "departementen_naams_have_opleidingen_naams"
+			        },
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
+			            },
+			            "Object": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opleidingen_naams_have_departementen_naams"
+			        },
+			        {
+			          "Preposition": {
+			            "Subject": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
+			            },
+			            "Prepositions": [
+			              {
+			                "in": {
+			                  "State": "Generated"
+			                }
+			              }
+			            ],
+			            "Object": {
+			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "opleidingen_naams_are_in_departementen_naams"
+			        }
+			      ]
+			    },
 			    "eerste_inschrijvingen_departementen_naam_hierarchy_has_opleidingen_naam": {
 			      "Binding": {
 			        "ConceptualEntity": "Eerste_Inschrijvingen"
@@ -6681,6 +6998,105 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "inschrijvingens_have_opgenomen_opleidingsonderdelens"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_filtered_ECTS_total": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.filtered_ECTS_total": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.filtered_ECTS_total"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.filtered_ECTS_total"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_filtered_ECTS_total"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_unique_key": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.unique_key": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.unique_key"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.unique_key"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_unique_keys"
+			        }
+			      ]
+			    },
+			    "resultaten_opleidingsonderdelen_has_aantal_per_categorie": {
+			      "Binding": {
+			        "ConceptualEntity": "Resultaten_Opleidingsonderdelen"
+			      },
+			      "State": "Generated",
+			      "Roles": {
+			        "resultaten_opleidingsonderdelen": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen"
+			          }
+			        },
+			        "resultaten_opleidingsonderdelen.aantal_per_categorie": {
+			          "Target": {
+			            "Entity": "resultaten_opleidingsonderdelen.aantal_per_categorie"
+			          }
+			        }
+			      },
+			      "Phrasings": [
+			        {
+			          "Attribute": {
+			            "Subject": {
+			              "Role": "resultaten_opleidingsonderdelen"
+			            },
+			            "Object": {
+			              "Role": "resultaten_opleidingsonderdelen.aantal_per_categorie"
+			            }
+			          },
+			          "State": "Generated",
+			          "Weight": 0.99,
+			          "ID": "resultaten_opleidingsonderdelens_have_aantal_per_categorie"
 			        }
 			      ]
 			    },
@@ -10113,72 +10529,6 @@ cultureInfo en-US
 			          "State": "Generated",
 			          "Weight": 0.99,
 			          "ID": "departementens_have_departement_ID"
-			        }
-			      ]
-			    },
-			    "eerste_inschrijvingen_departementen_naam_hierarchy_departementen_naam_has_eerste_inschrijvingen_departementen_naam_hierarchy_opleidingen_naam": {
-			      "Binding": {
-			        "ConceptualEntity": "Eerste_Inschrijvingen"
-			      },
-			      "State": "Generated",
-			      "Roles": {
-			        "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam": {
-			          "Target": {
-			            "Entity": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
-			          }
-			        },
-			        "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam": {
-			          "Target": {
-			            "Entity": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
-			          }
-			        }
-			      },
-			      "Phrasings": [
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
-			            },
-			            "Object": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "departementen_naams_have_opleidingen_naams"
-			        },
-			        {
-			          "Attribute": {
-			            "Subject": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
-			            },
-			            "Object": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "opleidingen_naams_have_departementen_naams"
-			        },
-			        {
-			          "Preposition": {
-			            "Subject": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.opleidingen_naam"
-			            },
-			            "Prepositions": [
-			              {
-			                "in": {
-			                  "State": "Generated"
-			                }
-			              }
-			            ],
-			            "Object": {
-			              "Role": "eerste_inschrijvingen.departementen_naam_hierarchy.departementen_naam"
-			            }
-			          },
-			          "State": "Generated",
-			          "Weight": 0.99,
-			          "ID": "opleidingen_naams_are_in_departementen_naams"
 			        }
 			      ]
 			    }

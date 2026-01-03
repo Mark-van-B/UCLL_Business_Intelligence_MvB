@@ -1,6 +1,6 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.4.0/schema.json",
-  "name": "a6968dea3638aac9b8d9",
+  "name": "00c16d5a6a8366c46341",
   "position": {
     "x": 9.3023519893259135,
     "y": 424.41980951299485,
@@ -70,20 +70,6 @@
                 "Column": {
                   "Expression": {
                     "SourceRef": {
-                      "Entity": "Opleidingsonderdelen"
-                    }
-                  },
-                  "Property": "Naam"
-                }
-              },
-              "queryRef": "Opleidingsonderdelen.Naam",
-              "nativeQueryRef": "Naam"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
                       "Entity": "Resultaten_Opleidingsonderdelen"
                     }
                   },
@@ -106,21 +92,6 @@
               },
               "queryRef": "Sum(Resultaten_Opleidingsonderdelen.Periode)",
               "nativeQueryRef": "Periode"
-            },
-            {
-              "field": {
-                "Column": {
-                  "Expression": {
-                    "SourceRef": {
-                      "Entity": "Resultaten_Opleidingsonderdelen"
-                    }
-                  },
-                  "Property": "Categorie_Naam"
-                }
-              },
-              "queryRef": "Resultaten_Opleidingsonderdelen.Categorie_Naam",
-              "nativeQueryRef": "Categorie",
-              "displayName": "Categorie"
             }
           ]
         }
@@ -129,18 +100,13 @@
         "sort": [
           {
             "field": {
-              "Aggregation": {
+              "Column": {
                 "Expression": {
-                  "Column": {
-                    "Expression": {
-                      "SourceRef": {
-                        "Entity": "Resultaten_Opleidingsonderdelen"
-                      }
-                    },
-                    "Property": "ECTS"
+                  "SourceRef": {
+                    "Entity": "Resultaten_Opleidingsonderdelen"
                   }
                 },
-                "Function": 3
+                "Property": "Fase_Semester"
               }
             },
             "direction": "Ascending"
@@ -212,7 +178,7 @@
             "value": {
               "expr": {
                 "Literal": {
-                  "Value": "30.744261598594157D"
+                  "Value": "36.53471096337615D"
                 }
               }
             }

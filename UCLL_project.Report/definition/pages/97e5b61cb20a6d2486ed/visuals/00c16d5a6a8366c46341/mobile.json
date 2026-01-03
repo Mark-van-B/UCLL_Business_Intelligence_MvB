@@ -1,0 +1,100 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainerMobileState/2.2.0/schema.json",
+  "position": {
+    "x": 0,
+    "y": 802,
+    "z": 5,
+    "height": 217,
+    "width": 324,
+    "tabOrder": 5
+  },
+  "objects": {
+    "values": [
+      {
+        "properties": {
+          "wordWrap": {
+            "expr": {
+              "Literal": {
+                "Value": "false"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "grid": [],
+    "columnWidth": [
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "38D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Resultaten_Opleidingsonderdelen.Fase_Semester"
+        }
+      },
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "45D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Sum(Resultaten_Opleidingsonderdelen.ECTS)"
+        }
+      },
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "70D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Resultaten_Opleidingsonderdelen.OPO_ID"
+        }
+      },
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "67D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Sum(Resultaten_Opleidingsonderdelen.Resultaat)"
+        }
+      },
+      {
+        "properties": {
+          "value": {
+            "expr": {
+              "Literal": {
+                "Value": "60.47106353146325D"
+              }
+            }
+          }
+        },
+        "selector": {
+          "metadata": "Sum(Resultaten_Opleidingsonderdelen.Periode)"
+        }
+      }
+    ],
+    "total": []
+  }
+}
