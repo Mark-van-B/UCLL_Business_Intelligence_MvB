@@ -412,9 +412,10 @@ table Resultaten_Opleidingsonderdelen
 				            then [InvestedECTS] else 0
 				    else 0),
 				    #"Changed Type2" = Table.TransformColumnTypes(#"Added Custom2",{{"Behaalde_Credits", type number}, {"Categorie_Rang", Int64.Type}}),
-				    #"Added Custom3" = Table.AddColumn(#"Changed Type2", "UniqueKey", each [Inschrijving_ID]&[OPO_ID]&Number.ToText([Periode])&[Fase_Semester])
+				    #"Added Custom3" = Table.AddColumn(#"Changed Type2", "UniqueKey", each [Inschrijving_ID]&[OPO_ID]&Number.ToText([Periode])&[Fase_Semester]),
+				    #"Removed Duplicates" = Table.Distinct(#"Added Custom3", {"UniqueKey"})
 				in
-				    #"Added Custom3"
+				    #"Removed Duplicates"
 				```
 
 	annotation PBI_NavigationStepName = Navigation
